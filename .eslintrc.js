@@ -10,7 +10,7 @@ module.exports = {
       {
         patterns: [
           {
-            group: ['spreadsheet-api', 'spreadsheet-api/*'],
+            group: ['@grid-is/api', '@grid-is/api/*'],
             message: 'Use a relative import, not a package import.',
           },
         ],

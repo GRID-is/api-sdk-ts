@@ -7,8 +7,8 @@ const config: JestConfigWithTsJest = {
     '^.+\\.(t|j)sx?$': ['@swc/jest', { sourceMaps: 'inline' }],
   },
   moduleNameMapper: {
-    '^spreadsheet-api$': '<rootDir>/src/index.ts',
-    '^spreadsheet-api/(.*)$': '<rootDir>/src/$1',
+    '^@grid-is/api$': '<rootDir>/src/index.ts',
+    '^@grid-is/api/(.*)$': '<rootDir>/src/$1',
   },
   modulePathIgnorePatterns: [
     '<rootDir>/ecosystem-tests/',

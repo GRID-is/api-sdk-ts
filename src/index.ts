@@ -1,12 +1,12 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-export { SpreadsheetAPI as default } from './client';
+export { GRID as default } from './client';
 
 export { type Uploadable, toFile } from './uploads';
 export { APIPromise } from './api-promise';
-export { SpreadsheetAPI, type ClientOptions } from './client';
+export { GRID, type ClientOptions } from './client';
 export {
-  SpreadsheetAPIError,
+  GRIDError,
   APIError,
   APIConnectionError,
   APIConnectionTimeoutError,

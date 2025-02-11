@@ -55,12 +55,12 @@ $ cd spreadsheet-api-typescript
 # With yarn
 $ yarn link
 $ cd ../my-package
-$ yarn link spreadsheet-api
+$ yarn link @grid-is/api
 
 # With pnpm
 $ pnpm link --global
 $ cd ../my-package
-$ pnpm link -—global spreadsheet-api
+$ pnpm link -—global @grid-is/api
 ```
 
 ## Running tests

@@ -58,14 +58,14 @@ const isLogLevel = (key: string | undefined): key is LogLevel => {
 
 export interface ClientOptions {
   /**
-   * Bearer token for authentication
+   * Bearer token used for authentication with the API
    */
   bearerToken?: string | undefined;
 
   /**
    * Override the default base URL for the API, e.g., "https://api.example.com/v2/"
    *
-   * Defaults to process.env['SPREADSHEET_API_BASE_URL'].
+   * Defaults to process.env['GRID_BASE_URL'].
    */
   baseURL?: string | null | undefined;
 
@@ -117,7 +117,7 @@ export interface ClientOptions {
   /**
    * Set the log level.
    *
-   * Defaults to process.env['SPREADSHEET_API_LOG'].
+   * Defaults to process.env['GRID_LOG'].
    */
   logLevel?: LogLevel | undefined | null;
 
@@ -132,9 +132,9 @@ export interface ClientOptions {
 type FinalizedRequestInit = RequestInit & { headers: Headers };
 
 /**
- * API Client for interfacing with the Spreadsheet API API.
+ * API Client for interfacing with the GRID API.
  */
-export class SpreadsheetAPI {
+export class GRID {
   bearerToken: string;
 
   baseURL: string;
@@ -150,10 +150,10 @@ export class SpreadsheetAPI {
   private _options: ClientOptions;
 
   /**
-   * API Client for interfacing with the Spreadsheet API API.
+   * API Client for interfacing with the GRID API.
    *
-   * @param {string | undefined} [opts.bearerToken=process.env['GRID_API_BEARER_TOKEN'] ?? undefined]
-   * @param {string} [opts.baseURL=process.env['SPREADSHEET_API_BASE_URL'] ?? https://api-alpha.grid.is] - Override the default base URL for the API.
+   * @param {string | undefined} [opts.bearerToken=process.env['GRID_API_TOKEN'] ?? undefined]
+   * @param {string} [opts.baseURL=process.env['GRID_BASE_URL'] ?? https://api-alpha.grid.is] - Override the default base URL for the API.
    * @param {number} [opts.timeout=1 minute] - The maximum amount of time (in milliseconds) the client will wait for a response before timing out.
    * @param {MergedRequestInit} [opts.fetchOptions] - Additional `RequestInit` options to be passed to `fetch` calls.
    * @param {Fetch} [opts.fetch] - Specify a custom `fetch` function implementation.
@@ -162,13 +162,13 @@ export class SpreadsheetAPI {
    * @param {Record<string, string | undefined>} opts.defaultQuery - Default query parameters to include with every request to the API.
    */
   constructor({
-    baseURL = readEnv('SPREADSHEET_API_BASE_URL'),
-    bearerToken = readEnv('GRID_API_BEARER_TOKEN'),
+    baseURL = readEnv('GRID_BASE_URL'),
+    bearerToken = readEnv('GRID_API_TOKEN'),
     ...opts
   }: ClientOptions = {}) {
     if (bearerToken === undefined) {
-      throw new Errors.SpreadsheetAPIError(
-        "The GRID_API_BEARER_TOKEN environment variable is missing or empty; either provide it, or instantiate the SpreadsheetAPI client with an bearerToken option, like new SpreadsheetAPI({ bearerToken: 'My Bearer Token' }).",
+      throw new Errors.GRIDError(
+        "The GRID_API_TOKEN environment variable is missing or empty; either provide it, or instantiate the GRID client with an bearerToken option, like new GRID({ bearerToken: 'My Bearer Token' }).",
       );
     }
 
@@ -179,12 +179,12 @@ export class SpreadsheetAPI {
     };
 
     this.baseURL = options.baseURL!;
-    this.timeout = options.timeout ?? SpreadsheetAPI.DEFAULT_TIMEOUT /* 1 minute */;
+    this.timeout = options.timeout ?? GRID.DEFAULT_TIMEOUT /* 1 minute */;
     this.logger = options.logger ?? console;
     if (options.logLevel != null) {
       this.logLevel = options.logLevel;
     } else {
-      const envLevel = readEnv('SPREADSHEET_API_LOG');
+      const envLevel = readEnv('GRID_LOG');
       if (isLogLevel(envLevel)) {
         this.logLevel = envLevel;
       }
@@ -224,7 +224,7 @@ export class SpreadsheetAPI {
         if (value === null) {
           return `${encodeURIComponent(key)}=`;
         }
-        throw new Errors.SpreadsheetAPIError(
+        throw new Errors.GRIDError(
           `Cannot stringify type ${typeof value}; Expected string, number, boolean, or null. If you need to pass nested query parameters, you can manually encode them, e.g. { query: { 'foo[key1]': value1, 'foo[key2]': value2 } }, and please open a GitHub issue requesting better support for your use case.`,
         );
       })
@@ -572,6 +572,7 @@ export class SpreadsheetAPI {
         'X-Stainless-Retry-Count': String(retryCount),
         ...(options.timeout ? { 'X-Stainless-Timeout': String(options.timeout) } : {}),
         ...getPlatformHeaders(),
+        'X-Client-Name': 'spreadsheet-api-node',
       },
       this.authHeaders(options),
       this._options.defaultHeaders,
@@ -621,10 +622,10 @@ export class SpreadsheetAPI {
     }
   }
 
-  static SpreadsheetAPI = this;
+  static GRID = this;
   static DEFAULT_TIMEOUT = 60000; // 1 minute
 
-  static SpreadsheetAPIError = Errors.SpreadsheetAPIError;
+  static GRIDError = Errors.GRIDError;
   static APIError = Errors.APIError;
   static APIConnectionError = Errors.APIConnectionError;
   static APIConnectionTimeoutError = Errors.APIConnectionTimeoutError;
@@ -642,8 +643,8 @@ export class SpreadsheetAPI {
 
   workbooks: API.Workbooks = new API.Workbooks(this);
 }
-SpreadsheetAPI.Workbooks = Workbooks;
-export declare namespace SpreadsheetAPI {
+GRID.Workbooks = Workbooks;
+export declare namespace GRID {
   export type RequestOptions = Opts.RequestOptions;
 
   export {

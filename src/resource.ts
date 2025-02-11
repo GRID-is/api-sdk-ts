@@ -1,11 +1,11 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import type { SpreadsheetAPI } from './client';
+import type { GRID } from './client';
 
 export class APIResource {
-  protected _client: SpreadsheetAPI;
+  protected _client: GRID;
 
-  constructor(client: SpreadsheetAPI) {
+  constructor(client: GRID) {
     this._client = client;
   }
 }

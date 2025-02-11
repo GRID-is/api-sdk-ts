@@ -9,8 +9,8 @@
     "esModuleInterop": true,
     "baseUrl": "./",
     "paths": {
-      "spreadsheet-api/*": ["src/*"],
-      "spreadsheet-api": ["src/index.ts"]
+      "@grid-is/api/*": ["src/*"],
+      "@grid-is/api": ["src/index.ts"]
     },
     "noEmit": true,
 
