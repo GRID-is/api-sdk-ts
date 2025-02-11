@@ -1,10 +1,10 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIPromise } from 'spreadsheet-api/api-promise';
+import { APIPromise } from '@grid-is/api/api-promise';
 
 import util from 'node:util';
-import SpreadsheetAPI from 'spreadsheet-api';
-import { APIUserAbortError } from 'spreadsheet-api';
+import GRID from '@grid-is/api';
+import { APIUserAbortError } from '@grid-is/api';
 const defaultFetch = fetch;
 
 describe('instantiate client', () => {
@@ -22,7 +22,7 @@ describe('instantiate client', () => {
   });
 
   describe('defaultHeaders', () => {
-    const client = new SpreadsheetAPI({
+    const client = new GRID({
       baseURL: 'http://localhost:5000/',
       defaultHeaders: { 'X-My-Default-Header': '2' },
       bearerToken: 'My Bearer Token',
@@ -53,10 +53,10 @@ describe('instantiate client', () => {
   });
   describe('logging', () => {
     afterEach(() => {
-      process.env['SPREADSHEET_API_LOG'] = undefined;
+      process.env['GRID_LOG'] = undefined;
     });
 
-    const forceAPIResponseForClient = async (client: SpreadsheetAPI) => {
+    const forceAPIResponseForClient = async (client: GRID) => {
       await new APIPromise(
         client,
         Promise.resolve({
@@ -79,11 +79,7 @@ describe('instantiate client', () => {
         error: jest.fn(),
       };
 
-      const client = new SpreadsheetAPI({
-        logger: logger,
-        logLevel: 'debug',
-        bearerToken: 'My Bearer Token',
-      });
+      const client = new GRID({ logger: logger, logLevel: 'debug', bearerToken: 'My Bearer Token' });
 
       await forceAPIResponseForClient(client);
       expect(debugMock).toHaveBeenCalled();
@@ -98,7 +94,7 @@ describe('instantiate client', () => {
         error: jest.fn(),
       };
 
-      const client = new SpreadsheetAPI({ logger: logger, logLevel: 'info', bearerToken: 'My Bearer Token' });
+      const client = new GRID({ logger: logger, logLevel: 'info', bearerToken: 'My Bearer Token' });
 
       await forceAPIResponseForClient(client);
       expect(debugMock).not.toHaveBeenCalled();
@@ -113,8 +109,8 @@ describe('instantiate client', () => {
         error: jest.fn(),
       };
 
-      process.env['SPREADSHEET_API_LOG'] = 'debug';
-      const client = new SpreadsheetAPI({ logger: logger, bearerToken: 'My Bearer Token' });
+      process.env['GRID_LOG'] = 'debug';
+      const client = new GRID({ logger: logger, bearerToken: 'My Bearer Token' });
 
       await forceAPIResponseForClient(client);
       expect(debugMock).toHaveBeenCalled();
@@ -129,8 +125,8 @@ describe('instantiate client', () => {
         error: jest.fn(),
       };
 
-      process.env['SPREADSHEET_API_LOG'] = 'debug';
-      const client = new SpreadsheetAPI({ logger: logger, logLevel: 'off', bearerToken: 'My Bearer Token' });
+      process.env['GRID_LOG'] = 'debug';
+      const client = new GRID({ logger: logger, logLevel: 'off', bearerToken: 'My Bearer Token' });
 
       await forceAPIResponseForClient(client);
       expect(debugMock).not.toHaveBeenCalled();
@@ -139,7 +135,7 @@ describe('instantiate client', () => {
 
   describe('defaultQuery', () => {
     test('with null query params given', () => {
-      const client = new SpreadsheetAPI({
+      const client = new GRID({
         baseURL: 'http://localhost:5000/',
         defaultQuery: { apiVersion: 'foo' },
         bearerToken: 'My Bearer Token',
@@ -148,7 +144,7 @@ describe('instantiate client', () => {
     });
 
     test('multiple default query params', () => {
-      const client = new SpreadsheetAPI({
+      const client = new GRID({
         baseURL: 'http://localhost:5000/',
         defaultQuery: { apiVersion: 'foo', hello: 'world' },
         bearerToken: 'My Bearer Token',
@@ -157,7 +153,7 @@ describe('instantiate client', () => {
     });
 
     test('overriding with `undefined`', () => {
-      const client = new SpreadsheetAPI({
+      const client = new GRID({
         baseURL: 'http://localhost:5000/',
         defaultQuery: { hello: 'world' },
         bearerToken: 'My Bearer Token',
@@ -167,7 +163,7 @@ describe('instantiate client', () => {
   });
 
   test('custom fetch', async () => {
-    const client = new SpreadsheetAPI({
+    const client = new GRID({
       baseURL: 'http://localhost:5000/',
       bearerToken: 'My Bearer Token',
       fetch: (url) => {
@@ -185,7 +181,7 @@ describe('instantiate client', () => {
 
   test('explicit global fetch', async () => {
     // make sure the global fetch type is assignable to our Fetch type
-    const client = new SpreadsheetAPI({
+    const client = new GRID({
       baseURL: 'http://localhost:5000/',
       bearerToken: 'My Bearer Token',
       fetch: defaultFetch,
@@ -193,7 +189,7 @@ describe('instantiate client', () => {
   });
 
   test('custom signal', async () => {
-    const client = new SpreadsheetAPI({
+    const client = new GRID({
       baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
       bearerToken: 'My Bearer Token',
       fetch: (...args) => {
@@ -225,7 +221,7 @@ describe('instantiate client', () => {
       return new Response(JSON.stringify({}), { headers: { 'Content-Type': 'application/json' } });
     };
 
-    const client = new SpreadsheetAPI({
+    const client = new GRID({
       baseURL: 'http://localhost:5000/',
       bearerToken: 'My Bearer Token',
       fetch: testFetch,
@@ -237,7 +233,7 @@ describe('instantiate client', () => {
 
   describe('baseUrl', () => {
     test('trailing slash', () => {
-      const client = new SpreadsheetAPI({
+      const client = new GRID({
         baseURL: 'http://localhost:5000/custom/path/',
         bearerToken: 'My Bearer Token',
       });
@@ -245,7 +241,7 @@ describe('instantiate client', () => {
     });
 
     test('no trailing slash', () => {
-      const client = new SpreadsheetAPI({
+      const client = new GRID({
         baseURL: 'http://localhost:5000/custom/path',
         bearerToken: 'My Bearer Token',
       });
@@ -253,59 +249,59 @@ describe('instantiate client', () => {
     });
 
     afterEach(() => {
-      process.env['SPREADSHEET_API_BASE_URL'] = undefined;
+      process.env['GRID_BASE_URL'] = undefined;
     });
 
     test('explicit option', () => {
-      const client = new SpreadsheetAPI({ baseURL: 'https://example.com', bearerToken: 'My Bearer Token' });
+      const client = new GRID({ baseURL: 'https://example.com', bearerToken: 'My Bearer Token' });
       expect(client.baseURL).toEqual('https://example.com');
     });
 
     test('env variable', () => {
-      process.env['SPREADSHEET_API_BASE_URL'] = 'https://example.com/from_env';
-      const client = new SpreadsheetAPI({ bearerToken: 'My Bearer Token' });
+      process.env['GRID_BASE_URL'] = 'https://example.com/from_env';
+      const client = new GRID({ bearerToken: 'My Bearer Token' });
       expect(client.baseURL).toEqual('https://example.com/from_env');
     });
 
     test('empty env variable', () => {
-      process.env['SPREADSHEET_API_BASE_URL'] = ''; // empty
-      const client = new SpreadsheetAPI({ bearerToken: 'My Bearer Token' });
+      process.env['GRID_BASE_URL'] = ''; // empty
+      const client = new GRID({ bearerToken: 'My Bearer Token' });
       expect(client.baseURL).toEqual('https://api-alpha.grid.is');
     });
 
     test('blank env variable', () => {
-      process.env['SPREADSHEET_API_BASE_URL'] = '  '; // blank
-      const client = new SpreadsheetAPI({ bearerToken: 'My Bearer Token' });
+      process.env['GRID_BASE_URL'] = '  '; // blank
+      const client = new GRID({ bearerToken: 'My Bearer Token' });
       expect(client.baseURL).toEqual('https://api-alpha.grid.is');
     });
   });
 
   test('maxRetries option is correctly set', () => {
-    const client = new SpreadsheetAPI({ maxRetries: 4, bearerToken: 'My Bearer Token' });
+    const client = new GRID({ maxRetries: 4, bearerToken: 'My Bearer Token' });
     expect(client.maxRetries).toEqual(4);
 
     // default
-    const client2 = new SpreadsheetAPI({ bearerToken: 'My Bearer Token' });
+    const client2 = new GRID({ bearerToken: 'My Bearer Token' });
     expect(client2.maxRetries).toEqual(2);
   });
 
   test('with environment variable arguments', () => {
     // set options via env var
-    process.env['GRID_API_BEARER_TOKEN'] = 'My Bearer Token';
-    const client = new SpreadsheetAPI();
+    process.env['GRID_API_TOKEN'] = 'My Bearer Token';
+    const client = new GRID();
     expect(client.bearerToken).toBe('My Bearer Token');
   });
 
   test('with overridden environment variable arguments', () => {
     // set options via env var
-    process.env['GRID_API_BEARER_TOKEN'] = 'another My Bearer Token';
-    const client = new SpreadsheetAPI({ bearerToken: 'My Bearer Token' });
+    process.env['GRID_API_TOKEN'] = 'another My Bearer Token';
+    const client = new GRID({ bearerToken: 'My Bearer Token' });
     expect(client.bearerToken).toBe('My Bearer Token');
   });
 });
 
 describe('request building', () => {
-  const client = new SpreadsheetAPI({ bearerToken: 'My Bearer Token' });
+  const client = new GRID({ bearerToken: 'My Bearer Token' });
 
   describe('custom headers', () => {
     test('handles undefined', () => {
@@ -324,7 +320,7 @@ describe('request building', () => {
 });
 
 describe('default encoder', () => {
-  const client = new SpreadsheetAPI({ bearerToken: 'My Bearer Token' });
+  const client = new GRID({ bearerToken: 'My Bearer Token' });
 
   class Serializable {
     toJSON() {
@@ -409,7 +405,7 @@ describe('retries', () => {
       return new Response(JSON.stringify({ a: 1 }), { headers: { 'Content-Type': 'application/json' } });
     };
 
-    const client = new SpreadsheetAPI({ bearerToken: 'My Bearer Token', timeout: 10, fetch: testFetch });
+    const client = new GRID({ bearerToken: 'My Bearer Token', timeout: 10, fetch: testFetch });
 
     expect(await client.request({ path: '/foo', method: 'get' })).toEqual({ a: 1 });
     expect(count).toEqual(2);
@@ -439,7 +435,7 @@ describe('retries', () => {
       return new Response(JSON.stringify({ a: 1 }), { headers: { 'Content-Type': 'application/json' } });
     };
 
-    const client = new SpreadsheetAPI({ bearerToken: 'My Bearer Token', fetch: testFetch, maxRetries: 4 });
+    const client = new GRID({ bearerToken: 'My Bearer Token', fetch: testFetch, maxRetries: 4 });
 
     expect(await client.request({ path: '/foo', method: 'get' })).toEqual({ a: 1 });
 
@@ -463,7 +459,7 @@ describe('retries', () => {
       capturedRequest = init;
       return new Response(JSON.stringify({ a: 1 }), { headers: { 'Content-Type': 'application/json' } });
     };
-    const client = new SpreadsheetAPI({ bearerToken: 'My Bearer Token', fetch: testFetch, maxRetries: 4 });
+    const client = new GRID({ bearerToken: 'My Bearer Token', fetch: testFetch, maxRetries: 4 });
 
     expect(
       await client.request({
@@ -492,7 +488,7 @@ describe('retries', () => {
       capturedRequest = init;
       return new Response(JSON.stringify({ a: 1 }), { headers: { 'Content-Type': 'application/json' } });
     };
-    const client = new SpreadsheetAPI({
+    const client = new GRID({
       bearerToken: 'My Bearer Token',
       fetch: testFetch,
       maxRetries: 4,
@@ -525,7 +521,7 @@ describe('retries', () => {
       capturedRequest = init;
       return new Response(JSON.stringify({ a: 1 }), { headers: { 'Content-Type': 'application/json' } });
     };
-    const client = new SpreadsheetAPI({ bearerToken: 'My Bearer Token', fetch: testFetch, maxRetries: 4 });
+    const client = new GRID({ bearerToken: 'My Bearer Token', fetch: testFetch, maxRetries: 4 });
 
     expect(
       await client.request({
@@ -555,7 +551,7 @@ describe('retries', () => {
       return new Response(JSON.stringify({ a: 1 }), { headers: { 'Content-Type': 'application/json' } });
     };
 
-    const client = new SpreadsheetAPI({ bearerToken: 'My Bearer Token', fetch: testFetch });
+    const client = new GRID({ bearerToken: 'My Bearer Token', fetch: testFetch });
 
     expect(await client.request({ path: '/foo', method: 'get' })).toEqual({ a: 1 });
     expect(count).toEqual(2);
@@ -585,7 +581,7 @@ describe('retries', () => {
       return new Response(JSON.stringify({ a: 1 }), { headers: { 'Content-Type': 'application/json' } });
     };
 
-    const client = new SpreadsheetAPI({ bearerToken: 'My Bearer Token', fetch: testFetch });
+    const client = new GRID({ bearerToken: 'My Bearer Token', fetch: testFetch });
 
     expect(await client.request({ path: '/foo', method: 'get' })).toEqual({ a: 1 });
     expect(count).toEqual(2);

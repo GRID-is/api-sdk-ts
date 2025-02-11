@@ -1,4 +1,4 @@
-import { createPathTagFunction, encodeURIPath } from 'spreadsheet-api/internal/utils/path';
+import { createPathTagFunction, encodeURIPath } from '@grid-is/api/internal/utils/path';
 import { inspect } from 'node:util';
 
 describe('path template tag function', () => {

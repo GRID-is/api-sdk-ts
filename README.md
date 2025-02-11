@@ -1,10 +1,10 @@
-# Spreadsheet API TypeScript API Library
+# GRID Spreadsheet API API Library
 
-[![NPM version](https://img.shields.io/npm/v/spreadsheet-api.svg)](https://npmjs.org/package/spreadsheet-api) ![npm bundle size](https://img.shields.io/bundlephobia/minzip/spreadsheet-api)
+[![NPM version](https://img.shields.io/npm/v/@grid-is/api.svg)](https://npmjs.org/package/@grid-is/api) ![npm bundle size](https://img.shields.io/bundlephobia/minzip/@grid-is/api)
 
-This library provides convenient access to the Spreadsheet API REST API from server-side TypeScript or JavaScript.
+This library provides convenient access to the GRID REST API from server-side TypeScript or JavaScript.
 
-The REST API documentation can be found on [docs.spreadsheet-api.com](https://docs.spreadsheet-api.com). The full API of this library can be found in [api.md](api.md).
+The REST API documentation can be found on [alpha.grid.is](https://alpha.grid.is/). The full API of this library can be found in [api.md](api.md).
 
 It is generated with [Stainless](https://www.stainlessapi.com/).
 
@@ -15,7 +15,7 @@ npm install git+ssh://git@github.com:stainless-sdks/spreadsheet-api-typescript.g
 ```
 
 > [!NOTE]
-> Once this package is [published to npm](https://app.stainlessapi.com/docs/guides/publish), this will become: `npm install spreadsheet-api`
+> Once this package is [published to npm](https://app.stainlessapi.com/docs/guides/publish), this will become: `npm install @grid-is/api`
 
 ## Usage
 
@@ -23,9 +23,9 @@ The full API of this library can be found in [api.md](api.md).
 
 <!-- prettier-ignore -->
 ```js
-import SpreadsheetAPI from 'spreadsheet-api';
+import GRID from '@grid-is/api';
 
-const client = new SpreadsheetAPI();
+const client = new GRID();
 
 async function main() {
   const response = await client.workbooks.query('REPLACE_ME', { read: ['A1', 'Sheet2!B3', '=SUM(A1:A4)'] });
@@ -42,13 +42,13 @@ This library includes TypeScript definitions for all request params and response
 
 <!-- prettier-ignore -->
 ```ts
-import SpreadsheetAPI from 'spreadsheet-api';
+import GRID from '@grid-is/api';
 
-const client = new SpreadsheetAPI();
+const client = new GRID();
 
 async function main() {
-  const params: SpreadsheetAPI.WorkbookQueryParams = { read: ['A1', 'Sheet2!B3', '=SUM(A1:A4)'] };
-  const response: SpreadsheetAPI.WorkbookQueryResponse = await client.workbooks.query('REPLACE_ME', params);
+  const params: GRID.WorkbookQueryParams = { read: ['A1', 'Sheet2!B3', '=SUM(A1:A4)'] };
+  const response: GRID.WorkbookQueryResponse = await client.workbooks.query('REPLACE_ME', params);
 }
 
 main();
@@ -68,7 +68,7 @@ async function main() {
   const response = await client.workbooks
     .query('REPLACE_ME', { read: ['A1', 'Sheet2!B3', '=SUM(A1:A4)'] })
     .catch(async (err) => {
-      if (err instanceof SpreadsheetAPI.APIError) {
+      if (err instanceof GRID.APIError) {
         console.log(err.status); // 400
         console.log(err.name); // BadRequestError
         console.log(err.headers); // {server: 'nginx', ...}
@@ -105,7 +105,7 @@ You can use the `maxRetries` option to configure or disable this:
 <!-- prettier-ignore -->
 ```js
 // Configure the default for all requests:
-const client = new SpreadsheetAPI({
+const client = new GRID({
   maxRetries: 0, // default is 2
 });
 
@@ -122,7 +122,7 @@ Requests time out after 1 minute by default. You can configure this with a `time
 <!-- prettier-ignore -->
 ```ts
 // Configure the default for all requests:
-const client = new SpreadsheetAPI({
+const client = new GRID({
   timeout: 20 * 1000, // 20 seconds (default is 1 minute)
 });
 
@@ -136,6 +136,24 @@ On timeout, an `APIConnectionTimeoutError` is thrown.
 
 Note that requests which time out will be [retried twice by default](#retries).
 
+## Default Headers
+
+We automatically send the `X-Client-Name` header set to `spreadsheet-api-node`.
+
+If you need to, you can override it by setting default headers on a per-request basis.
+
+```ts
+import GRID from '@grid-is/api';
+
+const client = new GRID();
+
+const response = await client.workbooks.query(
+  'REPLACE_ME',
+  { read: ['A1', 'Sheet2!B3', '=SUM(A1:A4)'] },
+  { headers: { 'X-Client-Name': 'My-Custom-Value' } },
+);
+```
+
 ## Advanced Usage
 
 ### Accessing raw Response data (e.g., headers)
@@ -146,7 +164,7 @@ You can also use the `.withResponse()` method to get the raw `Response` along wi
 
 <!-- prettier-ignore -->
 ```ts
-const client = new SpreadsheetAPI();
+const client = new GRID();
 
 const response = await client.workbooks
   .query('REPLACE_ME', { read: ['A1', 'Sheet2!B3', '=SUM(A1:A4)'] })
@@ -222,7 +240,7 @@ Or pass it to the client:
 ```ts
 import fetch from 'my-fetch';
 
-const client = new SpreadsheetAPI({ fetch });
+const client = new GRID({ fetch });
 ```
 
 ### Logging and middleware
@@ -232,9 +250,9 @@ which can be used to inspect or alter the `Request` or `Response` before/after e
 
 ```ts
 import { fetch } from 'undici'; // as one example
-import SpreadsheetAPI from 'spreadsheet-api';
+import GRID from '@grid-is/api';
 
-const client = new SpreadsheetAPI({
+const client = new GRID({
   fetch: async (url: RequestInfo, init?: RequestInit): Promise<Response> => {
     console.log('About to make a request', url, init);
     const response = await fetch(url, init);
@@ -244,7 +262,7 @@ const client = new SpreadsheetAPI({
 });
 ```
 
-Note that if given a `SPREADSHEET_API_LOG=debug` environment variable, this library will log all requests and responses automatically.
+Note that if given a `GRID_LOG=debug` environment variable, this library will log all requests and responses automatically.
 This is intended for debugging purposes only and may change in the future without notice.
 
 ### Fetch options
@@ -252,9 +270,9 @@ This is intended for debugging purposes only and may change in the future withou
 If you want to set custom `fetch` options without overriding the `fetch` function, you can provide a `fetchOptions` object when instantiating the client or making a request. (Request-specific options override client options.)
 
 ```ts
-import SpreadsheetAPI from 'spreadsheet-api';
+import GRID from '@grid-is/api';
 
-const client = new SpreadsheetAPI({
+const client = new GRID({
   fetchOptions: {
     // `RequestInit` options
   },
@@ -269,11 +287,11 @@ options to requests:
 <img src="https://raw.githubusercontent.com/stainless-api/sdk-assets/refs/heads/main/node.svg" align="top" width="18" height="21"> **Node** <sup>[[docs](https://github.com/nodejs/undici/blob/main/docs/docs/api/ProxyAgent.md#example---proxyagent-with-fetch)]</sup>
 
 ```ts
-import SpreadsheetAPI from 'spreadsheet-api';
+import GRID from '@grid-is/api';
 import * as undici from 'undici';
 
 const proxyAgent = new undici.ProxyAgent('http://localhost:8888');
-const client = new SpreadsheetAPI({
+const client = new GRID({
   fetchOptions: {
     dispatcher: proxyAgent,
   },
@@ -283,9 +301,9 @@ const client = new SpreadsheetAPI({
 <img src="https://raw.githubusercontent.com/stainless-api/sdk-assets/refs/heads/main/bun.svg" align="top" width="18" height="21"> **Bun** <sup>[[docs](https://bun.sh/guides/http/proxy)]</sup>
 
 ```ts
-import SpreadsheetAPI from 'spreadsheet-api';
+import GRID from '@grid-is/api';
 
-const client = new SpreadsheetAPI({
+const client = new GRID({
   fetchOptions: {
     proxy: 'http://localhost:8888',
   },
@@ -295,10 +313,10 @@ const client = new SpreadsheetAPI({
 <img src="https://raw.githubusercontent.com/stainless-api/sdk-assets/refs/heads/main/deno.svg" align="top" width="18" height="21"> **Deno** <sup>[[docs](https://docs.deno.com/api/deno/~/Deno.createHttpClient)]</sup>
 
 ```ts
-import SpreadsheetAPI from 'npm:spreadsheet-api';
+import GRID from 'npm:@grid-is/api';
 
 const httpClient = Deno.createHttpClient({ proxy: { url: 'http://localhost:8888' } });
-const client = new SpreadsheetAPI({
+const client = new GRID({
   fetchOptions: {
     client: httpClient,
   },

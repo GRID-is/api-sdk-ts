@@ -1,6 +1,6 @@
 import fs from 'fs';
-import type { ResponseLike } from 'spreadsheet-api/internal/uploads';
-import { toFile } from 'spreadsheet-api/uploads';
+import type { ResponseLike } from '@grid-is/api/internal/uploads';
+import { toFile } from '@grid-is/api/uploads';
 
 class MyClass {
   name: string = 'foo';

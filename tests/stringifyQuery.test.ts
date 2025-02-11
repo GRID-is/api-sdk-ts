@@ -1,8 +1,8 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { SpreadsheetAPI } from 'spreadsheet-api';
+import { GRID } from '@grid-is/api';
 
-const { stringifyQuery } = SpreadsheetAPI.prototype as any;
+const { stringifyQuery } = GRID.prototype as any;
 
 describe(stringifyQuery, () => {
   for (const [input, expected] of [

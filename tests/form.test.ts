@@ -1,5 +1,5 @@
-import { multipartFormRequestOptions, createForm } from 'spreadsheet-api/internal/uploads';
-import { toFile } from 'spreadsheet-api/uploads';
+import { multipartFormRequestOptions, createForm } from '@grid-is/api/internal/uploads';
+import { toFile } from '@grid-is/api/uploads';
 
 describe('form data validation', () => {
   test('valid values do not error', async () => {

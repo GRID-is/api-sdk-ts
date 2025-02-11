@@ -1,8 +1,8 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import SpreadsheetAPI from 'spreadsheet-api';
+import GRID from '@grid-is/api';
 
-const client = new SpreadsheetAPI({
+const client = new GRID({
   bearerToken: 'My Bearer Token',
   baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
 });
