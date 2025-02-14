@@ -10,6 +10,7 @@ export default tseslint.config(
       parserOptions: { sourceType: 'module' },
     },
     files: ['**/*.ts', '**/*.mts', '**/*.cts', '**/*.js', '**/*.mjs', '**/*.cjs'],
+    ignores: ['dist/**'],
     plugins: {
       '@typescript-eslint': tseslint.plugin,
       'unused-imports': unusedImports,
@@ -24,7 +25,7 @@ export default tseslint.config(
         {
           patterns: [
             {
-              group: ['@grid-is/api', '@grid-is/api/*'],
+              regex: '^@grid-is/api(/.*)?',
               message: 'Use a relative import, not a package import.',
             },
           ],
