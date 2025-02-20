@@ -1,8 +1,8 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { GRID } from '@grid-is/api';
+import { Grid } from '@grid-is/api';
 
-const { stringifyQuery } = GRID.prototype as any;
+const { stringifyQuery } = Grid.prototype as any;
 
 describe(stringifyQuery, () => {
   for (const [input, expected] of [

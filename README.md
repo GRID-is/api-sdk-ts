@@ -2,7 +2,7 @@
 
 [![NPM version](https://img.shields.io/npm/v/@grid-is/api.svg)](https://npmjs.org/package/@grid-is/api) ![npm bundle size](https://img.shields.io/bundlephobia/minzip/@grid-is/api)
 
-This library provides convenient access to the GRID REST API from server-side TypeScript or JavaScript.
+This library provides convenient access to the Grid REST API from server-side TypeScript or JavaScript.
 
 The REST API documentation can be found on [alpha.grid.is](https://alpha.grid.is/). The full API of this library can be found in [api.md](api.md).
 
@@ -23,9 +23,9 @@ The full API of this library can be found in [api.md](api.md).
 
 <!-- prettier-ignore -->
 ```js
-import GRID from '@grid-is/api';
+import Grid from '@grid-is/api';
 
-const client = new GRID();
+const client = new Grid();
 
 async function main() {
   const response = await client.workbooks.query('REPLACE_ME', { read: ['A1', 'Sheet2!B3', '=SUM(A1:A4)'] });
@@ -42,13 +42,13 @@ This library includes TypeScript definitions for all request params and response
 
 <!-- prettier-ignore -->
 ```ts
-import GRID from '@grid-is/api';
+import Grid from '@grid-is/api';
 
-const client = new GRID();
+const client = new Grid();
 
 async function main() {
-  const params: GRID.WorkbookQueryParams = { read: ['A1', 'Sheet2!B3', '=SUM(A1:A4)'] };
-  const response: GRID.WorkbookQueryResponse = await client.workbooks.query('REPLACE_ME', params);
+  const params: Grid.WorkbookQueryParams = { read: ['A1', 'Sheet2!B3', '=SUM(A1:A4)'] };
+  const response: Grid.WorkbookQueryResponse = await client.workbooks.query('REPLACE_ME', params);
 }
 
 main();
@@ -68,7 +68,7 @@ async function main() {
   const response = await client.workbooks
     .query('REPLACE_ME', { read: ['A1', 'Sheet2!B3', '=SUM(A1:A4)'] })
     .catch(async (err) => {
-      if (err instanceof GRID.APIError) {
+      if (err instanceof Grid.APIError) {
         console.log(err.status); // 400
         console.log(err.name); // BadRequestError
         console.log(err.headers); // {server: 'nginx', ...}
@@ -105,7 +105,7 @@ You can use the `maxRetries` option to configure or disable this:
 <!-- prettier-ignore -->
 ```js
 // Configure the default for all requests:
-const client = new GRID({
+const client = new Grid({
   maxRetries: 0, // default is 2
 });
 
@@ -122,7 +122,7 @@ Requests time out after 1 minute by default. You can configure this with a `time
 <!-- prettier-ignore -->
 ```ts
 // Configure the default for all requests:
-const client = new GRID({
+const client = new Grid({
   timeout: 20 * 1000, // 20 seconds (default is 1 minute)
 });
 
@@ -143,9 +143,9 @@ We automatically send the `X-Client-Name` header set to `spreadsheet-api-node`.
 If you need to, you can override it by setting default headers on a per-request basis.
 
 ```ts
-import GRID from '@grid-is/api';
+import Grid from '@grid-is/api';
 
-const client = new GRID();
+const client = new Grid();
 
 const response = await client.workbooks.query(
   'REPLACE_ME',
@@ -164,7 +164,7 @@ You can also use the `.withResponse()` method to get the raw `Response` along wi
 
 <!-- prettier-ignore -->
 ```ts
-const client = new GRID();
+const client = new Grid();
 
 const response = await client.workbooks
   .query('REPLACE_ME', { read: ['A1', 'Sheet2!B3', '=SUM(A1:A4)'] })
@@ -240,7 +240,7 @@ Or pass it to the client:
 ```ts
 import fetch from 'my-fetch';
 
-const client = new GRID({ fetch });
+const client = new Grid({ fetch });
 ```
 
 ### Logging and middleware
@@ -250,9 +250,9 @@ which can be used to inspect or alter the `Request` or `Response` before/after e
 
 ```ts
 import { fetch } from 'undici'; // as one example
-import GRID from '@grid-is/api';
+import Grid from '@grid-is/api';
 
-const client = new GRID({
+const client = new Grid({
   fetch: async (url: RequestInfo, init?: RequestInit): Promise<Response> => {
     console.log('About to make a request', url, init);
     const response = await fetch(url, init);
@@ -270,9 +270,9 @@ This is intended for debugging purposes only and may change in the future withou
 If you want to set custom `fetch` options without overriding the `fetch` function, you can provide a `fetchOptions` object when instantiating the client or making a request. (Request-specific options override client options.)
 
 ```ts
-import GRID from '@grid-is/api';
+import Grid from '@grid-is/api';
 
-const client = new GRID({
+const client = new Grid({
   fetchOptions: {
     // `RequestInit` options
   },
@@ -287,11 +287,11 @@ options to requests:
 <img src="https://raw.githubusercontent.com/stainless-api/sdk-assets/refs/heads/main/node.svg" align="top" width="18" height="21"> **Node** <sup>[[docs](https://github.com/nodejs/undici/blob/main/docs/docs/api/ProxyAgent.md#example---proxyagent-with-fetch)]</sup>
 
 ```ts
-import GRID from '@grid-is/api';
+import Grid from '@grid-is/api';
 import * as undici from 'undici';
 
 const proxyAgent = new undici.ProxyAgent('http://localhost:8888');
-const client = new GRID({
+const client = new Grid({
   fetchOptions: {
     dispatcher: proxyAgent,
   },
@@ -301,9 +301,9 @@ const client = new GRID({
 <img src="https://raw.githubusercontent.com/stainless-api/sdk-assets/refs/heads/main/bun.svg" align="top" width="18" height="21"> **Bun** <sup>[[docs](https://bun.sh/guides/http/proxy)]</sup>
 
 ```ts
-import GRID from '@grid-is/api';
+import Grid from '@grid-is/api';
 
-const client = new GRID({
+const client = new Grid({
   fetchOptions: {
     proxy: 'http://localhost:8888',
   },
@@ -313,10 +313,10 @@ const client = new GRID({
 <img src="https://raw.githubusercontent.com/stainless-api/sdk-assets/refs/heads/main/deno.svg" align="top" width="18" height="21"> **Deno** <sup>[[docs](https://docs.deno.com/api/deno/~/Deno.createHttpClient)]</sup>
 
 ```ts
-import GRID from 'npm:@grid-is/api';
+import Grid from 'npm:@grid-is/api';
 
 const httpClient = Deno.createHttpClient({ proxy: { url: 'http://localhost:8888' } });
-const client = new GRID({
+const client = new Grid({
   fetchOptions: {
     client: httpClient,
   },

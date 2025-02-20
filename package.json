@@ -1,8 +1,8 @@
 {
   "name": "@grid-is/api",
   "version": "0.0.1-alpha.0",
-  "description": "The official TypeScript library for the GRID API",
-  "author": "GRID <info@grid.is>",
+  "description": "The official TypeScript library for the Grid API",
+  "author": "Grid <info@grid.is>",
   "types": "dist/index.d.ts",
   "main": "dist/index.js",
   "type": "commonjs",

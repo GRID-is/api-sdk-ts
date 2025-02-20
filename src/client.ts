@@ -132,9 +132,9 @@ export interface ClientOptions {
 type FinalizedRequestInit = RequestInit & { headers: Headers };
 
 /**
- * API Client for interfacing with the GRID API.
+ * API Client for interfacing with the Grid API.
  */
-export class GRID {
+export class Grid {
   bearerToken: string;
 
   baseURL: string;
@@ -150,7 +150,7 @@ export class GRID {
   private _options: ClientOptions;
 
   /**
-   * API Client for interfacing with the GRID API.
+   * API Client for interfacing with the Grid API.
    *
    * @param {string | undefined} [opts.bearerToken=process.env['GRID_API_TOKEN'] ?? undefined]
    * @param {string} [opts.baseURL=process.env['GRID_BASE_URL'] ?? https://api-alpha.grid.is] - Override the default base URL for the API.
@@ -167,8 +167,8 @@ export class GRID {
     ...opts
   }: ClientOptions = {}) {
     if (bearerToken === undefined) {
-      throw new Errors.GRIDError(
-        "The GRID_API_TOKEN environment variable is missing or empty; either provide it, or instantiate the GRID client with an bearerToken option, like new GRID({ bearerToken: 'My Bearer Token' }).",
+      throw new Errors.GridError(
+        "The GRID_API_TOKEN environment variable is missing or empty; either provide it, or instantiate the Grid client with an bearerToken option, like new Grid({ bearerToken: 'My Bearer Token' }).",
       );
     }
 
@@ -179,7 +179,7 @@ export class GRID {
     };
 
     this.baseURL = options.baseURL!;
-    this.timeout = options.timeout ?? GRID.DEFAULT_TIMEOUT /* 1 minute */;
+    this.timeout = options.timeout ?? Grid.DEFAULT_TIMEOUT /* 1 minute */;
     this.logger = options.logger ?? console;
     if (options.logLevel != null) {
       this.logLevel = options.logLevel;
@@ -224,7 +224,7 @@ export class GRID {
         if (value === null) {
           return `${encodeURIComponent(key)}=`;
         }
-        throw new Errors.GRIDError(
+        throw new Errors.GridError(
           `Cannot stringify type ${typeof value}; Expected string, number, boolean, or null. If you need to pass nested query parameters, you can manually encode them, e.g. { query: { 'foo[key1]': value1, 'foo[key2]': value2 } }, and please open a GitHub issue requesting better support for your use case.`,
         );
       })
@@ -604,10 +604,10 @@ export class GRID {
     }
   }
 
-  static GRID = this;
+  static Grid = this;
   static DEFAULT_TIMEOUT = 60000; // 1 minute
 
-  static GRIDError = Errors.GRIDError;
+  static GridError = Errors.GridError;
   static APIError = Errors.APIError;
   static APIConnectionError = Errors.APIConnectionError;
   static APIConnectionTimeoutError = Errors.APIConnectionTimeoutError;
@@ -625,8 +625,8 @@ export class GRID {
 
   workbooks: API.Workbooks = new API.Workbooks(this);
 }
-GRID.Workbooks = Workbooks;
-export declare namespace GRID {
+Grid.Workbooks = Workbooks;
+export declare namespace Grid {
   export type RequestOptions = Opts.RequestOptions;
 
   export {
