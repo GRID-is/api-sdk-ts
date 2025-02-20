@@ -3,7 +3,7 @@
 export {
   Workbooks,
   type WorkbookQueryResponse,
-  type WorkbookRenderChartResponse,
+  type WorkbookExportParams,
   type WorkbookQueryParams,
   type WorkbookRenderChartParams,
 } from './workbooks';
