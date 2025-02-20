@@ -5,7 +5,7 @@
 > [!IMPORTANT]
 > The GRID API and our SDKs are currently in alpha, and we are actively developing them. As a result, some changes may not be backward compatible.
 
-This library provides convenient access to the Grid REST API from server-side TypeScript or JavaScript.
+This library provides convenient access to the GRID REST API from server-side TypeScript or JavaScript.
 
 The REST API documentation can be found on [alpha.grid.is](https://alpha.grid.is/). The full API of this library can be found in [api.md](api.md).
 
