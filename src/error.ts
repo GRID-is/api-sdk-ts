@@ -2,13 +2,13 @@
 
 import { castToError } from './internal/errors';
 
-export class GRIDError extends Error {}
+export class GridError extends Error {}
 
 export class APIError<
   TStatus extends number | undefined = number | undefined,
   THeaders extends Headers | undefined = Headers | undefined,
   TError extends Object | undefined = Object | undefined,
-> extends GRIDError {
+> extends GridError {
   /** HTTP status for the response that caused the error */
   readonly status: TStatus;
   /** HTTP headers for the response that caused the error */
