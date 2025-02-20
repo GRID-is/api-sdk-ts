@@ -31,18 +31,6 @@ describe('resource workbooks', () => {
   });
 
   // skipped: tests are disabled for the time being
-  test.skip('renderChart: only required params', async () => {
-    const responsePromise = client.workbooks.renderChart('id', { chart: { data: '=C2:C142' } });
-    const rawResponse = await responsePromise.asResponse();
-    expect(rawResponse).toBeInstanceOf(Response);
-    const response = await responsePromise;
-    expect(response).not.toBeInstanceOf(Response);
-    const dataAndResponse = await responsePromise.withResponse();
-    expect(dataAndResponse.data).toBe(response);
-    expect(dataAndResponse.response).toBe(rawResponse);
-  });
-
-  // skipped: tests are disabled for the time being
   test.skip('renderChart: required and optional params', async () => {
     const response = await client.workbooks.renderChart('id', {
       chart: { data: '=C2:C142', format: 'png', labels: '=B2:B142', title: '=A1', type: 'line' },

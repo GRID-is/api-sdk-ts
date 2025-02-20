@@ -2,10 +2,27 @@
 
 import { APIResource } from '../resource';
 import { APIPromise } from '../api-promise';
+import { buildHeaders } from '../internal/headers';
 import { RequestOptions } from '../internal/request-options';
 import { path } from '../internal/utils/path';
 
 export class Workbooks extends APIResource {
+  /**
+   * Export a workbook as an .xlsx file. Cells can be updated before the workbook is
+   * exported.
+   */
+  export(id: string, body: WorkbookExportParams, options?: RequestOptions): APIPromise<Response> {
+    return this._client.post(path`/v1/workbooks/${id}/export`, {
+      body,
+      ...options,
+      headers: buildHeaders([
+        { Accept: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' },
+        options?.headers,
+      ]),
+      __binaryResponse: true,
+    });
+  }
+
   /**
    * Read cell data or apply temporary changes.
    *
@@ -19,8 +36,13 @@ export class Workbooks extends APIResource {
   /**
    * Render a chart using workbook data
    */
-  renderChart(id: string, body: WorkbookRenderChartParams, options?: RequestOptions): APIPromise<unknown> {
-    return this._client.post(path`/v1/workbooks/${id}/chart`, { body, ...options });
+  renderChart(id: string, body: WorkbookRenderChartParams, options?: RequestOptions): APIPromise<Response> {
+    return this._client.post(path`/v1/workbooks/${id}/chart`, {
+      body,
+      ...options,
+      headers: buildHeaders([{ Accept: 'image/png' }, options?.headers]),
+      __binaryResponse: true,
+    });
   }
 }
 
@@ -371,7 +393,60 @@ export namespace WorkbookQueryResponse {
   }
 }
 
-export type WorkbookRenderChartResponse = unknown;
+export interface WorkbookExportParams {
+  /**
+   * Cells to update before exporting
+   */
+  apply?: Array<WorkbookExportParams.Apply> | null;
+
+  /**
+   * Goal seek. Use this to calculate the required input value for a formula to
+   * achieve a specified target result. This is particularly useful when the desired
+   * outcome is known, but the corresponding input is not.
+   */
+  goalSeek?: WorkbookExportParams.GoalSeek | null;
+}
+
+export namespace WorkbookExportParams {
+  /**
+   * Specifies a temporary change to a workbook cell, including the `target` cell
+   * reference and the `value` to apply. The API has no state, and so any changes
+   * made are cleared after each request.
+   */
+  export interface Apply {
+    /**
+     * A1-style reference for the cell to write to
+     */
+    target: string;
+
+    /**
+     * Value to write to the target cell
+     */
+    value: number | string | boolean | null;
+  }
+
+  /**
+   * Goal seek. Use this to calculate the required input value for a formula to
+   * achieve a specified target result. This is particularly useful when the desired
+   * outcome is known, but the corresponding input is not.
+   */
+  export interface GoalSeek {
+    /**
+     * Reference for the cell that will contain the solution
+     */
+    controlCell: string;
+
+    /**
+     * Reference for the cell that contains the formula you want to resolve
+     */
+    targetCell: string;
+
+    /**
+     * The value you want the formula to return
+     */
+    targetValue: number;
+  }
+}
 
 export interface WorkbookQueryParams {
   /**
@@ -539,7 +614,7 @@ export namespace WorkbookRenderChartParams {
 export declare namespace Workbooks {
   export {
     type WorkbookQueryResponse as WorkbookQueryResponse,
-    type WorkbookRenderChartResponse as WorkbookRenderChartResponse,
+    type WorkbookExportParams as WorkbookExportParams,
     type WorkbookQueryParams as WorkbookQueryParams,
     type WorkbookRenderChartParams as WorkbookRenderChartParams,
   };
