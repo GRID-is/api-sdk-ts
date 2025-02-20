@@ -1,4 +1,4 @@
-# GRID Spreadsheet API API Library
+# GRID Spreadsheet API Library
 
 [![NPM version](https://img.shields.io/npm/v/@grid-is/api.svg)](https://npmjs.org/package/@grid-is/api) ![npm bundle size](https://img.shields.io/bundlephobia/minzip/@grid-is/api)
 
