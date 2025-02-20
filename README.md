@@ -99,7 +99,7 @@ Error codes are as followed:
 
 ### Retries
 
-Certain errors will be automatically retried 2 times by default, with a short exponential backoff.
+Certain errors will be automatically retried two times by default, with a short exponential backoff.
 Connection errors (for example, due to a network connectivity problem), 408 Request Timeout, 409 Conflict,
 429 Rate Limit, and >=500 Internal errors will all be retried by default.
 
@@ -120,7 +120,7 @@ await client.workbooks.query('REPLACE_ME', { read: ['A1', 'Sheet2!B3', '=SUM(A1:
 
 ### Timeouts
 
-Requests time out after 1 minute by default. You can configure this with a `timeout` option:
+Requests time out after one minute by default. You can configure this with a `timeout` option:
 
 <!-- prettier-ignore -->
 ```ts
@@ -284,7 +284,7 @@ const client = new Grid({
 
 #### Configuring proxies
 
-To modify proxy behavior, you can provide custom `fetchOptions` that add runtime-specific proxy
+To modify proxy behaviour, you can provide custom `fetchOptions` that add runtime-specific proxy
 options to requests:
 
 <img src="https://raw.githubusercontent.com/stainless-api/sdk-assets/refs/heads/main/node.svg" align="top" width="18" height="21"> **Node** <sup>[[docs](https://github.com/nodejs/undici/blob/main/docs/docs/api/ProxyAgent.md#example---proxyagent-with-fetch)]</sup>
@@ -332,7 +332,7 @@ const client = new Grid({
 
 This package generally follows [SemVer](https://semver.org/spec/v2.0.0.html) conventions, though certain backwards-incompatible changes may be released as minor versions:
 
-1. Changes that only affect static types, without breaking runtime behavior.
+1. Changes that only affect static types, without breaking runtime behaviour.
 2. Changes to library internals which are technically public but not intended or documented for external use. _(Please open a GitHub issue to let us know if you are relying on such internals.)_
 3. Changes that we do not expect to impact the vast majority of users in practice.
 
