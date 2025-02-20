@@ -7,7 +7,7 @@
 
 This library provides convenient access to the GRID REST API from server-side TypeScript or JavaScript.
 
-The REST API documentation can be found on [docs.grid.is](https://docs.grid.is/). The full API of this library can be found in [api.md](api.md).
+The REST API documentation can be found on [docs.grid.is](https://docs.grid.is/). The full API of this library can be found in [api.md](api.md). Your spreadsheets dashboard can be found at [alpha.grid.is](https://alpha.grid.is/).
 
 It is generated with [Stainless](https://www.stainlessapi.com/).
 
