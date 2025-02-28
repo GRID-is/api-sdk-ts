@@ -9,7 +9,7 @@ This library provides convenient access to the GRID REST API from server-side Ty
 
 The REST API documentation can be found on [docs.grid.is](https://docs.grid.is/). The full API of this library can be found in [api.md](api.md). Your spreadsheets dashboard can be found at [alpha.grid.is](https://alpha.grid.is/).
 
-It is generated with [Stainless](https://www.stainlessapi.com/).
+It is generated with [Stainless](https://www.stainless.com/).
 
 ## Installation
 
@@ -18,7 +18,7 @@ npm install git+ssh://git@github.com:stainless-sdks/spreadsheet-api-typescript.g
 ```
 
 > [!NOTE]
-> Once this package is [published to npm](https://app.stainlessapi.com/docs/guides/publish), this will become: `npm install @grid-is/api`
+> Once this package is [published to npm](https://app.stainless.com/docs/guides/publish), this will become: `npm install @grid-is/api`
 
 ## Usage
 
