@@ -20,9 +20,13 @@ import { HeadersLike, NullableHeaders, buildHeaders } from './internal/headers';
 import { FinalRequestOptions, RequestOptions } from './internal/request-options';
 import {
   WorkbookExportParams,
+  WorkbookListParams,
+  WorkbookListResponse,
   WorkbookQueryParams,
   WorkbookQueryResponse,
   WorkbookRenderChartParams,
+  WorkbookUploadParams,
+  WorkbookUploadResponse,
   Workbooks,
 } from './resources/workbooks';
 import { readEnv } from './internal/utils/env';
@@ -731,9 +735,13 @@ export declare namespace Grid {
 
   export {
     Workbooks as Workbooks,
+    type WorkbookListResponse as WorkbookListResponse,
     type WorkbookQueryResponse as WorkbookQueryResponse,
+    type WorkbookUploadResponse as WorkbookUploadResponse,
+    type WorkbookListParams as WorkbookListParams,
     type WorkbookExportParams as WorkbookExportParams,
     type WorkbookQueryParams as WorkbookQueryParams,
     type WorkbookRenderChartParams as WorkbookRenderChartParams,
+    type WorkbookUploadParams as WorkbookUploadParams,
   };
 }
