@@ -53,6 +53,50 @@ main();
 
 Documentation for each method, request param, and response field are available in docstrings and will appear on hover in most modern editors.
 
+## File uploads
+
+Request parameters that correspond to file uploads can be passed in many different forms:
+
+- `File` (or an object with the same structure)
+- a `fetch` `Response` (or an object with the same structure)
+- an `fs.ReadStream`
+- the return value of our `toFile` helper
+
+```ts
+import fs from 'fs';
+import Grid, { toFile } from '@grid-is/api';
+
+const client = new Grid();
+
+// If you have access to Node `fs` we recommend using `fs.createReadStream()`:
+await client.workbooks.upload({
+  body: fs.createReadStream('/path/to/file'),
+  'X-Uploaded-Filename': 'X-Uploaded-Filename',
+});
+
+// Or if you have the web `File` API you can pass a `File` instance:
+await client.workbooks.upload({
+  body: new File(['my bytes'], 'file'),
+  'X-Uploaded-Filename': 'X-Uploaded-Filename',
+});
+
+// You can also pass a `fetch` `Response`:
+await client.workbooks.upload({
+  body: await fetch('https://somesite/file'),
+  'X-Uploaded-Filename': 'X-Uploaded-Filename',
+});
+
+// Finally, if none of the above are convenient, you can use our `toFile` helper:
+await client.workbooks.upload({
+  body: await toFile(Buffer.from('my bytes'), 'file'),
+  'X-Uploaded-Filename': 'X-Uploaded-Filename',
+});
+await client.workbooks.upload({
+  body: await toFile(new Uint8Array([0, 1, 2]), 'file'),
+  'X-Uploaded-Filename': 'X-Uploaded-Filename',
+});
+```
+
 ## Handling errors
 
 When the library is unable to connect to the API,

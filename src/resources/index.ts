@@ -2,8 +2,12 @@
 
 export {
   Workbooks,
+  type WorkbookListResponse,
   type WorkbookQueryResponse,
+  type WorkbookUploadResponse,
+  type WorkbookListParams,
   type WorkbookExportParams,
   type WorkbookQueryParams,
   type WorkbookRenderChartParams,
+  type WorkbookUploadParams,
 } from './workbooks';
