@@ -8,6 +8,18 @@ import { path } from '../internal/utils/path';
 
 export class Workbooks extends APIResource {
   /**
+   * List the workbooks linked to an account.
+   *
+   * This endpoint returns a paginated list of workbooks.
+   */
+  list(
+    query: WorkbookListParams | null | undefined = {},
+    options?: RequestOptions,
+  ): APIPromise<WorkbookListResponse> {
+    return this._client.get('/v1/workbooks', { query, ...options });
+  }
+
+  /**
    * Export a workbook as an .xlsx file. Cells can be updated before the workbook is
    * exported.
    */
@@ -43,6 +55,88 @@ export class Workbooks extends APIResource {
       headers: buildHeaders([{ Accept: 'image/png' }, options?.headers]),
       __binaryResponse: true,
     });
+  }
+
+  /**
+   * Upload an Excel workbook file and make it available in the API.
+   *
+   * The workbook will be processed in the background. Once it's processed
+   * successfully it will be available for querying and exporting.
+   */
+  upload(params: WorkbookUploadParams, options?: RequestOptions): APIPromise<WorkbookUploadResponse> {
+    const { body, 'X-Uploaded-Filename': xUploadedFilename } = params;
+    return this._client.post('/v1/workbooks', {
+      body: body,
+      ...options,
+      headers: buildHeaders([
+        { 'Content-Type': 'application/octet-stream', 'X-Uploaded-Filename': xUploadedFilename },
+        options?.headers,
+      ]),
+    });
+  }
+}
+
+export interface WorkbookListResponse {
+  items: Array<WorkbookListResponse.Item>;
+
+  pagination: WorkbookListResponse.Pagination;
+}
+
+export namespace WorkbookListResponse {
+  export interface Item {
+    /**
+     * A workbook's unique identifier
+     */
+    id: string;
+
+    /**
+     * The date/time the workbook was created
+     */
+    created: string;
+
+    /**
+     * The defect that was found in the most recent version of the workbook, if any
+     */
+    defect:
+      | ''
+      | 'too_big'
+      | 'converted_workbook_too_big'
+      | 'unrecognized_format'
+      | 'cannot_fetch_from_remote'
+      | 'processing_timeout'
+      | 'conversion_error';
+
+    /**
+     * The original filename of the uploaded workbook
+     */
+    filename: string;
+
+    /**
+     * The date/time the workbook was last modified
+     */
+    modified: string;
+
+    /**
+     * The current state of the most recent version of the workbook
+     */
+    state: 'processing' | 'ready' | 'error';
+
+    /**
+     * The most recent version of the workbook
+     */
+    version: number;
+
+    /**
+     * The latest version of the workbook that has a 'ready' state
+     */
+    latest_ready_version?: number | null;
+  }
+
+  export interface Pagination {
+    /**
+     * The cursor to pass on as query parameter for the next batch of items, if any
+     */
+    next_cursor?: string | null;
   }
 }
 
@@ -393,6 +487,26 @@ export namespace WorkbookQueryResponse {
   }
 }
 
+export interface WorkbookUploadResponse {
+  /**
+   * The id of the newly uploaded workbook
+   */
+  id: string;
+}
+
+export interface WorkbookListParams {
+  /**
+   * Cursor for the next page of items. If not provided, the first batch of items
+   * will be returned.
+   */
+  cursor?: string;
+
+  /**
+   * Number of items to return per page
+   */
+  limit?: number;
+}
+
 export interface WorkbookExportParams {
   /**
    * Cells to update before exporting
@@ -611,11 +725,27 @@ export namespace WorkbookRenderChartParams {
   }
 }
 
+export interface WorkbookUploadParams {
+  /**
+   * Body param:
+   */
+  body: string | ArrayBuffer | ArrayBufferView | Blob | DataView;
+
+  /**
+   * Header param: The name of the workbook file
+   */
+  'X-Uploaded-Filename': string;
+}
+
 export declare namespace Workbooks {
   export {
+    type WorkbookListResponse as WorkbookListResponse,
     type WorkbookQueryResponse as WorkbookQueryResponse,
+    type WorkbookUploadResponse as WorkbookUploadResponse,
+    type WorkbookListParams as WorkbookListParams,
     type WorkbookExportParams as WorkbookExportParams,
     type WorkbookQueryParams as WorkbookQueryParams,
     type WorkbookRenderChartParams as WorkbookRenderChartParams,
+    type WorkbookUploadParams as WorkbookUploadParams,
   };
 }
