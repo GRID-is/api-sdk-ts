@@ -1,5 +1,19 @@
 # Changelog
 
+## 1.0.0-rc.2 (2025-03-05)
+
+Full Changelog: [v1.0.0-rc.1...v1.0.0-rc.2](https://github.com/GRID-is/api-sdk-ts/compare/v1.0.0-rc.1...v1.0.0-rc.2)
+
+### Chores
+
+* **docs:** improve docs for withResponse/asResponse ([#13](https://github.com/GRID-is/api-sdk-ts/issues/13)) ([cb86142](https://github.com/GRID-is/api-sdk-ts/commit/cb861427d44fe9e1811816dea0e0a8a30031bd25))
+* **types:** improved go to definition on fetchOptions ([#11](https://github.com/GRID-is/api-sdk-ts/issues/11)) ([109b57f](https://github.com/GRID-is/api-sdk-ts/commit/109b57f0be0a415454c738796cc23ac503f6b7d2))
+
+
+### Documentation
+
+* Remove banner now we're no longer in alpha ([0664e6c](https://github.com/GRID-is/api-sdk-ts/commit/0664e6c1367801e0b4211b386a4ec37b31813b51))
+
 ## 1.0.0-rc.1 (2025-03-04)
 
 Full Changelog: [v0.0.1-alpha.0...v1.0.0-rc.1](https://github.com/GRID-is/api-sdk-ts/compare/v0.0.1-alpha.0...v1.0.0-rc.1)
