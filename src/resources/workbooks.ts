@@ -2,8 +2,10 @@
 
 import { APIResource } from '../resource';
 import { APIPromise } from '../api-promise';
+import { type Uploadable } from '../uploads';
 import { buildHeaders } from '../internal/headers';
 import { RequestOptions } from '../internal/request-options';
+import { multipartFormRequestOptions } from '../internal/uploads';
 import { path } from '../internal/utils/path';
 
 export class Workbooks extends APIResource {
@@ -63,16 +65,11 @@ export class Workbooks extends APIResource {
    * The workbook will be processed in the background. Once it's processed
    * successfully it will be available for querying and exporting.
    */
-  upload(params: WorkbookUploadParams, options?: RequestOptions): APIPromise<WorkbookUploadResponse> {
-    const { body, 'X-Uploaded-Filename': xUploadedFilename } = params;
-    return this._client.post('/v1/workbooks', {
-      body: body,
-      ...options,
-      headers: buildHeaders([
-        { 'Content-Type': 'application/octet-stream', 'X-Uploaded-Filename': xUploadedFilename },
-        options?.headers,
-      ]),
-    });
+  upload(body: WorkbookUploadParams, options?: RequestOptions): APIPromise<WorkbookUploadResponse> {
+    return this._client.post(
+      '/v1/workbooks',
+      multipartFormRequestOptions({ body, ...options }, this._client),
+    );
   }
 }
 
@@ -726,15 +723,12 @@ export namespace WorkbookRenderChartParams {
 }
 
 export interface WorkbookUploadParams {
-  /**
-   * Body param:
-   */
-  body: string | ArrayBuffer | ArrayBufferView | Blob | DataView;
+  file: Uploadable;
 
   /**
-   * Header param: The name of the workbook file
+   * The name of the workbook file
    */
-  'X-Uploaded-Filename': string;
+  filename: string;
 }
 
 export declare namespace Workbooks {
