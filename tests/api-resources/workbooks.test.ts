@@ -62,7 +62,6 @@ describe('resource workbooks', () => {
   test.skip('upload: only required params', async () => {
     const responsePromise = client.workbooks.upload({
       file: await toFile(Buffer.from('# my file contents'), 'README.md'),
-      filename: 'filename',
     });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -77,7 +76,6 @@ describe('resource workbooks', () => {
   test.skip('upload: required and optional params', async () => {
     const response = await client.workbooks.upload({
       file: await toFile(Buffer.from('# my file contents'), 'README.md'),
-      filename: 'filename',
     });
   });
 });
