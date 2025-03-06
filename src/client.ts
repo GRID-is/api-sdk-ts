@@ -79,7 +79,7 @@ export interface ClientOptions {
   /**
    * Bearer token used for authentication with the API
    */
-  bearerToken?: string | undefined;
+  apiKey?: string | undefined;
 
   /**
    * Override the default base URL for the API, e.g., "https://api.example.com/v2/"
@@ -154,7 +154,7 @@ type FinalizedRequestInit = RequestInit & { headers: Headers };
  * API Client for interfacing with the Grid API.
  */
 export class Grid {
-  bearerToken: string;
+  apiKey: string;
 
   baseURL: string;
   maxRetries: number;
@@ -171,7 +171,7 @@ export class Grid {
   /**
    * API Client for interfacing with the Grid API.
    *
-   * @param {string | undefined} [opts.bearerToken=process.env['GRID_API_TOKEN'] ?? undefined]
+   * @param {string | undefined} [opts.apiKey=process.env['GRID_API_TOKEN'] ?? undefined]
    * @param {string} [opts.baseURL=process.env['GRID_BASE_URL'] ?? https://api-alpha.grid.is] - Override the default base URL for the API.
    * @param {number} [opts.timeout=1 minute] - The maximum amount of time (in milliseconds) the client will wait for a response before timing out.
    * @param {MergedRequestInit} [opts.fetchOptions] - Additional `RequestInit` options to be passed to `fetch` calls.
@@ -182,17 +182,17 @@ export class Grid {
    */
   constructor({
     baseURL = readEnv('GRID_BASE_URL'),
-    bearerToken = readEnv('GRID_API_TOKEN'),
+    apiKey = readEnv('GRID_API_TOKEN'),
     ...opts
   }: ClientOptions = {}) {
-    if (bearerToken === undefined) {
+    if (apiKey === undefined) {
       throw new Errors.GridError(
-        "The GRID_API_TOKEN environment variable is missing or empty; either provide it, or instantiate the Grid client with an bearerToken option, like new Grid({ bearerToken: 'My Bearer Token' }).",
+        "The GRID_API_TOKEN environment variable is missing or empty; either provide it, or instantiate the Grid client with an apiKey option, like new Grid({ apiKey: 'My API Key' }).",
       );
     }
 
     const options: ClientOptions = {
-      bearerToken,
+      apiKey,
       ...opts,
       baseURL: baseURL || `https://api-alpha.grid.is`,
     };
@@ -214,7 +214,7 @@ export class Grid {
 
     this._options = options;
 
-    this.bearerToken = bearerToken;
+    this.apiKey = apiKey;
   }
 
   protected defaultQuery(): Record<string, string | undefined> | undefined {
@@ -226,7 +226,7 @@ export class Grid {
   }
 
   protected authHeaders(opts: FinalRequestOptions): Headers | undefined {
-    return new Headers({ Authorization: `Bearer ${this.bearerToken}` });
+    return new Headers({ Authorization: `Bearer ${this.apiKey}` });
   }
 
   /**
