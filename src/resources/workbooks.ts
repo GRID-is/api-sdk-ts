@@ -724,11 +724,6 @@ export namespace WorkbookRenderChartParams {
 
 export interface WorkbookUploadParams {
   file: Uploadable;
-
-  /**
-   * The name of the workbook file
-   */
-  filename: string;
 }
 
 export declare namespace Workbooks {
