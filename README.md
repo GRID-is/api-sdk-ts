@@ -164,6 +164,37 @@ On timeout, an `APIConnectionTimeoutError` is thrown.
 
 Note that requests which time out will be [retried twice by default](#retries).
 
+## Auto-pagination
+
+List methods in the Grid API are paginated.
+You can use the `for await … of` syntax to iterate through items across all pages:
+
+```ts
+async function fetchAllWorkbooks(params) {
+  const allWorkbooks = [];
+  // Automatically fetches more pages as needed.
+  for await (const workbookListResponse of client.workbooks.list({ limit: 50 })) {
+    allWorkbooks.push(workbookListResponse);
+  }
+  return allWorkbooks;
+}
+```
+
+Alternatively, you can request a single page at a time:
+
+```ts
+let page = await client.workbooks.list({ limit: 50 });
+for (const workbookListResponse of page.items) {
+  console.log(workbookListResponse);
+}
+
+// Convenience methods are provided for manually paginating:
+while (page.hasNextPage()) {
+  page = await page.getNextPage();
+  // ...
+}
+```
+
 ## Default Headers
 
 We automatically send the `X-Client-Name` header set to `api-sdk`.
