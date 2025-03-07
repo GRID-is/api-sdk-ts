@@ -2,7 +2,6 @@
 
 import { APIResource } from '../resource';
 import { APIPromise } from '../api-promise';
-import { CursorPagination, type CursorPaginationParams, PagePromise } from '../pagination';
 import { type Uploadable } from '../uploads';
 import { buildHeaders } from '../internal/headers';
 import { RequestOptions } from '../internal/request-options';
@@ -18,11 +17,8 @@ export class Workbooks extends APIResource {
   list(
     query: WorkbookListParams | null | undefined = {},
     options?: RequestOptions,
-  ): PagePromise<WorkbookListResponsesCursorPagination, WorkbookListResponse> {
-    return this._client.getAPIList('/v1/workbooks', CursorPagination<WorkbookListResponse>, {
-      query,
-      ...options,
-    });
+  ): APIPromise<WorkbookListResponse> {
+    return this._client.get('/v1/workbooks', { query, ...options });
   }
 
   /**
@@ -77,55 +73,68 @@ export class Workbooks extends APIResource {
   }
 }
 
-export type WorkbookListResponsesCursorPagination = CursorPagination<WorkbookListResponse>;
-
 export interface WorkbookListResponse {
-  /**
-   * A workbook's unique identifier
-   */
-  id: string;
+  items: Array<WorkbookListResponse.Item>;
 
-  /**
-   * The date/time the workbook was created
-   */
-  created: string;
+  pagination: WorkbookListResponse.Pagination;
+}
 
-  /**
-   * The defect that was found in the most recent version of the workbook, if any
-   */
-  defect:
-    | ''
-    | 'too_big'
-    | 'converted_workbook_too_big'
-    | 'unrecognized_format'
-    | 'cannot_fetch_from_remote'
-    | 'processing_timeout'
-    | 'conversion_error';
+export namespace WorkbookListResponse {
+  export interface Item {
+    /**
+     * A workbook's unique identifier
+     */
+    id: string;
 
-  /**
-   * The original filename of the uploaded workbook
-   */
-  filename: string;
+    /**
+     * The date/time the workbook was created
+     */
+    created: string;
 
-  /**
-   * The date/time the workbook was last modified
-   */
-  modified: string;
+    /**
+     * The defect that was found in the most recent version of the workbook, if any
+     */
+    defect:
+      | ''
+      | 'too_big'
+      | 'converted_workbook_too_big'
+      | 'unrecognized_format'
+      | 'cannot_fetch_from_remote'
+      | 'processing_timeout'
+      | 'conversion_error';
 
-  /**
-   * The current state of the most recent version of the workbook
-   */
-  state: 'processing' | 'ready' | 'error';
+    /**
+     * The original filename of the uploaded workbook
+     */
+    filename: string;
 
-  /**
-   * The most recent version of the workbook
-   */
-  version: number;
+    /**
+     * The date/time the workbook was last modified
+     */
+    modified: string;
 
-  /**
-   * The latest version of the workbook that has a 'ready' state
-   */
-  latest_ready_version?: number | null;
+    /**
+     * The current state of the most recent version of the workbook
+     */
+    state: 'processing' | 'ready' | 'error';
+
+    /**
+     * The most recent version of the workbook
+     */
+    version: number;
+
+    /**
+     * The latest version of the workbook that has a 'ready' state
+     */
+    latest_ready_version?: number | null;
+  }
+
+  export interface Pagination {
+    /**
+     * The cursor to pass on as query parameter for the next batch of items, if any
+     */
+    next_cursor?: string | null;
+  }
 }
 
 /**
@@ -482,7 +491,18 @@ export interface WorkbookUploadResponse {
   id: string;
 }
 
-export interface WorkbookListParams extends CursorPaginationParams {}
+export interface WorkbookListParams {
+  /**
+   * Cursor for the next page of items. If not provided, the first batch of items
+   * will be returned.
+   */
+  cursor?: string;
+
+  /**
+   * Number of items to return per page
+   */
+  limit?: number;
+}
 
 export interface WorkbookExportParams {
   /**
@@ -711,7 +731,6 @@ export declare namespace Workbooks {
     type WorkbookListResponse as WorkbookListResponse,
     type WorkbookQueryResponse as WorkbookQueryResponse,
     type WorkbookUploadResponse as WorkbookUploadResponse,
-    type WorkbookListResponsesCursorPagination as WorkbookListResponsesCursorPagination,
     type WorkbookListParams as WorkbookListParams,
     type WorkbookExportParams as WorkbookExportParams,
     type WorkbookQueryParams as WorkbookQueryParams,
