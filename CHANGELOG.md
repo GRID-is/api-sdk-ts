@@ -1,5 +1,16 @@
 # Changelog
 
+## 1.0.0-rc.4 (2025-03-07)
+
+Full Changelog: [v1.0.0-rc.3...v1.0.0-rc.4](https://github.com/GRID-is/api-sdk-ts/compare/v1.0.0-rc.3...v1.0.0-rc.4)
+
+### Features
+
+* **api:** update via SDK Studio ([#18](https://github.com/GRID-is/api-sdk-ts/issues/18)) ([c107c3d](https://github.com/GRID-is/api-sdk-ts/commit/c107c3dcb0885cf9694813d2a8be1c178e764302))
+* **api:** update via SDK Studio ([#20](https://github.com/GRID-is/api-sdk-ts/issues/20)) ([c1bbfe8](https://github.com/GRID-is/api-sdk-ts/commit/c1bbfe876f366525194ea85113510a34d2223e4d))
+* **api:** update via SDK Studio ([#21](https://github.com/GRID-is/api-sdk-ts/issues/21)) ([9fc5039](https://github.com/GRID-is/api-sdk-ts/commit/9fc5039e1fe544f9760b2d6977a7650c1cc10f26))
+* **api:** update via SDK Studio ([#22](https://github.com/GRID-is/api-sdk-ts/issues/22)) ([56714df](https://github.com/GRID-is/api-sdk-ts/commit/56714dffac5e1da2e53411eeb9849b0dbda46c7c))
+
 ## 1.0.0-rc.3 (2025-03-05)
 
 Full Changelog: [v1.0.0-rc.2...v1.0.0-rc.3](https://github.com/GRID-is/api-sdk-ts/compare/v1.0.0-rc.2...v1.0.0-rc.3)
