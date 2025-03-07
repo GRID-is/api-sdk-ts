@@ -29,7 +29,7 @@ async function main() {
     read: ['A1', 'Sheet2!B3', '=SUM(A1:A4)'],
   });
 
-  console.log(response.apply);
+  console.log(response.read);
 }
 
 main();
@@ -237,7 +237,7 @@ const { data: response, response: raw } = await client.workbooks
   .query('YOUR_WORKBOOK_ID', { read: ['A1', 'Sheet2!B3', '=SUM(A1:A4)'] })
   .withResponse();
 console.log(raw.headers.get('X-My-Header'));
-console.log(response.apply);
+console.log(response.read);
 ```
 
 ### Logging
