@@ -10,5 +10,4 @@ export {
   type WorkbookQueryParams,
   type WorkbookRenderChartParams,
   type WorkbookUploadParams,
-  type WorkbookListResponsesCursorPagination,
 } from './workbooks';

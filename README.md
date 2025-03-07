@@ -4,7 +4,7 @@
 
 This library provides convenient access to the Grid REST API from server-side TypeScript or JavaScript.
 
-The REST API documentation can be found on [alpha.grid.is](https://alpha.grid.is/). The full API of this library can be found in [api.md](api.md).
+The REST API documentation can be found on [docs.grid.is](https://docs.grid.is/). The full API of this library can be found in [api.md](api.md).
 
 It is generated with [Stainless](https://www.stainless.com/).
 
@@ -25,7 +25,9 @@ import Grid from '@grid-is/api';
 const client = new Grid();
 
 async function main() {
-  const response = await client.workbooks.query('REPLACE_ME', { read: ['A1', 'Sheet2!B3', '=SUM(A1:A4)'] });
+  const response = await client.workbooks.query('YOUR_WORKBOOK_ID', {
+    read: ['A1', 'Sheet2!B3', '=SUM(A1:A4)'],
+  });
 
   console.log(response.apply);
 }
@@ -45,7 +47,7 @@ const client = new Grid();
 
 async function main() {
   const params: Grid.WorkbookQueryParams = { read: ['A1', 'Sheet2!B3', '=SUM(A1:A4)'] };
-  const response: Grid.WorkbookQueryResponse = await client.workbooks.query('REPLACE_ME', params);
+  const response: Grid.WorkbookQueryResponse = await client.workbooks.query('YOUR_WORKBOOK_ID', params);
 }
 
 main();
@@ -92,7 +94,7 @@ a subclass of `APIError` will be thrown:
 ```ts
 async function main() {
   const response = await client.workbooks
-    .query('REPLACE_ME', { read: ['A1', 'Sheet2!B3', '=SUM(A1:A4)'] })
+    .query('YOUR_WORKBOOK_ID', { read: ['A1', 'Sheet2!B3', '=SUM(A1:A4)'] })
     .catch(async (err) => {
       if (err instanceof Grid.APIError) {
         console.log(err.status); // 400
@@ -136,7 +138,7 @@ const client = new Grid({
 });
 
 // Or, configure per-request:
-await client.workbooks.query('REPLACE_ME', { read: ['A1', 'Sheet2!B3', '=SUM(A1:A4)'] }, {
+await client.workbooks.query('YOUR_WORKBOOK_ID', { read: ['A1', 'Sheet2!B3', '=SUM(A1:A4)'] }, {
   maxRetries: 5,
 });
 ```
@@ -153,7 +155,7 @@ const client = new Grid({
 });
 
 // Override per-request:
-await client.workbooks.query('REPLACE_ME', { read: ['A1', 'Sheet2!B3', '=SUM(A1:A4)'] }, {
+await client.workbooks.query('YOUR_WORKBOOK_ID', { read: ['A1', 'Sheet2!B3', '=SUM(A1:A4)'] }, {
   timeout: 5 * 1000,
 });
 ```
@@ -164,7 +166,7 @@ Note that requests which time out will be [retried twice by default](#retries).
 
 ## Default Headers
 
-We automatically send the `X-Client-Name` header set to `api-sdk`.
+We automatically send the `X-Client-Name` header set to `spreadsheet-api-node`.
 
 If you need to, you can override it by setting default headers on a per-request basis.
 
@@ -174,7 +176,7 @@ import Grid from '@grid-is/api';
 const client = new Grid();
 
 const response = await client.workbooks.query(
-  'REPLACE_ME',
+  'YOUR_WORKBOOK_ID',
   { read: ['A1', 'Sheet2!B3', '=SUM(A1:A4)'] },
   { headers: { 'X-Client-Name': 'My-Custom-Value' } },
 );
@@ -195,13 +197,13 @@ Unlike `.asResponse()` this method consumes the body, returning once it is parse
 const client = new Grid();
 
 const response = await client.workbooks
-  .query('REPLACE_ME', { read: ['A1', 'Sheet2!B3', '=SUM(A1:A4)'] })
+  .query('YOUR_WORKBOOK_ID', { read: ['A1', 'Sheet2!B3', '=SUM(A1:A4)'] })
   .asResponse();
 console.log(response.headers.get('X-My-Header'));
 console.log(response.statusText); // access the underlying Response object
 
 const { data: response, response: raw } = await client.workbooks
-  .query('REPLACE_ME', { read: ['A1', 'Sheet2!B3', '=SUM(A1:A4)'] })
+  .query('YOUR_WORKBOOK_ID', { read: ['A1', 'Sheet2!B3', '=SUM(A1:A4)'] })
   .withResponse();
 console.log(raw.headers.get('X-My-Header'));
 console.log(response.apply);
