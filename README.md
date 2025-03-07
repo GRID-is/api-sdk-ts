@@ -1,10 +1,10 @@
-# GRID Spreadsheet API API Library
+# GRID Spreadsheet API Library
 
 [![NPM version](https://img.shields.io/npm/v/@grid-is/api.svg)](https://npmjs.org/package/@grid-is/api) ![npm bundle size](https://img.shields.io/bundlephobia/minzip/@grid-is/api)
 
-This library provides convenient access to the Grid REST API from server-side TypeScript or JavaScript.
+This library provides convenient access to the GRID REST API from server-side TypeScript or JavaScript.
 
-The REST API documentation can be found on [docs.grid.is](https://docs.grid.is/). The full API of this library can be found in [api.md](api.md).
+The REST API documentation can be found on [docs.grid.is](https://docs.grid.is/). The full API of this library can be found in [api.md](api.md). Your spreadsheets dashboard can be found at [alpha.grid.is](https://alpha.grid.is/).
 
 It is generated with [Stainless](https://www.stainless.com/).
 
@@ -124,7 +124,7 @@ Error codes are as followed:
 
 ### Retries
 
-Certain errors will be automatically retried 2 times by default, with a short exponential backoff.
+Certain errors will be automatically retried two times by default, with a short exponential backoff.
 Connection errors (for example, due to a network connectivity problem), 408 Request Timeout, 409 Conflict,
 429 Rate Limit, and >=500 Internal errors will all be retried by default.
 
@@ -145,7 +145,7 @@ await client.workbooks.query('YOUR_WORKBOOK_ID', { read: ['A1', 'Sheet2!B3', '=S
 
 ### Timeouts
 
-Requests time out after 1 minute by default. You can configure this with a `timeout` option:
+Requests time out after one minute by default. You can configure this with a `timeout` option:
 
 <!-- prettier-ignore -->
 ```ts
@@ -343,7 +343,7 @@ const client = new Grid({
 
 #### Configuring proxies
 
-To modify proxy behavior, you can provide custom `fetchOptions` that add runtime-specific proxy
+To modify proxy behaviour, you can provide custom `fetchOptions` that add runtime-specific proxy
 options to requests:
 
 <img src="https://raw.githubusercontent.com/stainless-api/sdk-assets/refs/heads/main/node.svg" align="top" width="18" height="21"> **Node** <sup>[[docs](https://github.com/nodejs/undici/blob/main/docs/docs/api/ProxyAgent.md#example---proxyagent-with-fetch)]</sup>
@@ -391,7 +391,7 @@ const client = new Grid({
 
 This package generally follows [SemVer](https://semver.org/spec/v2.0.0.html) conventions, though certain backwards-incompatible changes may be released as minor versions:
 
-1. Changes that only affect static types, without breaking runtime behavior.
+1. Changes that only affect static types, without breaking runtime behaviour.
 2. Changes to library internals which are technically public but not intended or documented for external use. _(Please open a GitHub issue to let us know if you are relying on such internals.)_
 3. Changes that we do not expect to impact the vast majority of users in practice.
 
