@@ -12,8 +12,6 @@ import * as Shims from './internal/shims';
 import * as Opts from './internal/request-options';
 import { VERSION } from './version';
 import * as Errors from './error';
-import * as Pagination from './pagination';
-import { AbstractPage, type CursorPaginationParams, CursorPaginationResponse } from './pagination';
 import * as Uploads from './uploads';
 import * as API from './resources/index';
 import { APIPromise } from './api-promise';
@@ -24,7 +22,6 @@ import {
   WorkbookExportParams,
   WorkbookListParams,
   WorkbookListResponse,
-  WorkbookListResponsesCursorPagination,
   WorkbookQueryParams,
   WorkbookQueryResponse,
   WorkbookRenderChartParams,
@@ -497,25 +494,6 @@ export class Grid {
     return { response, options, controller, requestLogID, retryOfRequestLogID, startTime };
   }
 
-  getAPIList<Item, PageClass extends Pagination.AbstractPage<Item> = Pagination.AbstractPage<Item>>(
-    path: string,
-    Page: new (...args: any[]) => PageClass,
-    opts?: RequestOptions,
-  ): Pagination.PagePromise<PageClass, Item> {
-    return this.requestAPIList(Page, { method: 'get', path, ...opts });
-  }
-
-  requestAPIList<
-    Item = unknown,
-    PageClass extends Pagination.AbstractPage<Item> = Pagination.AbstractPage<Item>,
-  >(
-    Page: new (...args: ConstructorParameters<typeof Pagination.AbstractPage>) => PageClass,
-    options: FinalRequestOptions,
-  ): Pagination.PagePromise<PageClass, Item> {
-    const request = this.makeRequest(options, null, undefined);
-    return new Pagination.PagePromise<PageClass, Item>(this as any as Grid, request, Page);
-  }
-
   async fetchWithTimeout(
     url: RequestInfo,
     init: RequestInit | undefined,
@@ -680,7 +658,7 @@ export class Grid {
         'X-Stainless-Retry-Count': String(retryCount),
         ...(options.timeout ? { 'X-Stainless-Timeout': String(options.timeout) } : {}),
         ...getPlatformHeaders(),
-        'X-Client-Name': 'api-sdk',
+        'X-Client-Name': 'spreadsheet-api-node',
       },
       this.authHeaders(options),
       this._options.defaultHeaders,
@@ -755,18 +733,11 @@ Grid.Workbooks = Workbooks;
 export declare namespace Grid {
   export type RequestOptions = Opts.RequestOptions;
 
-  export import CursorPagination = Pagination.CursorPagination;
-  export {
-    type CursorPaginationParams as CursorPaginationParams,
-    type CursorPaginationResponse as CursorPaginationResponse,
-  };
-
   export {
     Workbooks as Workbooks,
     type WorkbookListResponse as WorkbookListResponse,
     type WorkbookQueryResponse as WorkbookQueryResponse,
     type WorkbookUploadResponse as WorkbookUploadResponse,
-    type WorkbookListResponsesCursorPagination as WorkbookListResponsesCursorPagination,
     type WorkbookListParams as WorkbookListParams,
     type WorkbookExportParams as WorkbookExportParams,
     type WorkbookQueryParams as WorkbookQueryParams,
