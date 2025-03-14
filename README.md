@@ -22,7 +22,10 @@ The full API of this library can be found in [api.md](api.md).
 ```js
 import Grid from '@grid-is/api';
 
-const client = new Grid();
+const client = new Grid({
+  // Defaults to process.env["GRID_API_KEY"]
+  apiKey: "YOUR_API_KEY",
+});
 
 async function main() {
   const response = await client.workbooks.query('YOUR_WORKBOOK_ID', {
