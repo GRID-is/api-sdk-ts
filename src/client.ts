@@ -133,7 +133,7 @@ export class Grid {
    * API Client for interfacing with the Grid API.
    *
    * @param {string | undefined} [opts.apiKey=process.env['GRID_API_TOKEN'] ?? undefined]
-   * @param {string} [opts.baseURL=process.env['GRID_BASE_URL'] ?? https://api-alpha.grid.is] - Override the default base URL for the API.
+   * @param {string} [opts.baseURL=process.env['GRID_BASE_URL'] ?? https://api.grid.is] - Override the default base URL for the API.
    * @param {number} [opts.timeout=1 minute] - The maximum amount of time (in milliseconds) the client will wait for a response before timing out.
    * @param {MergedRequestInit} [opts.fetchOptions] - Additional `RequestInit` options to be passed to `fetch` calls.
    * @param {Fetch} [opts.fetch] - Specify a custom `fetch` function implementation.
@@ -155,7 +155,7 @@ export class Grid {
     const options: ClientOptions = {
       apiKey,
       ...opts,
-      baseURL: baseURL || `https://api-alpha.grid.is`,
+      baseURL: baseURL || `https://api.grid.is`,
     };
 
     this.baseURL = options.baseURL!;
