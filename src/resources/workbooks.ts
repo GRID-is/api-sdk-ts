@@ -168,8 +168,14 @@ export namespace WorkbookQueryResponse {
    * state and any changes made are cleared after each request.
    */
   export interface Apply {
+    /**
+     * A1-style reference for the cell that was updated
+     */
     target: string;
 
+    /**
+     * New value of the cell
+     */
     value: number | string | boolean | null;
 
     /**
@@ -185,6 +191,9 @@ export namespace WorkbookQueryResponse {
   export interface DataTable {
     data: Array<Array<DataTable.ValueCell | DataTable.ErrorCell | DataTable.EmptyCell>>;
 
+    /**
+     * A1-style reference for the cell or cells that were updated
+     */
     source: string;
 
     type: 'dataTable';
@@ -197,11 +206,13 @@ export namespace WorkbookQueryResponse {
      */
     export interface ValueCell {
       /**
-       * Specifies the type of a workbook cell. Possible values include `b` (boolean),
-       * `n` (number), `d` (date), and `s` (string).
+       * Data type of the cell value (e.g. boolean, number, text)
        */
       t: 'b' | 'n' | 'd' | 's';
 
+      /**
+       * Underlying cell value
+       */
       v: number | string | boolean | null;
 
       /**
@@ -209,8 +220,14 @@ export namespace WorkbookQueryResponse {
        */
       r?: string | null;
 
+      /**
+       * Formatted cell value
+       */
       w?: string | null;
 
+      /**
+       * Number format associated with the cell
+       */
       z?: string | null;
     }
 
@@ -220,8 +237,14 @@ export namespace WorkbookQueryResponse {
      * provides details for identifying and understanding errors in workbook data.
      */
     export interface ErrorCell {
+      /**
+       * Data type of the cell value (always 'e' for 'error')
+       */
       t: 'e';
 
+      /**
+       * Underlying cell value
+       */
       v: string;
 
       /**
@@ -239,6 +262,9 @@ export namespace WorkbookQueryResponse {
      * Cells that have no content but hold metadata like comments.
      */
     export interface EmptyCell {
+      /**
+       * Data type of the cell value (always 'z' for 'empty cell')
+       */
       t: 'z';
     }
   }
@@ -250,6 +276,9 @@ export namespace WorkbookQueryResponse {
   export interface DataList {
     data: Array<DataList.ValueCell | DataList.ErrorCell | DataList.EmptyCell>;
 
+    /**
+     * A1-style reference for the cell or cells that were updated
+     */
     source: string;
 
     type: 'dataList';
@@ -262,11 +291,13 @@ export namespace WorkbookQueryResponse {
      */
     export interface ValueCell {
       /**
-       * Specifies the type of a workbook cell. Possible values include `b` (boolean),
-       * `n` (number), `d` (date), and `s` (string).
+       * Data type of the cell value (e.g. boolean, number, text)
        */
       t: 'b' | 'n' | 'd' | 's';
 
+      /**
+       * Underlying cell value
+       */
       v: number | string | boolean | null;
 
       /**
@@ -274,8 +305,14 @@ export namespace WorkbookQueryResponse {
        */
       r?: string | null;
 
+      /**
+       * Formatted cell value
+       */
       w?: string | null;
 
+      /**
+       * Number format associated with the cell
+       */
       z?: string | null;
     }
 
@@ -285,8 +322,14 @@ export namespace WorkbookQueryResponse {
      * provides details for identifying and understanding errors in workbook data.
      */
     export interface ErrorCell {
+      /**
+       * Data type of the cell value (always 'e' for 'error')
+       */
       t: 'e';
 
+      /**
+       * Underlying cell value
+       */
       v: string;
 
       /**
@@ -304,6 +347,9 @@ export namespace WorkbookQueryResponse {
      * Cells that have no content but hold metadata like comments.
      */
     export interface EmptyCell {
+      /**
+       * Data type of the cell value (always 'z' for 'empty cell')
+       */
       t: 'z';
     }
   }
@@ -319,6 +365,9 @@ export namespace WorkbookQueryResponse {
      */
     data: DataCell.ValueCell | DataCell.ErrorCell | DataCell.EmptyCell;
 
+    /**
+     * A1-style reference for the cell or cells that were updated
+     */
     source: string;
 
     type: 'cell';
@@ -331,11 +380,13 @@ export namespace WorkbookQueryResponse {
      */
     export interface ValueCell {
       /**
-       * Specifies the type of a workbook cell. Possible values include `b` (boolean),
-       * `n` (number), `d` (date), and `s` (string).
+       * Data type of the cell value (e.g. boolean, number, text)
        */
       t: 'b' | 'n' | 'd' | 's';
 
+      /**
+       * Underlying cell value
+       */
       v: number | string | boolean | null;
 
       /**
@@ -343,8 +394,14 @@ export namespace WorkbookQueryResponse {
        */
       r?: string | null;
 
+      /**
+       * Formatted cell value
+       */
       w?: string | null;
 
+      /**
+       * Number format associated with the cell
+       */
       z?: string | null;
     }
 
@@ -354,8 +411,14 @@ export namespace WorkbookQueryResponse {
      * provides details for identifying and understanding errors in workbook data.
      */
     export interface ErrorCell {
+      /**
+       * Data type of the cell value (always 'e' for 'error')
+       */
       t: 'e';
 
+      /**
+       * Underlying cell value
+       */
       v: string;
 
       /**
@@ -373,6 +436,9 @@ export namespace WorkbookQueryResponse {
      * Cells that have no content but hold metadata like comments.
      */
     export interface EmptyCell {
+      /**
+       * Data type of the cell value (always 'z' for 'empty cell')
+       */
       t: 'z';
     }
   }
@@ -384,6 +450,9 @@ export namespace WorkbookQueryResponse {
   export interface ValueTable {
     data: Array<Array<number | string | boolean | null>>;
 
+    /**
+     * A1-style reference for the cell or cells that were updated
+     */
     source: string;
 
     type: 'valueTable';
@@ -396,6 +465,9 @@ export namespace WorkbookQueryResponse {
   export interface ValueList {
     data: Array<number | string | boolean | null>;
 
+    /**
+     * A1-style reference for the cell or cells that were updated
+     */
     source: string;
 
     type: 'valueList';
@@ -408,6 +480,9 @@ export namespace WorkbookQueryResponse {
   export interface Value {
     data: number | string | boolean | null;
 
+    /**
+     * A1-style reference for the cell or cells that were updated
+     */
     source: string;
 
     type: 'value';
@@ -420,6 +495,9 @@ export namespace WorkbookQueryResponse {
   export interface FormattedValueTable {
     data: Array<Array<string>>;
 
+    /**
+     * A1-style reference for the cell or cells that were updated
+     */
     source: string;
 
     type: 'formattedValueTable';
@@ -432,6 +510,9 @@ export namespace WorkbookQueryResponse {
   export interface FormattedValueList {
     data: Array<string>;
 
+    /**
+     * A1-style reference for the cell or cells that were updated
+     */
     source: string;
 
     type: 'formattedValueList';
@@ -444,6 +525,9 @@ export namespace WorkbookQueryResponse {
   export interface FormattedValue {
     data: string;
 
+    /**
+     * A1-style reference for the cell or cells that were updated
+     */
     source: string;
 
     type: 'formattedValue';
@@ -471,7 +555,7 @@ export namespace WorkbookQueryResponse {
     /**
      * The result of the formula
      */
-    solution?: number | string | boolean | null;
+    solution?: number;
   }
 }
 
@@ -682,6 +766,11 @@ export namespace WorkbookRenderChartParams {
      * Type of chart to render
      */
     type?: 'line' | 'column';
+
+    /**
+     * How to label individual data values on the chart
+     */
+    values?: 'none' | 'selective' | 'all';
   }
 
   /**
@@ -703,6 +792,9 @@ export namespace WorkbookRenderChartParams {
 }
 
 export interface WorkbookUploadParams {
+  /**
+   * Excel (.xlsx) file
+   */
   file: Uploadable;
 }
 
