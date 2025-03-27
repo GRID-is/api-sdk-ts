@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.0.0-rc.7 (2025-03-27)
+
+Full Changelog: [v1.0.0-rc.6...v1.0.0-rc.7](https://github.com/GRID-is/api-sdk-ts/compare/v1.0.0-rc.6...v1.0.0-rc.7)
+
+### Features
+
+* **api:** finish renaming of HTTPBearer to apiKey ([#41](https://github.com/GRID-is/api-sdk-ts/issues/41)) ([29a151d](https://github.com/GRID-is/api-sdk-ts/commit/29a151deedf3e7fc9fd062be0a531c3f2b60ed84))
+
 ## 1.0.0-rc.6 (2025-03-27)
 
 Full Changelog: [v1.0.0-rc.5...v1.0.0-rc.6](https://github.com/GRID-is/api-sdk-ts/compare/v1.0.0-rc.5...v1.0.0-rc.6)
