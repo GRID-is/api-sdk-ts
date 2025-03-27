@@ -1,6 +1,6 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIPromise } from '@grid-is/api/api-promise';
+import { APIPromise } from '@grid-is/api/core/api-promise';
 
 import util from 'node:util';
 import Grid from '@grid-is/api';
@@ -298,13 +298,13 @@ describe('instantiate client', () => {
     test('empty env variable', () => {
       process.env['GRID_BASE_URL'] = ''; // empty
       const client = new Grid({ apiKey: 'My API Key' });
-      expect(client.baseURL).toEqual('https://api-alpha.grid.is');
+      expect(client.baseURL).toEqual('https://api.grid.is');
     });
 
     test('blank env variable', () => {
       process.env['GRID_BASE_URL'] = '  '; // blank
       const client = new Grid({ apiKey: 'My API Key' });
-      expect(client.baseURL).toEqual('https://api-alpha.grid.is');
+      expect(client.baseURL).toEqual('https://api.grid.is');
     });
   });
 

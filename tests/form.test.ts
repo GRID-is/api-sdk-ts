@@ -1,5 +1,5 @@
 import { multipartFormRequestOptions, createForm } from '@grid-is/api/internal/uploads';
-import { toFile } from '@grid-is/api/uploads';
+import { toFile } from '@grid-is/api/core/uploads';
 
 describe('form data validation', () => {
   test('valid values do not error', async () => {
