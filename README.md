@@ -138,7 +138,6 @@ You can use the `maxRetries` option to configure or disable this:
 // Configure the default for all requests:
 const client = new Grid({
   maxRetries: 0, // default is 2
-  apiKey: 'My API Key',
 });
 
 // Or, configure per-request:
@@ -156,7 +155,6 @@ Requests time out after one minute by default. You can configure this with a `ti
 // Configure the default for all requests:
 const client = new Grid({
   timeout: 20 * 1000, // 20 seconds (default is 1 minute)
-  apiKey: 'My API Key',
 });
 
 // Override per-request:
