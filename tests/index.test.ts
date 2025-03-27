@@ -1,6 +1,6 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIPromise } from '@grid-is/api/api-promise';
+import { APIPromise } from '@grid-is/api/core/api-promise';
 
 import util from 'node:util';
 import Grid from '@grid-is/api';
