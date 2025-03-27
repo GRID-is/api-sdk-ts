@@ -1,5 +1,35 @@
 # Changelog
 
+## 1.0.0-rc.6 (2025-03-27)
+
+Full Changelog: [v1.0.0-rc.5...v1.0.0-rc.6](https://github.com/GRID-is/api-sdk-ts/compare/v1.0.0-rc.5...v1.0.0-rc.6)
+
+### Features
+
+* **api:** api update ([#37](https://github.com/GRID-is/api-sdk-ts/issues/37)) ([78d193d](https://github.com/GRID-is/api-sdk-ts/commit/78d193d3d4619f1266ebedccbd3bc73c96e7fcc9))
+* **api:** update API URL to api.grid.is ([#38](https://github.com/GRID-is/api-sdk-ts/issues/38)) ([bcc8f3c](https://github.com/GRID-is/api-sdk-ts/commit/bcc8f3c5c61e904e29dd0a7a3bf4de6b112e1729))
+
+
+### Bug Fixes
+
+* **internal:** add mts file + crypto shim types ([#33](https://github.com/GRID-is/api-sdk-ts/issues/33)) ([7ab8e1d](https://github.com/GRID-is/api-sdk-ts/commit/7ab8e1d00af0416eaa467c42be42a1960abc514a))
+
+
+### Chores
+
+* **client:** move misc public files to new `core/` directory, deprecate old paths ([#39](https://github.com/GRID-is/api-sdk-ts/issues/39)) ([80f0087](https://github.com/GRID-is/api-sdk-ts/commit/80f00879d13e20c34f51deebdc76f33ffff05634))
+* **docs:** Update GRID app URL ([78f283f](https://github.com/GRID-is/api-sdk-ts/commit/78f283fd34f299634cd7755b886811191096045b))
+* **exports:** cleaner resource index imports ([#35](https://github.com/GRID-is/api-sdk-ts/issues/35)) ([d8cbc61](https://github.com/GRID-is/api-sdk-ts/commit/d8cbc615cfa73a4d040ba0b3ef9a63312ba4f7f7))
+* **exports:** stop using path fallbacks ([#36](https://github.com/GRID-is/api-sdk-ts/issues/36)) ([3ec3190](https://github.com/GRID-is/api-sdk-ts/commit/3ec3190e6113e5ba0e3e3e9bd13ed77387059a17))
+* **internal:** codegen related update ([#31](https://github.com/GRID-is/api-sdk-ts/issues/31)) ([93391a0](https://github.com/GRID-is/api-sdk-ts/commit/93391a0a8513219fdf851d0913d16fe32114a318))
+* **internal:** minor client file refactoring ([#34](https://github.com/GRID-is/api-sdk-ts/issues/34)) ([f45db71](https://github.com/GRID-is/api-sdk-ts/commit/f45db71123d330d8fd065d50e3d4888d6ba422d1))
+* **internal:** remove extra empty newlines ([#32](https://github.com/GRID-is/api-sdk-ts/issues/32)) ([7128673](https://github.com/GRID-is/api-sdk-ts/commit/7128673f7fc7dac02c8884875b95da2c7ff67986))
+
+
+### Documentation
+
+* Explain how to use the API key ([3f67855](https://github.com/GRID-is/api-sdk-ts/commit/3f67855e034df13f465372a83c66386375bf0fff))
+
 ## 1.0.0-rc.5 (2025-03-07)
 
 Full Changelog: [v1.0.0-rc.4...v1.0.0-rc.5](https://github.com/GRID-is/api-sdk-ts/compare/v1.0.0-rc.4...v1.0.0-rc.5)
