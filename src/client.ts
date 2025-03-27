@@ -186,6 +186,10 @@ export class Grid {
     return;
   }
 
+  protected authHeaders(opts: FinalRequestOptions): Headers | undefined {
+    return new Headers({ Authorization: `Bearer ${this.apiKey}` });
+  }
+
   /**
    * Basic re-implementation of `qs.stringify` for primitive types.
    */
@@ -636,6 +640,7 @@ export class Grid {
         ...getPlatformHeaders(),
         'X-Client-Name': 'api-sdk',
       },
+      this.authHeaders(options),
       this._options.defaultHeaders,
       bodyHeaders,
       options.headers,
