@@ -1,6 +1,6 @@
 import fs from 'fs';
 import type { ResponseLike } from '@grid-is/api/internal/to-file';
-import { toFile } from '@grid-is/api/uploads';
+import { toFile } from '@grid-is/api/core/uploads';
 import { File } from 'node:buffer';
 
 class MyClass {
@@ -97,7 +97,7 @@ describe('missing File error message', () => {
   });
 
   test('is thrown', async () => {
-    const uploads = await import('@grid-is/api/uploads');
+    const uploads = await import('@grid-is/api/core/uploads');
     await expect(
       uploads.toFile(mockResponse({ url: 'https://example.com/my/audio.mp3' })),
     ).rejects.toMatchInlineSnapshot(
