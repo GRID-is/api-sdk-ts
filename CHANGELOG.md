@@ -1,5 +1,21 @@
 # Changelog
 
+## 1.0.0-rc.8 (2025-04-08)
+
+Full Changelog: [v1.0.0-rc.7...v1.0.0-rc.8](https://github.com/GRID-is/api-sdk-ts/compare/v1.0.0-rc.7...v1.0.0-rc.8)
+
+### Bug Fixes
+
+* **api:** improve type resolution when importing as a package ([#47](https://github.com/GRID-is/api-sdk-ts/issues/47)) ([c344306](https://github.com/GRID-is/api-sdk-ts/commit/c344306e2f61fb6c4a2b830e184a7095e1c53093))
+* **client:** send `X-Stainless-Timeout` in seconds ([#44](https://github.com/GRID-is/api-sdk-ts/issues/44)) ([7b4a5ab](https://github.com/GRID-is/api-sdk-ts/commit/7b4a5aba048bb1b20e8b897f12fab28fefdca15e))
+* **client:** send all configured auth headers ([#49](https://github.com/GRID-is/api-sdk-ts/issues/49)) ([212b3ae](https://github.com/GRID-is/api-sdk-ts/commit/212b3ae5516f76b76592534be02defec7fd75e34))
+* **mcp:** remove unused tools.ts ([#48](https://github.com/GRID-is/api-sdk-ts/issues/48)) ([d44b94a](https://github.com/GRID-is/api-sdk-ts/commit/d44b94a902a7d397a8c2b004e261a97dc3d59446))
+
+
+### Chores
+
+* **internal:** add aliases for Record and Array ([#46](https://github.com/GRID-is/api-sdk-ts/issues/46)) ([2462b10](https://github.com/GRID-is/api-sdk-ts/commit/2462b1024bf10be8395b931863355d874fefc0ce))
+
 ## 1.0.0-rc.7 (2025-03-27)
 
 Full Changelog: [v1.0.0-rc.6...v1.0.0-rc.7](https://github.com/GRID-is/api-sdk-ts/compare/v1.0.0-rc.6...v1.0.0-rc.7)
