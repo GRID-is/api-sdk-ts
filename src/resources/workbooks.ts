@@ -590,14 +590,31 @@ export namespace WorkbookExportParams {
    */
   export interface Apply {
     /**
-     * A1-style reference for the cell to write to
+     * Reference for the cell to write to
      */
-    target: string;
+    target: string | Apply.ReferenceObject;
 
     /**
      * Value to write to the target cell
      */
     value: number | string | boolean | null;
+  }
+
+  export namespace Apply {
+    /**
+     * A reference to a range of spreadsheet cells.
+     */
+    export interface ReferenceObject {
+      /**
+       * Unprefixed A1-style range, id, or name
+       */
+      cells: string;
+
+      /**
+       * Name of the sheet to reference
+       */
+      sheet: string | null;
+    }
   }
 
   /**
@@ -609,17 +626,49 @@ export namespace WorkbookExportParams {
     /**
      * Reference for the cell that will contain the solution
      */
-    controlCell: string;
+    controlCell: string | GoalSeek.ReferenceObject;
 
     /**
      * Reference for the cell that contains the formula you want to resolve
      */
-    targetCell: string;
+    targetCell: string | GoalSeek.ReferenceObject;
 
     /**
      * The value you want the formula to return
      */
     targetValue: number;
+  }
+
+  export namespace GoalSeek {
+    /**
+     * A reference to a range of spreadsheet cells.
+     */
+    export interface ReferenceObject {
+      /**
+       * Unprefixed A1-style range, id, or name
+       */
+      cells: string;
+
+      /**
+       * Name of the sheet to reference
+       */
+      sheet: string | null;
+    }
+
+    /**
+     * A reference to a range of spreadsheet cells.
+     */
+    export interface ReferenceObject {
+      /**
+       * Unprefixed A1-style range, id, or name
+       */
+      cells: string;
+
+      /**
+       * Name of the sheet to reference
+       */
+      sheet: string | null;
+    }
   }
 }
 
@@ -627,7 +676,7 @@ export interface WorkbookQueryParams {
   /**
    * Cell references to read from the workbook and return to the client
    */
-  read: Array<string>;
+  read: Array<string | WorkbookQueryParams.ReferenceObject>;
 
   /**
    * Cells to update before reading. Note that the API has no state and any changes
@@ -650,20 +699,52 @@ export interface WorkbookQueryParams {
 
 export namespace WorkbookQueryParams {
   /**
+   * A reference to a range of spreadsheet cells.
+   */
+  export interface ReferenceObject {
+    /**
+     * Unprefixed A1-style range, id, or name
+     */
+    cells: string;
+
+    /**
+     * Name of the sheet to reference
+     */
+    sheet: string | null;
+  }
+
+  /**
    * Specifies a temporary change to a workbook cell, including the `target` cell
    * reference and the `value` to apply. The API has no state, and so any changes
    * made are cleared after each request.
    */
   export interface Apply {
     /**
-     * A1-style reference for the cell to write to
+     * Reference for the cell to write to
      */
-    target: string;
+    target: string | Apply.ReferenceObject;
 
     /**
      * Value to write to the target cell
      */
     value: number | string | boolean | null;
+  }
+
+  export namespace Apply {
+    /**
+     * A reference to a range of spreadsheet cells.
+     */
+    export interface ReferenceObject {
+      /**
+       * Unprefixed A1-style range, id, or name
+       */
+      cells: string;
+
+      /**
+       * Name of the sheet to reference
+       */
+      sheet: string | null;
+    }
   }
 
   /**
@@ -675,17 +756,49 @@ export namespace WorkbookQueryParams {
     /**
      * Reference for the cell that will contain the solution
      */
-    controlCell: string;
+    controlCell: string | GoalSeek.ReferenceObject;
 
     /**
      * Reference for the cell that contains the formula you want to resolve
      */
-    targetCell: string;
+    targetCell: string | GoalSeek.ReferenceObject;
 
     /**
      * The value you want the formula to return
      */
     targetValue: number;
+  }
+
+  export namespace GoalSeek {
+    /**
+     * A reference to a range of spreadsheet cells.
+     */
+    export interface ReferenceObject {
+      /**
+       * Unprefixed A1-style range, id, or name
+       */
+      cells: string;
+
+      /**
+       * Name of the sheet to reference
+       */
+      sheet: string | null;
+    }
+
+    /**
+     * A reference to a range of spreadsheet cells.
+     */
+    export interface ReferenceObject {
+      /**
+       * Unprefixed A1-style range, id, or name
+       */
+      cells: string;
+
+      /**
+       * Name of the sheet to reference
+       */
+      sheet: string | null;
+    }
   }
 
   /**
@@ -780,14 +893,31 @@ export namespace WorkbookRenderChartParams {
    */
   export interface Apply {
     /**
-     * A1-style reference for the cell to write to
+     * Reference for the cell to write to
      */
-    target: string;
+    target: string | Apply.ReferenceObject;
 
     /**
      * Value to write to the target cell
      */
     value: number | string | boolean | null;
+  }
+
+  export namespace Apply {
+    /**
+     * A reference to a range of spreadsheet cells.
+     */
+    export interface ReferenceObject {
+      /**
+       * Unprefixed A1-style range, id, or name
+       */
+      cells: string;
+
+      /**
+       * Name of the sheet to reference
+       */
+      sheet: string | null;
+    }
   }
 }
 
