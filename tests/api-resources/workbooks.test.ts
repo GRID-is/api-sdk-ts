@@ -45,7 +45,7 @@ describe('resource workbooks', () => {
     const response = await client.workbooks.query('id', {
       read: ['A1', 'Sheet2!B3', '=SUM(A1:A4)'],
       apply: [{ target: 'A2', value: 1234 }],
-      goalSeek: { controlCell: 'controlCell', targetCell: 'targetCell', targetValue: 0 },
+      goalSeek: { controlCell: 'Sheet1!A1:B2', targetCell: 'Sheet1!A1:B2', targetValue: 0 },
       options: { axis: 'rows', originals: 'off', refs: 'off', structure: 'single', values: 'full' },
     });
   });
