@@ -1,5 +1,25 @@
 # Changelog
 
+## 1.0.0-rc.9 (2025-04-11)
+
+Full Changelog: [v1.0.0-rc.8...v1.0.0-rc.9](https://github.com/GRID-is/api-sdk-ts/compare/v1.0.0-rc.8...v1.0.0-rc.9)
+
+### Features
+
+* **api:** api update ([434e199](https://github.com/GRID-is/api-sdk-ts/commit/434e199b310c922c55b065236096f44ade271f63))
+
+
+### Bug Fixes
+
+* **internal:** fix file uploads in node 18 jest ([8f76d14](https://github.com/GRID-is/api-sdk-ts/commit/8f76d14c877c2b6d3a00f803fe0d117726bfdd10))
+
+
+### Chores
+
+* **internal:** improve node 18 shims ([21abc69](https://github.com/GRID-is/api-sdk-ts/commit/21abc6974f2d08ef9e55758c1bc88567e9b78c54))
+* **internal:** reduce CI branch coverage ([54f4fea](https://github.com/GRID-is/api-sdk-ts/commit/54f4feac82aad9e03d6dc87123a506df98fd906b))
+* **internal:** upload builds and expand CI branch coverage ([e37cb9a](https://github.com/GRID-is/api-sdk-ts/commit/e37cb9a3912a916f1a43013b19cb6381e12fcf50))
+
 ## 1.0.0-rc.8 (2025-04-08)
 
 Full Changelog: [v1.0.0-rc.7...v1.0.0-rc.8](https://github.com/GRID-is/api-sdk-ts/compare/v1.0.0-rc.7...v1.0.0-rc.8)
