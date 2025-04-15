@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.0.0-rc.10 (2025-04-15)
+
+Full Changelog: [v1.0.0-rc.9...v1.0.0-rc.10](https://github.com/GRID-is/api-sdk-ts/compare/v1.0.0-rc.9...v1.0.0-rc.10)
+
+### Chores
+
+* **client:** minor internal fixes ([2e47260](https://github.com/GRID-is/api-sdk-ts/commit/2e47260d9d3e4e556daec6f623a7fa2490b0f880))
+
 ## 1.0.0-rc.9 (2025-04-11)
 
 Full Changelog: [v1.0.0-rc.8...v1.0.0-rc.9](https://github.com/GRID-is/api-sdk-ts/compare/v1.0.0-rc.8...v1.0.0-rc.9)
