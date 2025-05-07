@@ -80,7 +80,7 @@ export class Workbooks extends APIResource {
    * @example
    * ```ts
    * const response = await client.workbooks.renderChart('id', {
-   *   chart: { data: '=C2:C142' },
+   *   chart: {},
    * });
    *
    * const content = await response.blob();
@@ -896,14 +896,62 @@ export namespace WorkbookRenderChartParams {
    */
   export interface Chart {
     /**
-     * Chart data range, prefixed with an equals sign
+     * How an axis representing dimensional categories is presented.
      */
-    data: string | null;
+    axisDim?: Chart.AxisDim | null;
 
     /**
-     * File format to use for the chart image
+     * How an axis representing value magnitudes is presented.
      */
-    format?: 'png' | 'svg';
+    axisValue?: Chart.AxisValue | null;
+
+    /**
+     * Enum representing the supported strategies for handling blank or missing data
+     * points.
+     */
+    blanks?: 'gap' | 'zero' | 'span' | null;
+
+    /**
+     * An Excel array expression that returns a 1-dimensional list of HTML color
+     * strings
+     */
+    chartColors?: string | null;
+
+    /**
+     * Vary colors by point rather than series.
+     */
+    colorByPoint?: string | null;
+
+    /**
+     * Chart data range, prefixed with an equals sign
+     */
+    data?: string | null;
+
+    /**
+     * Chart data range, prefixed with an equals sign, used for lines in a combo chart
+     */
+    dataLines?: string | null;
+
+    /**
+     * Enum representing the supported read orientations for data directions.
+     */
+    dir?: '' | 'col' | 'row' | null;
+
+    /**
+     * Cell reference to use as the chart's footnote text. Can also be plain text.
+     */
+    footnote?: string | null;
+
+    /**
+     * Supported image types for rendering charts from workbook data.
+     */
+    format?: 'png' | 'svg' | null;
+
+    /**
+     * Enum representing the supported interpolation types for data visualization or
+     * curve fitting.
+     */
+    interpolate?: 'linear' | 'step' | 'step-after' | 'step-before' | 'monotone' | 'basis' | null;
 
     /**
      * Range of cells to use as the chart's x-axis labels, prefixed with an equals sign
@@ -911,19 +959,126 @@ export namespace WorkbookRenderChartParams {
     labels?: string | null;
 
     /**
+     * Range of cells to use as the chart's legend labels, prefixed with an equals sign
+     */
+    legend?: string | null;
+
+    /**
+     * Range of cells to use as the chart's line labels in the legend, prefixed with an
+     * equals sign
+     */
+    legendLines?: string | null;
+
+    /**
+     * Whether to display a chart legend
+     */
+    legendVisible?: 'false' | 'true' | null;
+
+    /**
+     * Number format pattern used for formatting labels on the chart.
+     */
+    numberFormat?: string | null;
+
+    /**
+     * The number of which series the data should be sorted by (e.g. 1 for the first
+     * series).
+     */
+    sortBy?: number | null;
+
+    /**
+     * The sorting direction when the sortBy property is set.
+     */
+    sortOrder?: '' | 'ascending' | 'descending' | null;
+
+    /**
+     * Whether to display series stacked or grouped
+     */
+    stacked?: 'false' | 'true' | null;
+
+    /**
+     * Cell reference to use as the chart's subtitle. Can also be plain text.
+     */
+    subtitle?: string | null;
+
+    /**
      * Cell reference to use as the chart's title. Can also be plain text.
      */
     title?: string | null;
 
     /**
-     * Type of chart to render
+     * Types of charts that can be rendered using workbook data.
      */
-    type?: 'line' | 'column';
+    type?: 'area' | 'bar' | 'column' | 'combo' | 'line' | 'pie' | 'scatterplot' | 'waterfall' | null;
 
     /**
-     * How to label individual data values on the chart
+     * Options for labelling individual data values on a chart. If "none" (the default)
+     * then no data labels are shown. If "selective", data labels are shown when they
+     * fit without overlap. If "all", all values are labelled.
      */
-    values?: 'none' | 'selective' | 'all';
+    values?: 'none' | 'selective' | 'all' | null;
+  }
+
+  export namespace Chart {
+    /**
+     * How an axis representing dimensional categories is presented.
+     */
+    export interface AxisDim {
+      /**
+       * Number format pattern used for formatting the axis labels.
+       */
+      numberFormat?: string | null;
+
+      /**
+       * If true, invert the scale of the axis. If false, keep the order untouched.
+       */
+      reverse?: 'false' | 'true' | null;
+
+      /**
+       * Cell reference to use as the axis title. Can also be plain text.
+       */
+      title?: string | null;
+    }
+
+    /**
+     * How an axis representing value magnitudes is presented.
+     */
+    export interface AxisValue {
+      /**
+       * If true, any graphics outside the min or max boundaries of the axes are
+       * truncated.
+       */
+      clip?: 'false' | 'true' | null;
+
+      /**
+       * A maximum value for the axis.
+       */
+      max?: number | null;
+
+      /**
+       * A minimum value for the axis.
+       */
+      min?: number | null;
+
+      /**
+       * Number format pattern used for formatting the axis labels.
+       */
+      numberFormat?: string | null;
+
+      /**
+       * Draw the axis in ascending or descending order.
+       */
+      reverse?: 'false' | 'true' | null;
+
+      /**
+       * Cell reference to use as the axis title. Can also be plain text.
+       */
+      title?: string | null;
+
+      /**
+       * Types of scales that can be used by an axis.
+       */
+      type?: 'linear' | 'log' | null;
+    }
   }
 
   /**
