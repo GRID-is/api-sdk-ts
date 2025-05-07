@@ -14,6 +14,14 @@ export class Workbooks extends APIResource {
    * List the workbooks linked to an account.
    *
    * This endpoint returns a paginated list of workbooks.
+   *
+   * @example
+   * ```ts
+   * // Automatically fetches more pages as needed.
+   * for await (const workbookListResponse of client.workbooks.list()) {
+   *   // ...
+   * }
+   * ```
    */
   list(
     query: WorkbookListParams | null | undefined = {},
@@ -28,6 +36,14 @@ export class Workbooks extends APIResource {
   /**
    * Export a workbook as an .xlsx file. Cells can be updated before the workbook is
    * exported.
+   *
+   * @example
+   * ```ts
+   * const response = await client.workbooks.export('id');
+   *
+   * const content = await response.blob();
+   * console.log(content);
+   * ```
    */
   export(id: string, body: WorkbookExportParams, options?: RequestOptions): APIPromise<Response> {
     return this._client.post(path`/v1/workbooks/${id}/export`, {
@@ -46,6 +62,13 @@ export class Workbooks extends APIResource {
    *
    * Send a JSON object with a `read` key to read values from cells and formulas.
    * Optionally, use the `apply` key to update cells before reading.
+   *
+   * @example
+   * ```ts
+   * const response = await client.workbooks.query('id', {
+   *   read: ['A1', 'Sheet2!B3', '=SUM(A1:A4)'],
+   * });
+   * ```
    */
   query(id: string, body: WorkbookQueryParams, options?: RequestOptions): APIPromise<WorkbookQueryResponse> {
     return this._client.post(path`/v1/workbooks/${id}/query`, { body, ...options });
@@ -53,6 +76,16 @@ export class Workbooks extends APIResource {
 
   /**
    * Render a chart using workbook data
+   *
+   * @example
+   * ```ts
+   * const response = await client.workbooks.renderChart('id', {
+   *   chart: { data: '=C2:C142' },
+   * });
+   *
+   * const content = await response.blob();
+   * console.log(content);
+   * ```
    */
   renderChart(id: string, body: WorkbookRenderChartParams, options?: RequestOptions): APIPromise<Response> {
     return this._client.post(path`/v1/workbooks/${id}/chart`, {
@@ -68,6 +101,13 @@ export class Workbooks extends APIResource {
    *
    * The workbook will be processed in the background. Once it's processed
    * successfully it will be available for querying and exporting.
+   *
+   * @example
+   * ```ts
+   * const response = await client.workbooks.upload({
+   *   file: fs.createReadStream('path/to/file'),
+   * });
+   * ```
    */
   upload(body: WorkbookUploadParams, options?: RequestOptions): APIPromise<WorkbookUploadResponse> {
     return this._client.post(
