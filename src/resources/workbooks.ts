@@ -183,17 +183,7 @@ export interface WorkbookQueryResponse {
   /**
    * Details on the values that were read from the workbook cells
    */
-  read: Array<
-    | WorkbookQueryResponse.DataTable
-    | WorkbookQueryResponse.DataList
-    | WorkbookQueryResponse.DataCell
-    | WorkbookQueryResponse.ValueTable
-    | WorkbookQueryResponse.ValueList
-    | WorkbookQueryResponse.Value
-    | WorkbookQueryResponse.FormattedValueTable
-    | WorkbookQueryResponse.FormattedValueList
-    | WorkbookQueryResponse.FormattedValue
-  >;
+  read: Array<WorkbookQueryResponse.Read>;
 
   /**
    * Results of a goal seek operation.
@@ -209,6 +199,11 @@ export namespace WorkbookQueryResponse {
    */
   export interface Apply {
     /**
+     * Original value of the cell before applying the new value
+     */
+    originalValue: number | string | boolean | null;
+
+    /**
      * A1-style reference for the cell that was updated
      */
     target: string;
@@ -217,19 +212,13 @@ export namespace WorkbookQueryResponse {
      * New value of the cell
      */
     value: number | string | boolean | null;
-
-    /**
-     * Original value of the cell before applying the new value
-     */
-    originalValue?: number | string | boolean | null;
   }
 
   /**
-   * Read data format used when options are
-   * `{ "structure": "table", "values": "full" }`.
+   * A two-dimensional table of cells retrieved from a spreadsheet.
    */
-  export interface DataTable {
-    data: Array<Array<DataTable.ValueCell | DataTable.ErrorCell | DataTable.EmptyCell>>;
+  export interface Read {
+    data: Array<Array<Read.ValueCell | Read.ErrorCell | Read.EmptyCell>>;
 
     /**
      * A1-style reference for the cell or cells that were updated
@@ -239,7 +228,7 @@ export namespace WorkbookQueryResponse {
     type: 'dataTable';
   }
 
-  export namespace DataTable {
+  export namespace Read {
     /**
      * Represents a single workbook cell, including its value (`v`), cell reference
      * (`r`), type (`t`), number format (`z`), and formatted text (`w`).
@@ -256,7 +245,8 @@ export namespace WorkbookQueryResponse {
       v: number | string | boolean | null;
 
       /**
-       * Relative A1-based cell reference
+       * Relative A1-based cell reference. This property only appears when there's a real
+       * cell behind the value
        */
       r?: string | null;
 
@@ -293,7 +283,8 @@ export namespace WorkbookQueryResponse {
       e?: string | null;
 
       /**
-       * Relative A1-based cell reference
+       * Relative A1-based cell reference. This property only appears when there's a real
+       * cell behind the value
        */
       r?: string | null;
     }
@@ -306,271 +297,13 @@ export namespace WorkbookQueryResponse {
        * Data type of the cell value (always 'z' for 'empty cell')
        */
       t: 'z';
-    }
-  }
-
-  /**
-   * Read data format used when options are
-   * `{ "structure": "list", "values": "full" }`.
-   */
-  export interface DataList {
-    data: Array<DataList.ValueCell | DataList.ErrorCell | DataList.EmptyCell>;
-
-    /**
-     * A1-style reference for the cell or cells that were updated
-     */
-    source: string;
-
-    type: 'dataList';
-  }
-
-  export namespace DataList {
-    /**
-     * Represents a single workbook cell, including its value (`v`), cell reference
-     * (`r`), type (`t`), number format (`z`), and formatted text (`w`).
-     */
-    export interface ValueCell {
-      /**
-       * Data type of the cell value (e.g. boolean, number, text)
-       */
-      t: 'b' | 'n' | 'd' | 's';
 
       /**
-       * Underlying cell value
-       */
-      v: number | string | boolean | null;
-
-      /**
-       * Relative A1-based cell reference
-       */
-      r?: string | null;
-
-      /**
-       * Formatted cell value
-       */
-      w?: string | null;
-
-      /**
-       * Number format associated with the cell
-       */
-      z?: string | null;
-    }
-
-    /**
-     * Represents a workbook cell with an error. It includes the cell reference (`r`),
-     * type (`t`, always `e`), value (`v`), and an optional error code (`e`). It
-     * provides details for identifying and understanding errors in workbook data.
-     */
-    export interface ErrorCell {
-      /**
-       * Data type of the cell value (always 'e' for 'error')
-       */
-      t: 'e';
-
-      /**
-       * Underlying cell value
-       */
-      v: string;
-
-      /**
-       * Description of the error
-       */
-      e?: string | null;
-
-      /**
-       * Relative A1-based cell reference
+       * Relative A1-based cell reference. This property only appears when there's a real
+       * cell behind the value
        */
       r?: string | null;
     }
-
-    /**
-     * Cells that have no content but hold metadata like comments.
-     */
-    export interface EmptyCell {
-      /**
-       * Data type of the cell value (always 'z' for 'empty cell')
-       */
-      t: 'z';
-    }
-  }
-
-  /**
-   * Read data format used when options are
-   * `{ "structure": "single", "values": "full" }`.
-   */
-  export interface DataCell {
-    /**
-     * Represents a single workbook cell, including its value (`v`), cell reference
-     * (`r`), type (`t`), number format (`z`), and formatted text (`w`).
-     */
-    data: DataCell.ValueCell | DataCell.ErrorCell | DataCell.EmptyCell;
-
-    /**
-     * A1-style reference for the cell or cells that were updated
-     */
-    source: string;
-
-    type: 'cell';
-  }
-
-  export namespace DataCell {
-    /**
-     * Represents a single workbook cell, including its value (`v`), cell reference
-     * (`r`), type (`t`), number format (`z`), and formatted text (`w`).
-     */
-    export interface ValueCell {
-      /**
-       * Data type of the cell value (e.g. boolean, number, text)
-       */
-      t: 'b' | 'n' | 'd' | 's';
-
-      /**
-       * Underlying cell value
-       */
-      v: number | string | boolean | null;
-
-      /**
-       * Relative A1-based cell reference
-       */
-      r?: string | null;
-
-      /**
-       * Formatted cell value
-       */
-      w?: string | null;
-
-      /**
-       * Number format associated with the cell
-       */
-      z?: string | null;
-    }
-
-    /**
-     * Represents a workbook cell with an error. It includes the cell reference (`r`),
-     * type (`t`, always `e`), value (`v`), and an optional error code (`e`). It
-     * provides details for identifying and understanding errors in workbook data.
-     */
-    export interface ErrorCell {
-      /**
-       * Data type of the cell value (always 'e' for 'error')
-       */
-      t: 'e';
-
-      /**
-       * Underlying cell value
-       */
-      v: string;
-
-      /**
-       * Description of the error
-       */
-      e?: string | null;
-
-      /**
-       * Relative A1-based cell reference
-       */
-      r?: string | null;
-    }
-
-    /**
-     * Cells that have no content but hold metadata like comments.
-     */
-    export interface EmptyCell {
-      /**
-       * Data type of the cell value (always 'z' for 'empty cell')
-       */
-      t: 'z';
-    }
-  }
-
-  /**
-   * Read data format used when options are
-   * `{ "structure": "table", "values": "raw" }`.
-   */
-  export interface ValueTable {
-    data: Array<Array<number | string | boolean | null>>;
-
-    /**
-     * A1-style reference for the cell or cells that were updated
-     */
-    source: string;
-
-    type: 'valueTable';
-  }
-
-  /**
-   * Read data format used when options are
-   * `{ "structure": "list", "values": "raw" }`.
-   */
-  export interface ValueList {
-    data: Array<number | string | boolean | null>;
-
-    /**
-     * A1-style reference for the cell or cells that were updated
-     */
-    source: string;
-
-    type: 'valueList';
-  }
-
-  /**
-   * Read data format used when options are
-   * `{ "structure": "single", "values": "raw" }`.
-   */
-  export interface Value {
-    data: number | string | boolean | null;
-
-    /**
-     * A1-style reference for the cell or cells that were updated
-     */
-    source: string;
-
-    type: 'value';
-  }
-
-  /**
-   * Read data format used when options are
-   * `{ "structure": "table", "values": "formatted" }`.
-   */
-  export interface FormattedValueTable {
-    data: Array<Array<string>>;
-
-    /**
-     * A1-style reference for the cell or cells that were updated
-     */
-    source: string;
-
-    type: 'formattedValueTable';
-  }
-
-  /**
-   * Read data format used when options are
-   * `{ "structure": "list", "values": "formatted" }`.
-   */
-  export interface FormattedValueList {
-    data: Array<string>;
-
-    /**
-     * A1-style reference for the cell or cells that were updated
-     */
-    source: string;
-
-    type: 'formattedValueList';
-  }
-
-  /**
-   * Read data format used when options are
-   * `{ "structure": "single", "values": "formatted" }`.
-   */
-  export interface FormattedValue {
-    data: string;
-
-    /**
-     * A1-style reference for the cell or cells that were updated
-     */
-    source: string;
-
-    type: 'formattedValue';
   }
 
   /**
@@ -732,7 +465,7 @@ export interface WorkbookQueryParams {
   goalSeek?: WorkbookQueryParams.GoalSeek | null;
 
   /**
-   * Defines settings for formatting and structuring query results.
+   * Defines settings for configuring query results.
    */
   options?: WorkbookQueryParams.Options | null;
 }
@@ -842,36 +575,13 @@ export namespace WorkbookQueryParams {
   }
 
   /**
-   * Defines settings for formatting and structuring query results.
+   * Defines settings for configuring query results.
    */
   export interface Options {
     /**
      * Determines if data is outputted as rows or columns
      */
     axis?: 'rows' | 'columns' | null;
-
-    /**
-     * When "originals" option is "on", include original values for cells you apply
-     * values to
-     */
-    originals?: 'off' | 'on' | null;
-
-    /**
-     * When "refs" option is "on", include cell addresses (e.g. A1) in each cell object
-     * as the "r" property
-     */
-    refs?: 'off' | 'on' | null;
-
-    /**
-     * Specifies if read values are returned as a single value, a list, or a 2D table
-     */
-    structure?: 'single' | 'list' | 'table' | null;
-
-    /**
-     * Defines if individual cell values are returned in full (JSON objects), raw (just
-     * the value), or formatted (with number formatting applied)
-     */
-    values?: 'full' | 'raw' | 'formatted' | null;
   }
 }
 
