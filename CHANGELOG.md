@@ -1,5 +1,40 @@
 # Changelog
 
+## 1.0.0 (2025-05-13)
+
+Full Changelog: [v1.0.0-rc.9...v1.0.0](https://github.com/GRID-is/api-sdk-ts/compare/v1.0.0-rc.9...v1.0.0)
+
+### Features
+
+* **api:** api update ([d834425](https://github.com/GRID-is/api-sdk-ts/commit/d834425570e026346310267dd03bab3a6e44f997))
+* **api:** api update ([8b73fb6](https://github.com/GRID-is/api-sdk-ts/commit/8b73fb643ac2b279da2ab74ed8453e3d7f706135))
+* **client:** add withOptions helper ([826d290](https://github.com/GRID-is/api-sdk-ts/commit/826d290d1c8d2471fdcaa3e8d0b4b42c13727283))
+
+
+### Bug Fixes
+
+* **client:** always overwrite when merging headers ([7a631e4](https://github.com/GRID-is/api-sdk-ts/commit/7a631e4d9623f4aa003f6f24609078bc1103442c))
+
+
+### Chores
+
+* **ci:** add timeout thresholds for CI jobs ([d8fc1a4](https://github.com/GRID-is/api-sdk-ts/commit/d8fc1a4cf641d6626357ba9c5141d42d3e52d2e0))
+* **ci:** only use depot for staging repos ([a4c649c](https://github.com/GRID-is/api-sdk-ts/commit/a4c649c874ea9130eff6556afce0fe89a87cc22a))
+* **client:** drop support for EOL node versions ([a509ad2](https://github.com/GRID-is/api-sdk-ts/commit/a509ad2438b2b2319895a3ed235424ebf9e2c820))
+* **client:** minor internal fixes ([2e47260](https://github.com/GRID-is/api-sdk-ts/commit/2e47260d9d3e4e556daec6f623a7fa2490b0f880))
+* **internal:** codegen related update ([485efff](https://github.com/GRID-is/api-sdk-ts/commit/485efff03ee7213cb0d2a653e605c3129d0ebbb1))
+* **internal:** codegen related update ([7747be3](https://github.com/GRID-is/api-sdk-ts/commit/7747be3b3564af6aa4fce340f6760cd28fe8557a))
+* **internal:** refactor utils ([ec57d21](https://github.com/GRID-is/api-sdk-ts/commit/ec57d2112fc5f63c3ed8283194864ee0fd38f0d1))
+* **internal:** share typescript helpers ([e21900d](https://github.com/GRID-is/api-sdk-ts/commit/e21900da0bef0e07cd867c6ee706a3e84b86f60a))
+* **package:** remove engines ([7dc1db5](https://github.com/GRID-is/api-sdk-ts/commit/7dc1db518861b3cda7682639d81c127366fabb3e))
+* **perf:** faster base64 decoding ([76ee06a](https://github.com/GRID-is/api-sdk-ts/commit/76ee06a4d5780e8b7974f90aff9726e06e1a7240))
+
+
+### Documentation
+
+* add examples to tsdocs ([258efc0](https://github.com/GRID-is/api-sdk-ts/commit/258efc07237dc9af8836358b27a26d9676bffe96))
+* **readme:** fix typo ([ff6cb96](https://github.com/GRID-is/api-sdk-ts/commit/ff6cb967df9f929940c619252a56e56a637d347a))
+
 ## 1.0.0-rc.9 (2025-04-11)
 
 Full Changelog: [v1.0.0-rc.8...v1.0.0-rc.9](https://github.com/GRID-is/api-sdk-ts/compare/v1.0.0-rc.8...v1.0.0-rc.9)
