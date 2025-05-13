@@ -46,7 +46,7 @@ describe('resource workbooks', () => {
       read: ['A1', 'Sheet2!B3', '=SUM(A1:A4)'],
       apply: [{ target: 'A2', value: 1234 }],
       goalSeek: { controlCell: 'Sheet1!A1:B2', targetCell: 'Sheet1!A1:B2', targetValue: 0 },
-      options: { axis: 'rows', originals: 'off', refs: 'off', structure: 'single', values: 'full' },
+      options: { axis: 'rows' },
     });
   });
 
@@ -54,11 +54,36 @@ describe('resource workbooks', () => {
   test.skip('renderChart: required and optional params', async () => {
     const response = await client.workbooks.renderChart('id', {
       chart: {
+        axisDim: { numberFormat: '#,##0.0', reverse: 'false', title: '=C4' },
+        axisValue: {
+          clip: 'false',
+          max: 0,
+          min: 0,
+          numberFormat: '#,##0.0',
+          reverse: 'false',
+          title: '=C4',
+          type: 'linear',
+        },
+        blanks: 'gap',
+        chartColors: '={"#C40";"#03F"}',
+        colorByPoint: 'colorByPoint',
         data: '=C2:C142',
+        dataLines: '=C2:C142',
+        dir: 'row',
+        footnote: '=H13',
         format: 'png',
+        interpolate: 'linear',
         labels: '=B2:B142',
+        legend: '=D2:D142',
+        legendLines: '=E2:E142',
+        legendVisible: 'false',
+        numberFormat: '#,##0.0',
+        sortBy: 0,
+        sortOrder: '',
+        stacked: 'false',
+        subtitle: '=B4',
         title: '=A1',
-        type: 'line',
+        type: 'area',
         values: 'none',
       },
       apply: [{ target: 'A2', value: 1234 }],

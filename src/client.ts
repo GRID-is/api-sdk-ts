@@ -178,6 +178,23 @@ export class Grid {
     this.apiKey = apiKey;
   }
 
+  /**
+   * Create a new client instance re-using the same options given to the current client with optional overriding.
+   */
+  withOptions(options: Partial<ClientOptions>): this {
+    return new (this.constructor as any as new (props: ClientOptions) => typeof this)({
+      ...this._options,
+      baseURL: this.baseURL,
+      maxRetries: this.maxRetries,
+      timeout: this.timeout,
+      logger: this.logger,
+      logLevel: this.logLevel,
+      fetchOptions: this.fetchOptions,
+      apiKey: this.apiKey,
+      ...options,
+    });
+  }
+
   protected defaultQuery(): Record<string, string | undefined> | undefined {
     return this._options.defaultQuery;
   }
@@ -501,12 +518,12 @@ export class Grid {
       fetchOptions.method = method.toUpperCase();
     }
 
-    return (
+    try {
       // use undefined this binding; fetch errors if bound to something else in browser/cloudflare
-      this.fetch.call(undefined, url, fetchOptions).finally(() => {
-        clearTimeout(timeout);
-      })
-    );
+      return await this.fetch.call(undefined, url, fetchOptions);
+    } finally {
+      clearTimeout(timeout);
+    }
   }
 
   private shouldRetry(response: Response): boolean {
@@ -587,17 +604,17 @@ export class Grid {
   }
 
   buildRequest(
-    options: FinalRequestOptions,
+    inputOptions: FinalRequestOptions,
     { retryCount = 0 }: { retryCount?: number } = {},
   ): { req: FinalizedRequestInit; url: string; timeout: number } {
-    options = { ...options };
+    const options = { ...inputOptions };
     const { method, path, query } = options;
 
     const url = this.buildURL(path!, query as Record<string, unknown>);
     if ('timeout' in options) validatePositiveInteger('timeout', options.timeout);
     options.timeout = options.timeout ?? this.timeout;
     const { bodyHeaders, body } = this.buildBody({ options });
-    const reqHeaders = this.buildHeaders({ options, method, bodyHeaders, retryCount });
+    const reqHeaders = this.buildHeaders({ options: inputOptions, method, bodyHeaders, retryCount });
 
     const req: FinalizedRequestInit = {
       method,
