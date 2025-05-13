@@ -23,7 +23,7 @@ The full API of this library can be found in [api.md](api.md).
 import Grid from '@grid-is/api';
 
 const client = new Grid({
-  // Defaults to process.env["GRID_API_KEY"]
+  // Defaults to process.env["GRID_API_TOKEN"]
   apiKey: "YOUR_API_KEY",
 });
 
