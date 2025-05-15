@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.0.1 (2025-05-15)
+
+Full Changelog: [v1.0.0...v1.0.1](https://github.com/GRID-is/api-sdk-ts/compare/v1.0.0...v1.0.1)
+
+### Bug Fixes
+
+* **stainless:** configure calc and values endpoints ([b1e8f44](https://github.com/GRID-is/api-sdk-ts/commit/b1e8f44ccf9d4eb6dcd97fd7726085737adc77eb))
+
 ## 1.0.0 (2025-05-13)
 
 Full Changelog: [v1.0.0-rc.9...v1.0.0](https://github.com/GRID-is/api-sdk-ts/compare/v1.0.0-rc.9...v1.0.0)
