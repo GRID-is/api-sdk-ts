@@ -29,6 +29,23 @@ describe('resource workbooks', () => {
   });
 
   // skipped: tests are disabled for the time being
+  test.skip('calc: only required params', async () => {
+    const responsePromise = client.workbooks.calc('id', { read: ['A1'] });
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
+  });
+
+  // skipped: tests are disabled for the time being
+  test.skip('calc: required and optional params', async () => {
+    const response = await client.workbooks.calc('id', { read: ['A1'], apply: { foo: 0 } });
+  });
+
+  // skipped: tests are disabled for the time being
   test.skip('query: only required params', async () => {
     const responsePromise = client.workbooks.query('id', { read: ['A1', 'Sheet2!B3', '=SUM(A1:A4)'] });
     const rawResponse = await responsePromise.asResponse();
@@ -109,5 +126,22 @@ describe('resource workbooks', () => {
     const response = await client.workbooks.upload({
       file: await toFile(Buffer.from('# my file contents'), 'README.md'),
     });
+  });
+
+  // skipped: tests are disabled for the time being
+  test.skip('values: only required params', async () => {
+    const responsePromise = client.workbooks.values('id', { read: ['A1'] });
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
+  });
+
+  // skipped: tests are disabled for the time being
+  test.skip('values: required and optional params', async () => {
+    const response = await client.workbooks.values('id', { read: ['A1'], apply: { foo: 0 } });
   });
 });

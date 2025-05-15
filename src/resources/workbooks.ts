@@ -34,6 +34,20 @@ export class Workbooks extends APIResource {
   }
 
   /**
+   * Run calculations in a workbook and retrieve cell objects.
+   *
+   * @example
+   * ```ts
+   * const response = await client.workbooks.calc('id', {
+   *   read: ['A1'],
+   * });
+   * ```
+   */
+  calc(id: string, body: WorkbookCalcParams, options?: RequestOptions): APIPromise<WorkbookCalcResponse> {
+    return this._client.post(path`/v1/workbooks/${id}/calc`, { body, ...options });
+  }
+
+  /**
    * Export a workbook as an .xlsx file. Cells can be updated before the workbook is
    * exported.
    *
@@ -115,6 +129,24 @@ export class Workbooks extends APIResource {
       multipartFormRequestOptions({ body, ...options }, this._client),
     );
   }
+
+  /**
+   * Run calculations in a workbook and retrieve cell values.
+   *
+   * @example
+   * ```ts
+   * const response = await client.workbooks.values('id', {
+   *   read: ['A1'],
+   * });
+   * ```
+   */
+  values(
+    id: string,
+    body: WorkbookValuesParams,
+    options?: RequestOptions,
+  ): APIPromise<WorkbookValuesResponse> {
+    return this._client.post(path`/v1/workbooks/${id}/values`, { body, ...options });
+  }
 }
 
 export type WorkbookListResponsesCursorPagination = CursorPagination<WorkbookListResponse>;
@@ -166,6 +198,66 @@ export interface WorkbookListResponse {
    * The latest version of the workbook that has a 'ready' state
    */
   latest_ready_version?: number | null;
+}
+
+/**
+ * Response type returned by the for /calc query endpoint.
+ */
+export type WorkbookCalcResponse = Record<
+  string,
+  WorkbookCalcResponse.ReadValue | Array<WorkbookCalcResponse.UnionMember1>
+>;
+
+export namespace WorkbookCalcResponse {
+  export interface ReadValue {
+    /**
+     * Formatted cell value
+     */
+    formatted: string;
+
+    /**
+     * Cell position in the spreadsheet, using 0-indexed x/y coordinates. Origin [0, 0]
+     * is at the top-left
+     */
+    offset: Array<unknown>;
+
+    /**
+     * Type of the cell value
+     */
+    type: 'blank' | 'boolean' | 'number' | 'string' | 'date' | 'error';
+
+    /**
+     * Cell value
+     */
+    value: number | string | boolean | null;
+
+    error?: string | null;
+  }
+
+  export interface UnionMember1 {
+    /**
+     * Formatted cell value
+     */
+    formatted: string;
+
+    /**
+     * Cell position in the spreadsheet, using 0-indexed x/y coordinates. Origin [0, 0]
+     * is at the top-left
+     */
+    offset: Array<unknown>;
+
+    /**
+     * Type of the cell value
+     */
+    type: 'blank' | 'boolean' | 'number' | 'string' | 'date' | 'error';
+
+    /**
+     * Cell value
+     */
+    value: number | string | boolean | null;
+
+    error?: string | null;
+  }
 }
 
 /**
@@ -339,7 +431,21 @@ export interface WorkbookUploadResponse {
   id: string;
 }
 
+/**
+ * Response type returned by the for /values query endpoint.
+ */
+export type WorkbookValuesResponse = Record<
+  string,
+  number | string | boolean | Array<number | string | boolean | null> | null
+>;
+
 export interface WorkbookListParams extends CursorPaginationParams {}
+
+export interface WorkbookCalcParams {
+  read: Array<string>;
+
+  apply?: Record<string, number | string | boolean | null> | null;
+}
 
 export interface WorkbookExportParams {
   /**
@@ -833,16 +939,26 @@ export interface WorkbookUploadParams {
   file: Uploadable;
 }
 
+export interface WorkbookValuesParams {
+  read: Array<string>;
+
+  apply?: Record<string, number | string | boolean | null> | null;
+}
+
 export declare namespace Workbooks {
   export {
     type WorkbookListResponse as WorkbookListResponse,
+    type WorkbookCalcResponse as WorkbookCalcResponse,
     type WorkbookQueryResponse as WorkbookQueryResponse,
     type WorkbookUploadResponse as WorkbookUploadResponse,
+    type WorkbookValuesResponse as WorkbookValuesResponse,
     type WorkbookListResponsesCursorPagination as WorkbookListResponsesCursorPagination,
     type WorkbookListParams as WorkbookListParams,
+    type WorkbookCalcParams as WorkbookCalcParams,
     type WorkbookExportParams as WorkbookExportParams,
     type WorkbookQueryParams as WorkbookQueryParams,
     type WorkbookRenderChartParams as WorkbookRenderChartParams,
     type WorkbookUploadParams as WorkbookUploadParams,
+    type WorkbookValuesParams as WorkbookValuesParams,
   };
 }
