@@ -23,9 +23,11 @@ Methods:
 Types:
 
 - <code><a href="./src/resources/beta.ts">BetaGetWorkbookLabelsResponse</a></code>
+- <code><a href="./src/resources/beta.ts">BetaGetWorkbookParametersResponse</a></code>
 - <code><a href="./src/resources/beta.ts">BetaSearchLabelsResponse</a></code>
 
 Methods:
 
 - <code title="get /v1/workbooks/{id}/labels">client.beta.<a href="./src/resources/beta.ts">getWorkbookLabels</a>(id) -> BetaGetWorkbookLabelsResponse</code>
+- <code title="get /v1/workbooks/{id}/parameters">client.beta.<a href="./src/resources/beta.ts">getWorkbookParameters</a>(id) -> BetaGetWorkbookParametersResponse</code>
 - <code title="post /v1/workbooks/search/labels">client.beta.<a href="./src/resources/beta.ts">searchLabels</a>({ ...params }) -> BetaSearchLabelsResponse</code>

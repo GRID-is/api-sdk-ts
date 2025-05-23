@@ -14,6 +14,13 @@ export class Beta extends APIResource {
   }
 
   /**
+   * Retrieve labels automatically detected for cells and ranges in the workbook.
+   */
+  getWorkbookParameters(id: string, options?: RequestOptions): APIPromise<BetaGetWorkbookParametersResponse> {
+    return this._client.get(path`/v1/workbooks/${id}/parameters`, options);
+  }
+
+  /**
    * Search data labels across all spreadsheets uploaded to an account
    */
   searchLabels(body: BetaSearchLabelsParams, options?: RequestOptions): APIPromise<BetaSearchLabelsResponse> {
@@ -64,6 +71,66 @@ export namespace BetaGetWorkbookLabelsResponse {
      * The type of the label, almost always text, not to be confused with cell type
      */
     type?: string | null;
+  }
+}
+
+export interface BetaGetWorkbookParametersResponse {
+  /**
+   * The date/time the parameters were detected and stored
+   */
+  created: string;
+
+  /**
+   * The parameters associated with the workbook
+   */
+  parameters: Array<BetaGetWorkbookParametersResponse.Parameter>;
+
+  /**
+   * The id of the workbook the labels belong to
+   */
+  workbook_id: string;
+
+  /**
+   * The version of the workbook the labels belong to
+   */
+  workbook_version: number;
+}
+
+export namespace BetaGetWorkbookParametersResponse {
+  export interface Parameter {
+    /**
+     * The labels associated with the parameter
+     */
+    labels: Array<Parameter.Label>;
+
+    /**
+     * The cell address/reference containing the parameter
+     */
+    ref: string;
+
+    /**
+     * The type of value found in the parameter cell
+     */
+    type: 'blank' | 'date' | 'number' | 'string' | 'boolean' | 'error';
+
+    /**
+     * The value in the parameter cell, type is determined by the type field
+     */
+    value?: string | number | boolean | null;
+  }
+
+  export namespace Parameter {
+    export interface Label {
+      /**
+       * The cell address/reference which the label applies to
+       */
+      at: string;
+
+      /**
+       * The label string
+       */
+      text: string;
+    }
   }
 }
 
@@ -166,6 +233,7 @@ export interface BetaSearchLabelsParams {
 export declare namespace Beta {
   export {
     type BetaGetWorkbookLabelsResponse as BetaGetWorkbookLabelsResponse,
+    type BetaGetWorkbookParametersResponse as BetaGetWorkbookParametersResponse,
     type BetaSearchLabelsResponse as BetaSearchLabelsResponse,
     type BetaSearchLabelsParams as BetaSearchLabelsParams,
   };
