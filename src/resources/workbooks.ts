@@ -436,7 +436,7 @@ export interface WorkbookUploadResponse {
  */
 export type WorkbookValuesResponse = Record<
   string,
-  number | string | boolean | Array<number | string | boolean | null> | null
+  number | number | string | boolean | null | Array<number | string | boolean | null>
 >;
 
 export interface WorkbookListParams extends CursorPaginationParams {}
