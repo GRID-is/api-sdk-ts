@@ -17,3 +17,15 @@ Methods:
 - <code title="post /v1/workbooks/{id}/chart">client.workbooks.<a href="./src/resources/workbooks.ts">renderChart</a>(id, { ...params }) -> Response</code>
 - <code title="post /v1/workbooks">client.workbooks.<a href="./src/resources/workbooks.ts">upload</a>({ ...params }) -> WorkbookUploadResponse</code>
 - <code title="post /v1/workbooks/{id}/values">client.workbooks.<a href="./src/resources/workbooks.ts">values</a>(id, { ...params }) -> WorkbookValuesResponse</code>
+
+# Beta
+
+Types:
+
+- <code><a href="./src/resources/beta.ts">BetaGetWorkbookLabelsResponse</a></code>
+- <code><a href="./src/resources/beta.ts">BetaSearchLabelsResponse</a></code>
+
+Methods:
+
+- <code title="get /v1/workbooks/{id}/labels">client.beta.<a href="./src/resources/beta.ts">getWorkbookLabels</a>(id) -> BetaGetWorkbookLabelsResponse</code>
+- <code title="post /v1/workbooks/search/labels">client.beta.<a href="./src/resources/beta.ts">searchLabels</a>({ ...params }) -> BetaSearchLabelsResponse</code>
