@@ -1,5 +1,18 @@
 # Changelog
 
+## 1.1.0 (2025-05-23)
+
+Full Changelog: [v1.0.1...v1.1.0](https://github.com/GRID-is/api-sdk-ts/compare/v1.0.1...v1.1.0)
+
+### Features
+
+* **api:** add beta label endpoints ([de15d07](https://github.com/GRID-is/api-sdk-ts/commit/de15d07e2079185d55cfeed7edff950b84450de7))
+
+
+### Chores
+
+* **docs:** grammar improvements ([86247ff](https://github.com/GRID-is/api-sdk-ts/commit/86247ff810cbd3cf395be6453d6c648a9ba7b861))
+
 ## 1.0.1 (2025-05-15)
 
 Full Changelog: [v1.0.0...v1.0.1](https://github.com/GRID-is/api-sdk-ts/compare/v1.0.0...v1.0.1)
