@@ -23,6 +23,12 @@ import { type Fetch } from './internal/builtin-types';
 import { HeadersLike, NullableHeaders, buildHeaders } from './internal/headers';
 import { FinalRequestOptions, RequestOptions } from './internal/request-options';
 import {
+  Beta,
+  BetaGetWorkbookLabelsResponse,
+  BetaSearchLabelsParams,
+  BetaSearchLabelsResponse,
+} from './resources/beta';
+import {
   WorkbookCalcParams,
   WorkbookCalcResponse,
   WorkbookExportParams,
@@ -729,8 +735,10 @@ export class Grid {
   static toFile = Uploads.toFile;
 
   workbooks: API.Workbooks = new API.Workbooks(this);
+  beta: API.Beta = new API.Beta(this);
 }
 Grid.Workbooks = Workbooks;
+Grid.Beta = Beta;
 export declare namespace Grid {
   export type RequestOptions = Opts.RequestOptions;
 
@@ -755,5 +763,12 @@ export declare namespace Grid {
     type WorkbookRenderChartParams as WorkbookRenderChartParams,
     type WorkbookUploadParams as WorkbookUploadParams,
     type WorkbookValuesParams as WorkbookValuesParams,
+  };
+
+  export {
+    Beta as Beta,
+    type BetaGetWorkbookLabelsResponse as BetaGetWorkbookLabelsResponse,
+    type BetaSearchLabelsResponse as BetaSearchLabelsResponse,
+    type BetaSearchLabelsParams as BetaSearchLabelsParams,
   };
 }
