@@ -21,6 +21,18 @@ describe('resource beta', () => {
   });
 
   // skipped: tests are disabled for the time being
+  test.skip('getWorkbookParameters', async () => {
+    const responsePromise = client.beta.getWorkbookParameters('id');
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
+  });
+
+  // skipped: tests are disabled for the time being
   test.skip('searchLabels: only required params', async () => {
     const responsePromise = client.beta.searchLabels({ query: 'profit' });
     const rawResponse = await responsePromise.asResponse();

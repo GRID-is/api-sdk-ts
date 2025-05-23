@@ -25,6 +25,7 @@ import { FinalRequestOptions, RequestOptions } from './internal/request-options'
 import {
   Beta,
   BetaGetWorkbookLabelsResponse,
+  BetaGetWorkbookParametersResponse,
   BetaSearchLabelsParams,
   BetaSearchLabelsResponse,
 } from './resources/beta';
@@ -768,6 +769,7 @@ export declare namespace Grid {
   export {
     Beta as Beta,
     type BetaGetWorkbookLabelsResponse as BetaGetWorkbookLabelsResponse,
+    type BetaGetWorkbookParametersResponse as BetaGetWorkbookParametersResponse,
     type BetaSearchLabelsResponse as BetaSearchLabelsResponse,
     type BetaSearchLabelsParams as BetaSearchLabelsParams,
   };
