@@ -3,6 +3,7 @@
 export {
   Beta,
   type BetaGetWorkbookLabelsResponse,
+  type BetaGetWorkbookParametersResponse,
   type BetaSearchLabelsResponse,
   type BetaSearchLabelsParams,
 } from './beta';
