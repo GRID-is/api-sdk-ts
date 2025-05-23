@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.1.1 (2025-05-23)
+
+Full Changelog: [v1.1.0...v1.1.1](https://github.com/GRID-is/api-sdk-ts/compare/v1.1.0...v1.1.1)
+
+### Bug Fixes
+
+* **api:** Add label parameters endpoint ([d091822](https://github.com/GRID-is/api-sdk-ts/commit/d091822794d0dccc1099e354a7c7b5ad749f54c6))
+
 ## 1.1.0 (2025-05-23)
 
 Full Changelog: [v1.0.1...v1.1.0](https://github.com/GRID-is/api-sdk-ts/compare/v1.0.1...v1.1.0)
