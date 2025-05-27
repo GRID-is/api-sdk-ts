@@ -163,6 +163,11 @@ export namespace BetaSearchLabelsResponse {
     filename: string;
 
     /**
+     * Array of labels within the workbook that match the search query
+     */
+    labels: Array<Result.Label>;
+
+    /**
      * Most recent version number of the workbook
      */
     latest_version: number;
@@ -176,8 +181,6 @@ export namespace BetaSearchLabelsResponse {
      * UUID for the workbook
      */
     workbook_id: string;
-
-    labels?: Array<Result.Label>;
 
     /**
      * Relevance ranking of the workbook in relation to the search results (higher is
