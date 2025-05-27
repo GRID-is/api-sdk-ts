@@ -1,4 +1,4 @@
 configured_endpoints: 10
-openapi_spec_url: https://storage.googleapis.com/stainless-sdk-openapi-specs/grid%2Fspreadsheet-api-c04aecbf881fa8800053188fa5d587605aa4238cf9d732ebd6c18d7b8c65e400.yml
-openapi_spec_hash: ce7f54c0cb3e2baccca845c7e83d44fe
+openapi_spec_url: https://storage.googleapis.com/stainless-sdk-openapi-specs/grid%2Fspreadsheet-api-937ec398ff9d8219722378c542c3ffaf79b917fd833781ea5c6840b42620e6c8.yml
+openapi_spec_hash: 3ac84a2bff939ae296c2f4295d4e28e9
 config_hash: d3f4645d9a93970cbead53b83c49a2c4

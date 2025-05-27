@@ -42,7 +42,7 @@ describe('resource workbooks', () => {
 
   // skipped: tests are disabled for the time being
   test.skip('calc: required and optional params', async () => {
-    const response = await client.workbooks.calc('id', { read: ['A1'], apply: { foo: 0 } });
+    const response = await client.workbooks.calc('id', { read: ['A1'], apply: { foo: 1234 } });
   });
 
   // skipped: tests are disabled for the time being
@@ -142,6 +142,6 @@ describe('resource workbooks', () => {
 
   // skipped: tests are disabled for the time being
   test.skip('values: required and optional params', async () => {
-    const response = await client.workbooks.values('id', { read: ['A1'], apply: { foo: 0 } });
+    const response = await client.workbooks.values('id', { read: ['A1'], apply: { foo: 1234 } });
   });
 });
