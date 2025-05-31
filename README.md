@@ -173,13 +173,13 @@ List methods in the Grid API are paginated.
 You can use the `for await … of` syntax to iterate through items across all pages:
 
 ```ts
-async function fetchAllWorkbooks(params) {
-  const allWorkbooks = [];
+async function fetchAllWorkbookListResponses(params) {
+  const allWorkbookListResponses = [];
   // Automatically fetches more pages as needed.
   for await (const workbookListResponse of client.workbooks.list({ limit: 50 })) {
-    allWorkbooks.push(workbookListResponse);
+    allWorkbookListResponses.push(workbookListResponse);
   }
-  return allWorkbooks;
+  return allWorkbookListResponses;
 }
 ```
 

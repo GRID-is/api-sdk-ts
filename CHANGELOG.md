@@ -1,5 +1,25 @@
 # Changelog
 
+## 1.1.3 (2025-05-31)
+
+Full Changelog: [v1.1.2...v1.1.3](https://github.com/GRID-is/api-sdk-ts/compare/v1.1.2...v1.1.3)
+
+### Bug Fixes
+
+* compat with more runtimes ([cfba707](https://github.com/GRID-is/api-sdk-ts/commit/cfba707d477d6c9bcf66e089de14c774f90eb191))
+
+
+### Chores
+
+* **deps:** bump eslint-plugin-prettier ([6653cbc](https://github.com/GRID-is/api-sdk-ts/commit/6653cbc6d2db6e40d6d7163ed59ad59472b2ee9b))
+* improve publish-npm script --latest tag logic ([b202e9c](https://github.com/GRID-is/api-sdk-ts/commit/b202e9cf88b26e64122ccb03659ab94a60e5fac6))
+* **internal:** update jest config ([46f30f8](https://github.com/GRID-is/api-sdk-ts/commit/46f30f8bf492f50b484ec8050c0da32762c96d51))
+
+
+### Documentation
+
+* **pagination:** improve naming ([455bb5e](https://github.com/GRID-is/api-sdk-ts/commit/455bb5e3b5c5d682a4aa5d38e55230006ffcfa88))
+
 ## 1.1.2 (2025-05-27)
 
 Full Changelog: [v1.1.1...v1.1.2](https://github.com/GRID-is/api-sdk-ts/compare/v1.1.1...v1.1.2)
