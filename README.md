@@ -27,15 +27,11 @@ const client = new Grid({
   apiKey: "YOUR_API_KEY",
 });
 
-async function main() {
-  const response = await client.workbooks.query('YOUR_WORKBOOK_ID', {
-    read: ['A1', 'Sheet2!B3', '=SUM(A1:A4)'],
-  });
+const response = await client.workbooks.query('YOUR_WORKBOOK_ID', {
+  read: ['A1', 'Sheet2!B3', '=SUM(A1:A4)'],
+});
 
-  console.log(response.read);
-}
-
-main();
+console.log(response.read);
 ```
 
 ### Request & Response types
@@ -48,12 +44,8 @@ import Grid from '@grid-is/api';
 
 const client = new Grid();
 
-async function main() {
-  const params: Grid.WorkbookQueryParams = { read: ['A1', 'Sheet2!B3', '=SUM(A1:A4)'] };
-  const response: Grid.WorkbookQueryResponse = await client.workbooks.query('YOUR_WORKBOOK_ID', params);
-}
-
-main();
+const params: Grid.WorkbookQueryParams = { read: ['A1', 'Sheet2!B3', '=SUM(A1:A4)'] };
+const response: Grid.WorkbookQueryResponse = await client.workbooks.query('YOUR_WORKBOOK_ID', params);
 ```
 
 Documentation for each method, request param, and response field are available in docstrings and will appear on hover in most modern editors.
@@ -95,21 +87,17 @@ a subclass of `APIError` will be thrown:
 
 <!-- prettier-ignore -->
 ```ts
-async function main() {
-  const response = await client.workbooks
-    .query('YOUR_WORKBOOK_ID', { read: ['A1', 'Sheet2!B3', '=SUM(A1:A4)'] })
-    .catch(async (err) => {
-      if (err instanceof Grid.APIError) {
-        console.log(err.status); // 400
-        console.log(err.name); // BadRequestError
-        console.log(err.headers); // {server: 'nginx', ...}
-      } else {
-        throw err;
-      }
-    });
-}
-
-main();
+const response = await client.workbooks
+  .query('YOUR_WORKBOOK_ID', { read: ['A1', 'Sheet2!B3', '=SUM(A1:A4)'] })
+  .catch(async (err) => {
+    if (err instanceof Grid.APIError) {
+      console.log(err.status); // 400
+      console.log(err.name); // BadRequestError
+      console.log(err.headers); // {server: 'nginx', ...}
+    } else {
+      throw err;
+    }
+  });
 ```
 
 Error codes are as follows:
@@ -173,13 +161,13 @@ List methods in the Grid API are paginated.
 You can use the `for await … of` syntax to iterate through items across all pages:
 
 ```ts
-async function fetchAllWorkbooks(params) {
-  const allWorkbooks = [];
+async function fetchAllWorkbookListResponses(params) {
+  const allWorkbookListResponses = [];
   // Automatically fetches more pages as needed.
   for await (const workbookListResponse of client.workbooks.list({ limit: 50 })) {
-    allWorkbooks.push(workbookListResponse);
+    allWorkbookListResponses.push(workbookListResponse);
   }
-  return allWorkbooks;
+  return allWorkbookListResponses;
 }
 ```
 
