@@ -1,5 +1,29 @@
 # Changelog
 
+## 1.1.3 (2025-06-07)
+
+Full Changelog: [v1.1.2...v1.1.3](https://github.com/GRID-is/api-sdk-ts/compare/v1.1.2...v1.1.3)
+
+### Bug Fixes
+
+* compat with more runtimes ([cfba707](https://github.com/GRID-is/api-sdk-ts/commit/cfba707d477d6c9bcf66e089de14c774f90eb191))
+
+
+### Chores
+
+* adjust eslint.config.mjs ignore pattern ([425627d](https://github.com/GRID-is/api-sdk-ts/commit/425627d74182a8cf8ddcae7d68940afa71c780c3))
+* avoid type error in certain environments ([7c383f5](https://github.com/GRID-is/api-sdk-ts/commit/7c383f5eb9ae59705845de88865d60594222d29d))
+* **deps:** bump eslint-plugin-prettier ([6653cbc](https://github.com/GRID-is/api-sdk-ts/commit/6653cbc6d2db6e40d6d7163ed59ad59472b2ee9b))
+* **docs:** use top-level-await in example snippets ([2f22e9e](https://github.com/GRID-is/api-sdk-ts/commit/2f22e9eecf71f4c12d06f52fba43f1a67d7d6787))
+* improve publish-npm script --latest tag logic ([b202e9c](https://github.com/GRID-is/api-sdk-ts/commit/b202e9cf88b26e64122ccb03659ab94a60e5fac6))
+* **internal:** fix readablestream types in node 20 ([5b79c96](https://github.com/GRID-is/api-sdk-ts/commit/5b79c96852159e1ab8785f6c02574ec2fdf499e7))
+* **internal:** update jest config ([46f30f8](https://github.com/GRID-is/api-sdk-ts/commit/46f30f8bf492f50b484ec8050c0da32762c96d51))
+
+
+### Documentation
+
+* **pagination:** improve naming ([455bb5e](https://github.com/GRID-is/api-sdk-ts/commit/455bb5e3b5c5d682a4aa5d38e55230006ffcfa88))
+
 ## 1.1.2 (2025-05-27)
 
 Full Changelog: [v1.1.1...v1.1.2](https://github.com/GRID-is/api-sdk-ts/compare/v1.1.1...v1.1.2)
