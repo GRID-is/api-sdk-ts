@@ -1,5 +1,18 @@
 # Changelog
 
+## 1.1.4 (2025-06-14)
+
+Full Changelog: [v1.1.3...v1.1.4](https://github.com/GRID-is/api-sdk-ts/compare/v1.1.3...v1.1.4)
+
+### Bug Fixes
+
+* publish script — handle NPM errors correctly ([1103e61](https://github.com/GRID-is/api-sdk-ts/commit/1103e616bd7f44660c7e31abc29812b0280734a8))
+
+
+### Chores
+
+* **internal:** add pure annotations, make base APIResource abstract ([a2cc35d](https://github.com/GRID-is/api-sdk-ts/commit/a2cc35dce1e54638b7308c75027560428f24f29b))
+
 ## 1.1.3 (2025-06-07)
 
 Full Changelog: [v1.1.2...v1.1.3](https://github.com/GRID-is/api-sdk-ts/compare/v1.1.2...v1.1.3)
