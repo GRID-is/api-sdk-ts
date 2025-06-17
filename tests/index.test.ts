@@ -306,6 +306,28 @@ describe('instantiate client', () => {
       const client = new Grid({ apiKey: 'My API Key' });
       expect(client.baseURL).toEqual('https://api.grid.is');
     });
+
+    test('in request options', () => {
+      const client = new Grid({ apiKey: 'My API Key' });
+      expect(client.buildURL('/foo', null, 'http://localhost:5000/option')).toEqual(
+        'http://localhost:5000/option/foo',
+      );
+    });
+
+    test('in request options overridden by client options', () => {
+      const client = new Grid({ apiKey: 'My API Key', baseURL: 'http://localhost:5000/client' });
+      expect(client.buildURL('/foo', null, 'http://localhost:5000/option')).toEqual(
+        'http://localhost:5000/client/foo',
+      );
+    });
+
+    test('in request options overridden by env variable', () => {
+      process.env['GRID_BASE_URL'] = 'http://localhost:5000/env';
+      const client = new Grid({ apiKey: 'My API Key' });
+      expect(client.buildURL('/foo', null, 'http://localhost:5000/option')).toEqual(
+        'http://localhost:5000/env/foo',
+      );
+    });
   });
 
   test('maxRetries option is correctly set', () => {
