@@ -1,5 +1,28 @@
 # Changelog
 
+## 1.2.0 (2025-06-21)
+
+Full Changelog: [v1.1.3...v1.2.0](https://github.com/GRID-is/api-sdk-ts/compare/v1.1.3...v1.2.0)
+
+### Features
+
+* **client:** add support for endpoint-specific base URLs ([46555cb](https://github.com/GRID-is/api-sdk-ts/commit/46555cbbc1a0c26644fedf60f830917fe0e0b624))
+
+
+### Bug Fixes
+
+* **client:** explicitly copy fetch in withOptions ([d6b7a69](https://github.com/GRID-is/api-sdk-ts/commit/d6b7a69d4c66070e24c2ce92b5de049040c77d86))
+* publish script — handle NPM errors correctly ([1103e61](https://github.com/GRID-is/api-sdk-ts/commit/1103e616bd7f44660c7e31abc29812b0280734a8))
+
+
+### Chores
+
+* **ci:** enable for pull requests ([51cc2e8](https://github.com/GRID-is/api-sdk-ts/commit/51cc2e84cf1dd20a9d7b2aaa2f1ee7ff724076f9))
+* **client:** refactor imports ([d540a0b](https://github.com/GRID-is/api-sdk-ts/commit/d540a0b6fca44bc2f57654092d66401ca73646fa))
+* **internal:** add pure annotations, make base APIResource abstract ([a2cc35d](https://github.com/GRID-is/api-sdk-ts/commit/a2cc35dce1e54638b7308c75027560428f24f29b))
+* **readme:** update badges ([19f82c2](https://github.com/GRID-is/api-sdk-ts/commit/19f82c249cb2d2de73698042303519d466807967))
+* **readme:** use better example snippet for undocumented params ([92ba27b](https://github.com/GRID-is/api-sdk-ts/commit/92ba27b2aa2834180767c0649b61ae6d3eb80bea))
+
 ## 1.1.3 (2025-06-07)
 
 Full Changelog: [v1.1.2...v1.1.3](https://github.com/GRID-is/api-sdk-ts/compare/v1.1.2...v1.1.3)
