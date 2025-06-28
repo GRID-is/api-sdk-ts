@@ -203,10 +203,9 @@ export interface WorkbookListResponse {
 /**
  * Response type returned by the for /calc query endpoint.
  */
-export type WorkbookCalcResponse = Record<
-  string,
-  WorkbookCalcResponse.ReadValue | Array<WorkbookCalcResponse.UnionMember1>
->;
+export type WorkbookCalcResponse = {
+  [key: string]: WorkbookCalcResponse.ReadValue | Array<WorkbookCalcResponse.UnionMember1>;
+};
 
 export namespace WorkbookCalcResponse {
   export interface ReadValue {
@@ -434,17 +433,16 @@ export interface WorkbookUploadResponse {
 /**
  * Response type returned by the for /values query endpoint.
  */
-export type WorkbookValuesResponse = Record<
-  string,
-  number | number | string | boolean | null | Array<number | string | boolean | null>
->;
+export type WorkbookValuesResponse = {
+  [key: string]: number | number | string | boolean | null | Array<number | string | boolean | null>;
+};
 
 export interface WorkbookListParams extends CursorPaginationParams {}
 
 export interface WorkbookCalcParams {
   read: Array<string>;
 
-  apply?: Record<string, number | string | boolean | null> | null;
+  apply?: { [key: string]: number | string | boolean | null } | null;
 }
 
 export interface WorkbookExportParams {
@@ -942,7 +940,7 @@ export interface WorkbookUploadParams {
 export interface WorkbookValuesParams {
   read: Array<string>;
 
-  apply?: Record<string, number | string | boolean | null> | null;
+  apply?: { [key: string]: number | string | boolean | null } | null;
 }
 
 export declare namespace Workbooks {
