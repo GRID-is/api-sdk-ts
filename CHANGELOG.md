@@ -1,5 +1,24 @@
 # Changelog
 
+## 1.2.1 (2025-06-28)
+
+Full Changelog: [v1.2.0...v1.2.1](https://github.com/GRID-is/api-sdk-ts/compare/v1.2.0...v1.2.1)
+
+### Bug Fixes
+
+* **ci:** release-doctor — report correct token name ([ef2fa50](https://github.com/GRID-is/api-sdk-ts/commit/ef2fa505309c459eff5c323b714f40d1d109894b))
+* **client:** get fetchOptions type more reliably ([c80f6da](https://github.com/GRID-is/api-sdk-ts/commit/c80f6dafbcb834150242bf827a94f8bee8ad1d5e))
+
+
+### Chores
+
+* **ci:** only run for pushes and fork pull requests ([dbd68a4](https://github.com/GRID-is/api-sdk-ts/commit/dbd68a415edbfbb5ab905aa37d0899d7dceec218))
+
+
+### Refactors
+
+* **types:** replace Record with mapped types ([aea9777](https://github.com/GRID-is/api-sdk-ts/commit/aea97777e3a4b6e0839e5c7df0f3fa5ff1fea3c8))
+
 ## 1.2.0 (2025-06-21)
 
 Full Changelog: [v1.1.3...v1.2.0](https://github.com/GRID-is/api-sdk-ts/compare/v1.1.3...v1.2.0)
