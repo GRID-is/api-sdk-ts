@@ -1,5 +1,15 @@
 # Changelog
 
+## 1.2.2 (2025-07-10)
+
+Full Changelog: [v1.2.1...v1.2.2](https://github.com/GRID-is/api-sdk-ts/compare/v1.2.1...v1.2.2)
+
+### Chores
+
+* add docs to RequestOptions type ([a197e2f](https://github.com/GRID-is/api-sdk-ts/commit/a197e2f7d9053be0bb303005ef5da2b620cd21a2))
+* **client:** improve path param validation ([e6d7ff7](https://github.com/GRID-is/api-sdk-ts/commit/e6d7ff72a2de23b52636a752093ba9362543d58a))
+* make some internal functions async ([4f16312](https://github.com/GRID-is/api-sdk-ts/commit/4f163129b3d74e9662e609a9e0191bc2778ec659))
+
 ## 1.2.1 (2025-06-28)
 
 Full Changelog: [v1.2.0...v1.2.1](https://github.com/GRID-is/api-sdk-ts/compare/v1.2.0...v1.2.1)
