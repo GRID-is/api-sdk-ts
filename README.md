@@ -23,8 +23,7 @@ The full API of this library can be found in [api.md](api.md).
 import Grid from '@grid-is/api';
 
 const client = new Grid({
-  // Defaults to process.env["GRID_API_TOKEN"]
-  apiKey: "YOUR_API_KEY",
+  apiKey: process.env['GRID_API_TOKEN'], // This is the default and can be omitted
 });
 
 const response = await client.workbooks.query('YOUR_WORKBOOK_ID', {
@@ -42,7 +41,9 @@ This library includes TypeScript definitions for all request params and response
 ```ts
 import Grid from '@grid-is/api';
 
-const client = new Grid();
+const client = new Grid({
+  apiKey: process.env['GRID_API_TOKEN'], // This is the default and can be omitted
+});
 
 const params: Grid.WorkbookQueryParams = { read: ['A1', 'Sheet2!B3', '=SUM(A1:A4)'] };
 const response: Grid.WorkbookQueryResponse = await client.workbooks.query('YOUR_WORKBOOK_ID', params);
