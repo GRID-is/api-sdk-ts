@@ -1,5 +1,19 @@
 # Changelog
 
+## 1.3.0 (2025-07-30)
+
+Full Changelog: [v1.2.2...v1.3.0](https://github.com/GRID-is/api-sdk-ts/compare/v1.2.2...v1.3.0)
+
+### Features
+
+* clean up environment call outs ([ff4c0eb](https://github.com/GRID-is/api-sdk-ts/commit/ff4c0ebf2ff29d6b129c2f37e4f1c4a9f42abb52))
+
+
+### Chores
+
+* **internal:** remove redundant imports config ([98cf482](https://github.com/GRID-is/api-sdk-ts/commit/98cf482bfcda47c489037086a1713534481921ba))
+* **ts:** reorder package.json imports ([51e81c6](https://github.com/GRID-is/api-sdk-ts/commit/51e81c6584171eaa6a01785d329c5612a5efcf42))
+
 ## 1.2.2 (2025-07-10)
 
 Full Changelog: [v1.2.1...v1.2.2](https://github.com/GRID-is/api-sdk-ts/compare/v1.2.1...v1.2.2)
