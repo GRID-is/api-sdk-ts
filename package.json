@@ -1,6 +1,6 @@
 {
   "name": "@grid-is/api",
-  "version": "1.3.0",
+  "version": "1.3.1",
   "description": "The official TypeScript library for the Grid API",
   "author": "Grid <info@grid.is>",
   "types": "dist/index.d.ts",
@@ -13,6 +13,9 @@
     "**/*"
   ],
   "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "test": "./scripts/test",
     "build": "./scripts/build",
