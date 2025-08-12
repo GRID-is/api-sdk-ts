@@ -8,7 +8,7 @@ const client = new Grid({
 });
 
 describe('resource beta', () => {
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('getWorkbookLabels', async () => {
     const responsePromise = client.beta.getWorkbookLabels('id');
     const rawResponse = await responsePromise.asResponse();
@@ -20,7 +20,7 @@ describe('resource beta', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('getWorkbookParameters', async () => {
     const responsePromise = client.beta.getWorkbookParameters('id');
     const rawResponse = await responsePromise.asResponse();
@@ -32,7 +32,7 @@ describe('resource beta', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('searchLabels: only required params', async () => {
     const responsePromise = client.beta.searchLabels({ query: 'profit' });
     const rawResponse = await responsePromise.asResponse();
@@ -44,7 +44,7 @@ describe('resource beta', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('searchLabels: required and optional params', async () => {
     const response = await client.beta.searchLabels({ query: 'profit', max_labels: 20, max_results: 10 });
   });
