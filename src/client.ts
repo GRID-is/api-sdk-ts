@@ -761,8 +761,10 @@ export class Grid {
   workbooks: API.Workbooks = new API.Workbooks(this);
   beta: API.Beta = new API.Beta(this);
 }
+
 Grid.Workbooks = Workbooks;
 Grid.Beta = Beta;
+
 export declare namespace Grid {
   export type RequestOptions = Opts.RequestOptions;
 
