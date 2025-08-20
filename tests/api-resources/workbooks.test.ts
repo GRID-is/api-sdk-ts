@@ -93,6 +93,7 @@ describe('resource workbooks', () => {
         legend: '=D2:D142',
         legendLines: '=E2:E142',
         legendVisible: 'false',
+        matte: '#FFFFFF',
         numberFormat: '#,##0.0',
         sortBy: 0,
         sortOrder: '',

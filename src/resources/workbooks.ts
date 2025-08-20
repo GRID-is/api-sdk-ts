@@ -789,6 +789,13 @@ export namespace WorkbookRenderChartParams {
     legendVisible?: 'false' | 'true' | null;
 
     /**
+     * Hex color code for the chart's background matte, e.g. '#FFFFFF' for white, if
+     * not specified, the chart will have a transparent background. Note, this is
+     * currently only supported for PNG images.
+     */
+    matte?: string | null;
+
+    /**
      * Number format pattern used for formatting labels on the chart.
      */
     numberFormat?: string | null;
