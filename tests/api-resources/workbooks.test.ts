@@ -104,6 +104,7 @@ describe('resource workbooks', () => {
       },
       apply: [{ target: 'A2', value: 1234 }],
       matte: '#FFFFFF',
+      width: 0,
     });
   });
 
