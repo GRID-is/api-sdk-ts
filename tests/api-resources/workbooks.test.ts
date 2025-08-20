@@ -93,7 +93,6 @@ describe('resource workbooks', () => {
         legend: '=D2:D142',
         legendLines: '=E2:E142',
         legendVisible: 'false',
-        matte: '#FFFFFF',
         numberFormat: '#,##0.0',
         sortBy: 0,
         sortOrder: '',
@@ -104,6 +103,7 @@ describe('resource workbooks', () => {
         values: 'none',
       },
       apply: [{ target: 'A2', value: 1234 }],
+      matte: '#FFFFFF',
     });
   });
 
