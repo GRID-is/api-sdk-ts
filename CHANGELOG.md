@@ -1,5 +1,24 @@
 # Changelog
 
+## 1.4.0 (2025-08-20)
+
+Full Changelog: [v1.3.0...v1.4.0](https://github.com/GRID-is/api-sdk-ts/compare/v1.3.0...v1.4.0)
+
+### Features
+
+* **api:** api update ([46e4a2a](https://github.com/GRID-is/api-sdk-ts/commit/46e4a2a5d40bf6fd88974f40f9d751224e00fb39))
+* **mcp:** add code execution tool ([c7c5701](https://github.com/GRID-is/api-sdk-ts/commit/c7c570132f3e677b43fc625605b2b7ea6994170e))
+
+
+### Chores
+
+* **deps:** update dependency @types/node to v20.17.58 ([5a15185](https://github.com/GRID-is/api-sdk-ts/commit/5a1518525a6c1efdce66913a8721b9706cceb564))
+* **internal:** codegen related update ([f3722be](https://github.com/GRID-is/api-sdk-ts/commit/f3722beeca5d6986898f7119d4dc049d03016dbb))
+* **internal:** formatting change ([a24f913](https://github.com/GRID-is/api-sdk-ts/commit/a24f913962a546a43014a693f75d32b403a0fa37))
+* **internal:** move publish config ([69988ea](https://github.com/GRID-is/api-sdk-ts/commit/69988ea0ba96ef1cc53e03164ccbbf56f253a623))
+* **internal:** update comment in script ([c1aa375](https://github.com/GRID-is/api-sdk-ts/commit/c1aa375f9b0b4365bd353d647f25adc24c5611c6))
+* update @stainless-api/prism-cli to v5.15.0 ([d253dcd](https://github.com/GRID-is/api-sdk-ts/commit/d253dcd0903f512ae2407c25f94fe8ba6c82c849))
+
 ## 1.3.0 (2025-07-30)
 
 Full Changelog: [v1.2.2...v1.3.0](https://github.com/GRID-is/api-sdk-ts/compare/v1.2.2...v1.3.0)
