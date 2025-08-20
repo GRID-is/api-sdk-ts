@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.4.1 (2025-08-20)
+
+Full Changelog: [v1.4.0...v1.4.1](https://github.com/GRID-is/api-sdk-ts/compare/v1.4.0...v1.4.1)
+
+### Features
+
+* **api:** api update ([9debc0d](https://github.com/GRID-is/api-sdk-ts/commit/9debc0dc0afc9fa71725021b0a788fffd7fbf218))
+
 ## 1.4.0 (2025-08-20)
 
 Full Changelog: [v1.3.0...v1.4.0](https://github.com/GRID-is/api-sdk-ts/compare/v1.3.0...v1.4.0)
