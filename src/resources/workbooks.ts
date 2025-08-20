@@ -708,6 +708,13 @@ export interface WorkbookRenderChartParams {
    * currently only supported for PNG images.
    */
   matte?: string | null;
+
+  /**
+   * Width of the chart image in pixels. If not given, a width of 764px is used. A
+   * chart's height cannot be set explicitly because it will differ depending upon
+   * chart type, title, legend, axis labels, and so on.
+   */
+  width?: number | null;
 }
 
 export namespace WorkbookRenderChartParams {
