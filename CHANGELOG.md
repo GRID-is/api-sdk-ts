@@ -1,5 +1,15 @@
 # Changelog
 
+## 1.5.1 (2025-08-23)
+
+Full Changelog: [v1.5.0...v1.5.1](https://github.com/GRID-is/api-sdk-ts/compare/v1.5.0...v1.5.1)
+
+### Chores
+
+* add package to package.json ([fe50b31](https://github.com/GRID-is/api-sdk-ts/commit/fe50b318ab6b138d2ac9607977afae8adbf1c861))
+* **client:** qualify global Blob ([5148d22](https://github.com/GRID-is/api-sdk-ts/commit/5148d221fb698533a43ab7b4cb1f4b35bf50c018))
+* update CI script ([5183ecd](https://github.com/GRID-is/api-sdk-ts/commit/5183ecd1d0416f1a17fd419b81c0c0abfd338f7b))
+
 ## 1.5.0 (2025-08-20)
 
 Full Changelog: [v1.4.1...v1.5.0](https://github.com/GRID-is/api-sdk-ts/compare/v1.4.1...v1.5.0)
