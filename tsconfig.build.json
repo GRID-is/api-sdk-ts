@@ -5,8 +5,8 @@
   "compilerOptions": {
     "rootDir": "./dist/src",
     "paths": {
-      "@grid-is/api/*": ["dist/src/*"],
-      "@grid-is/api": ["dist/src/index.ts"]
+      "@grid-is/api/*": ["./dist/src/*"],
+      "@grid-is/api": ["./dist/src/index.ts"]
     },
     "noEmit": false,
     "declaration": true,
