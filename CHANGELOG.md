@@ -1,5 +1,32 @@
 # Changelog
 
+## 1.5.1 (2025-09-27)
+
+Full Changelog: [v1.5.0...v1.5.1](https://github.com/GRID-is/api-sdk-ts/compare/v1.5.0...v1.5.1)
+
+### Bug Fixes
+
+* coerce nullable values to undefined ([8ebd06f](https://github.com/GRID-is/api-sdk-ts/commit/8ebd06f8d85194fd48b7c648a38f272c03c763e1))
+
+
+### Performance Improvements
+
+* faster formatting ([be603eb](https://github.com/GRID-is/api-sdk-ts/commit/be603eb81eaaa959985e5df26db55fbc3130ce99))
+
+
+### Chores
+
+* add package to package.json ([fe50b31](https://github.com/GRID-is/api-sdk-ts/commit/fe50b318ab6b138d2ac9607977afae8adbf1c861))
+* ci build action ([93250e4](https://github.com/GRID-is/api-sdk-ts/commit/93250e47f514e696a213cb43f456169d8f27fc13))
+* **client:** qualify global Blob ([5148d22](https://github.com/GRID-is/api-sdk-ts/commit/5148d221fb698533a43ab7b4cb1f4b35bf50c018))
+* do not install brew dependencies in ./scripts/bootstrap by default ([144090d](https://github.com/GRID-is/api-sdk-ts/commit/144090d772019cfd2e3575d9d043c766ed490ff9))
+* **internal:** codegen related update ([f375d5e](https://github.com/GRID-is/api-sdk-ts/commit/f375d5e9e5827ebd1c4e19894c5060087c44855c))
+* **internal:** fix incremental formatting in some cases ([e37a639](https://github.com/GRID-is/api-sdk-ts/commit/e37a6390227ebaaab5e2f87431765fd407964c9a))
+* **internal:** ignore .eslintcache ([a328fbb](https://github.com/GRID-is/api-sdk-ts/commit/a328fbb3bffe903c56eda152a22cda189a90f7be))
+* **internal:** remove deprecated `compilerOptions.baseUrl` from tsconfig.json ([c86c02a](https://github.com/GRID-is/api-sdk-ts/commit/c86c02a769f12ef06a6bd819317b62731f5f2b05))
+* **internal:** update global Error reference ([d64d640](https://github.com/GRID-is/api-sdk-ts/commit/d64d640a31b42e6556cc5aac617d7b72aad46d36))
+* update CI script ([5183ecd](https://github.com/GRID-is/api-sdk-ts/commit/5183ecd1d0416f1a17fd419b81c0c0abfd338f7b))
+
 ## 1.5.0 (2025-08-20)
 
 Full Changelog: [v1.4.1...v1.5.0](https://github.com/GRID-is/api-sdk-ts/compare/v1.4.1...v1.5.0)
