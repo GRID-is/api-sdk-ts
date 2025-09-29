@@ -7,10 +7,9 @@
     "module": "commonjs",
     "moduleResolution": "node",
     "esModuleInterop": true,
-    "baseUrl": "./",
     "paths": {
-      "@grid-is/api/*": ["src/*"],
-      "@grid-is/api": ["src/index.ts"]
+      "@grid-is/api/*": ["./src/*"],
+      "@grid-is/api": ["./src/index.ts"]
     },
     "noEmit": true,
 
