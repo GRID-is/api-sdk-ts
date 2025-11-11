@@ -442,12 +442,25 @@ export interface WorkbookListParams extends CursorPaginationParams {}
 export interface WorkbookCalcParams {
   read: Array<string>;
 
+  /**
+   * Map of cell references to values. The values are written to cells in the
+   * spreadsheet before performing the read operation. You can write numbers,
+   * strings, and booleans. Any updated values are discarded at the end of the
+   * request.
+   *
+   * ```json
+   * {
+   *   "apply": { "A1": 10, "A2": 2.718, "A3": "Total", "A4": true, "A5": null }
+   *   // ...
+   * }
+   * ```
+   */
   apply?: { [key: string]: number | string | boolean | null } | null;
 }
 
 export interface WorkbookExportParams {
   /**
-   * Cells to update before exporting
+   * Cells to update before exporting.
    */
   apply?: Array<WorkbookExportParams.Apply> | null;
 
@@ -697,8 +710,7 @@ export interface WorkbookRenderChartParams {
   chart: WorkbookRenderChartParams.Chart;
 
   /**
-   * Cells to update before rendering the chart. Changes are discarded at the end of
-   * the request
+   * Cells to update before rendering the chart.
    */
   apply?: Array<WorkbookRenderChartParams.Apply> | null;
 
@@ -954,6 +966,19 @@ export interface WorkbookUploadParams {
 export interface WorkbookValuesParams {
   read: Array<string>;
 
+  /**
+   * Map of cell references to values. The values are written to cells in the
+   * spreadsheet before performing the read operation. You can write numbers,
+   * strings, and booleans. Any updated values are discarded at the end of the
+   * request.
+   *
+   * ```json
+   * {
+   *   "apply": { "A1": 10, "A2": 2.718, "A3": "Total", "A4": true, "A5": null }
+   *   // ...
+   * }
+   * ```
+   */
   apply?: { [key: string]: number | string | boolean | null } | null;
 }
 
