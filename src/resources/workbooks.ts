@@ -445,8 +445,9 @@ export interface WorkbookCalcParams {
   /**
    * Map of cell references to values. The values are written to cells in the
    * spreadsheet before performing the read operation. You can write numbers,
-   * strings, and booleans. Any updated values are discarded at the end of the
-   * request.
+   * strings, and booleans. Values applied within a request are temporary and affect
+   * only that specific request. They are not permanently written to the original
+   * spreadsheet.
    *
    * ```json
    * {
@@ -969,8 +970,9 @@ export interface WorkbookValuesParams {
   /**
    * Map of cell references to values. The values are written to cells in the
    * spreadsheet before performing the read operation. You can write numbers,
-   * strings, and booleans. Any updated values are discarded at the end of the
-   * request.
+   * strings, and booleans. Values applied within a request are temporary and affect
+   * only that specific request. They are not permanently written to the original
+   * spreadsheet.
    *
    * ```json
    * {
