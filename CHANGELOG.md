@@ -1,5 +1,20 @@
 # Changelog
 
+## 1.5.2 (2025-11-11)
+
+Full Changelog: [v1.5.1...v1.5.2](https://github.com/GRID-is/api-sdk-ts/compare/v1.5.1...v1.5.2)
+
+### Features
+
+* **api:** api update ([fbb8cd1](https://github.com/GRID-is/api-sdk-ts/commit/fbb8cd1f5fe49005a1dd57ac414bbe38c516bb7b))
+
+
+### Chores
+
+* **internal:** remove .eslintcache ([58c0790](https://github.com/GRID-is/api-sdk-ts/commit/58c0790883a579b164abfe1112664661fe4683bf))
+* **internal:** use npm pack for build uploads ([643f950](https://github.com/GRID-is/api-sdk-ts/commit/643f95017f1e8e89c1f0d847f2da789e2d97c4d8))
+* **jsdoc:** fix [@link](https://github.com/link) annotations to refer only to parts of the package‘s public interface ([88da1de](https://github.com/GRID-is/api-sdk-ts/commit/88da1ded17da8524c6aa22f0bce5b426c810361a))
+
 ## 1.5.1 (2025-09-27)
 
 Full Changelog: [v1.5.0...v1.5.1](https://github.com/GRID-is/api-sdk-ts/compare/v1.5.0...v1.5.1)

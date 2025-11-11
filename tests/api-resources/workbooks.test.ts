@@ -42,7 +42,10 @@ describe('resource workbooks', () => {
 
   // Prism tests are disabled
   test.skip('calc: required and optional params', async () => {
-    const response = await client.workbooks.calc('id', { read: ['A1'], apply: { foo: 1234 } });
+    const response = await client.workbooks.calc('id', {
+      read: ['A1'],
+      apply: { A1: 100, A2: 2.718, A3: 'Total', A4: true },
+    });
   });
 
   // Prism tests are disabled
@@ -143,6 +146,9 @@ describe('resource workbooks', () => {
 
   // Prism tests are disabled
   test.skip('values: required and optional params', async () => {
-    const response = await client.workbooks.values('id', { read: ['A1'], apply: { foo: 1234 } });
+    const response = await client.workbooks.values('id', {
+      read: ['A1'],
+      apply: { A1: 100, A2: 2.718, A3: 'Total', A4: true },
+    });
   });
 });
