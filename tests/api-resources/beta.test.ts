@@ -46,6 +46,10 @@ describe('resource beta', () => {
 
   // Prism tests are disabled
   test.skip('searchLabels: required and optional params', async () => {
-    const response = await client.beta.searchLabels({ query: 'profit', max_labels: 20, max_results: 10 });
+    const response = await client.beta.searchLabels({
+      query: 'profit',
+      max_labels: 20,
+      max_results: 10,
+    });
   });
 });
