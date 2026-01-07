@@ -46,7 +46,10 @@ const client = new Grid({
 });
 
 const params: Grid.WorkbookQueryParams = { read: ['A1', 'Sheet2!B3', '=SUM(A1:A4)'] };
-const response: Grid.WorkbookQueryResponse = await client.workbooks.query('YOUR_WORKBOOK_ID', params);
+const response: Grid.WorkbookQueryResponse = await client.workbooks.query(
+  'YOUR_WORKBOOK_ID',
+  params,
+);
 ```
 
 Documentation for each method, request param, and response field are available in docstrings and will appear on hover in most modern editors.
