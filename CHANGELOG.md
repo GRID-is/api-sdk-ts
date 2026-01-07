@@ -1,5 +1,29 @@
 # Changelog
 
+## 1.5.3 (2026-01-07)
+
+Full Changelog: [v1.5.2...v1.5.3](https://github.com/GRID-is/api-sdk-ts/compare/v1.5.2...v1.5.3)
+
+### Features
+
+* **api:** api update ([5229cf3](https://github.com/GRID-is/api-sdk-ts/commit/5229cf3e73a9b20a687af4ef199af6616d918d9c))
+
+
+### Bug Fixes
+
+* **mcp:** correct code tool API endpoint ([55c087b](https://github.com/GRID-is/api-sdk-ts/commit/55c087bb1498adba5bd2c994b0af15f8a0d95c88))
+* **mcp:** return correct lines on typescript errors ([11e653a](https://github.com/GRID-is/api-sdk-ts/commit/11e653a1caa0bc3e719dad597d04ad7d8c998892))
+
+
+### Chores
+
+* break long lines in snippets into multiline ([f1b2441](https://github.com/GRID-is/api-sdk-ts/commit/f1b2441fb2a4737f3a6573397cd034d7ffd02ec7))
+* **client:** fix logger property type ([34deb46](https://github.com/GRID-is/api-sdk-ts/commit/34deb46cf72d1e8c9f5a61e38bc87779ab3b7f7d))
+* **internal:** codegen related update ([cc041d4](https://github.com/GRID-is/api-sdk-ts/commit/cc041d444bab1f1e3d3d122fb2f844d75791ff2d))
+* **internal:** codegen related update ([9f56d4e](https://github.com/GRID-is/api-sdk-ts/commit/9f56d4ee9e9590c9c43cbfe5510002b6d9758fe6))
+* **internal:** codegen related update ([87e9aa2](https://github.com/GRID-is/api-sdk-ts/commit/87e9aa22dfeb94866445a9b4cd822bfb993de907))
+* **internal:** upgrade eslint ([f4a8d85](https://github.com/GRID-is/api-sdk-ts/commit/f4a8d8507468418b4166176f6656b37727354e2a))
+
 ## 1.5.2 (2025-11-11)
 
 Full Changelog: [v1.5.1...v1.5.2](https://github.com/GRID-is/api-sdk-ts/compare/v1.5.1...v1.5.2)
