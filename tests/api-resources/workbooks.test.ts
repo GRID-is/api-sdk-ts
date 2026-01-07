@@ -44,7 +44,12 @@ describe('resource workbooks', () => {
   test.skip('calc: required and optional params', async () => {
     const response = await client.workbooks.calc('id', {
       read: ['A1'],
-      apply: { A1: 100, A2: 2.718, A3: 'Total', A4: true },
+      apply: {
+        A1: 100,
+        A2: 2.718,
+        A3: 'Total',
+        A4: true,
+      },
     });
   });
 
@@ -65,7 +70,11 @@ describe('resource workbooks', () => {
     const response = await client.workbooks.query('id', {
       read: ['A1', 'Sheet2!B3', '=SUM(A1:A4)'],
       apply: [{ target: 'A2', value: 1234 }],
-      goalSeek: { controlCell: 'Sheet1!A1:B2', targetCell: 'Sheet1!A1:B2', targetValue: 0 },
+      goalSeek: {
+        controlCell: 'Sheet1!A1:B2',
+        targetCell: 'Sheet1!A1:B2',
+        targetValue: 0,
+      },
       options: { axis: 'rows' },
     });
   });
@@ -73,7 +82,11 @@ describe('resource workbooks', () => {
   test('renderChart: required and optional params', async () => {
     const response = await client.workbooks.renderChart('id', {
       chart: {
-        axisDim: { numberFormat: '#,##0.0', reverse: 'false', title: '=C4' },
+        axisDim: {
+          numberFormat: '#,##0.0',
+          reverse: 'false',
+          title: '=C4',
+        },
         axisValue: {
           clip: 'false',
           max: 0,
@@ -148,7 +161,12 @@ describe('resource workbooks', () => {
   test.skip('values: required and optional params', async () => {
     const response = await client.workbooks.values('id', {
       read: ['A1'],
-      apply: { A1: 100, A2: 2.718, A3: 'Total', A4: true },
+      apply: {
+        A1: 100,
+        A2: 2.718,
+        A3: 'Total',
+        A4: true,
+      },
     });
   });
 });
