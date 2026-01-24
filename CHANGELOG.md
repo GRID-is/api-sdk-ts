@@ -1,5 +1,15 @@
 # Changelog
 
+## 1.5.4 (2026-01-24)
+
+Full Changelog: [v1.5.3...v1.5.4](https://github.com/GRID-is/api-sdk-ts/compare/v1.5.3...v1.5.4)
+
+### Chores
+
+* **ci:** upgrade `actions/github-script` ([3fd4927](https://github.com/GRID-is/api-sdk-ts/commit/3fd492740b07e75d5136e8cf073679ecc246d24e))
+* **internal:** update `actions/checkout` version ([4e962fb](https://github.com/GRID-is/api-sdk-ts/commit/4e962fb937987691396992b1438d6924fa90de4b))
+* **internal:** upgrade babel, qs, js-yaml ([a593dfc](https://github.com/GRID-is/api-sdk-ts/commit/a593dfcd8499490c381b6711cffaf7bff1140a17))
+
 ## 1.5.3 (2026-01-07)
 
 Full Changelog: [v1.5.2...v1.5.3](https://github.com/GRID-is/api-sdk-ts/compare/v1.5.2...v1.5.3)
