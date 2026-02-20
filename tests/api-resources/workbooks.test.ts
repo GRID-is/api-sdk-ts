@@ -8,7 +8,7 @@ const client = new Grid({
 });
 
 describe('resource workbooks', () => {
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('list', async () => {
     const responsePromise = client.workbooks.list();
     const rawResponse = await responsePromise.asResponse();
@@ -20,7 +20,7 @@ describe('resource workbooks', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('list: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
@@ -28,7 +28,7 @@ describe('resource workbooks', () => {
     ).rejects.toThrow(Grid.NotFoundError);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('calc: only required params', async () => {
     const responsePromise = client.workbooks.calc('id', { read: ['A1'] });
     const rawResponse = await responsePromise.asResponse();
@@ -40,7 +40,7 @@ describe('resource workbooks', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('calc: required and optional params', async () => {
     const response = await client.workbooks.calc('id', {
       read: ['A1'],
@@ -53,7 +53,7 @@ describe('resource workbooks', () => {
     });
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('query: only required params', async () => {
     const responsePromise = client.workbooks.query('id', { read: ['A1', 'Sheet2!B3', '=SUM(A1:A4)'] });
     const rawResponse = await responsePromise.asResponse();
@@ -65,7 +65,7 @@ describe('resource workbooks', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('query: required and optional params', async () => {
     const response = await client.workbooks.query('id', {
       read: ['A1', 'Sheet2!B3', '=SUM(A1:A4)'],
@@ -124,7 +124,7 @@ describe('resource workbooks', () => {
     });
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('upload: only required params', async () => {
     const responsePromise = client.workbooks.upload({
       file: await toFile(Buffer.from('# my file contents'), 'README.md'),
@@ -138,14 +138,14 @@ describe('resource workbooks', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('upload: required and optional params', async () => {
     const response = await client.workbooks.upload({
       file: await toFile(Buffer.from('# my file contents'), 'README.md'),
     });
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('values: only required params', async () => {
     const responsePromise = client.workbooks.values('id', { read: ['A1'] });
     const rawResponse = await responsePromise.asResponse();
@@ -157,7 +157,7 @@ describe('resource workbooks', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('values: required and optional params', async () => {
     const response = await client.workbooks.values('id', {
       read: ['A1'],
