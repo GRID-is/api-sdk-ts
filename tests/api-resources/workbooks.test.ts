@@ -79,7 +79,8 @@ describe('resource workbooks', () => {
     });
   });
 
-  test('renderChart: required and optional params', async () => {
+  // Mock server tests are disabled
+  test.skip('renderChart: required and optional params', async () => {
     const response = await client.workbooks.renderChart('id', {
       chart: {
         axisDim: {
