@@ -1,5 +1,30 @@
 # Changelog
 
+## 1.5.4 (2026-02-24)
+
+Full Changelog: [v1.5.3...v1.5.4](https://github.com/GRID-is/api-sdk-ts/compare/v1.5.3...v1.5.4)
+
+### Bug Fixes
+
+* **client:** avoid memory leak with abort signals ([92deb42](https://github.com/GRID-is/api-sdk-ts/commit/92deb42121aa6e599d9a113bde98bb54871b6bf1))
+* **client:** avoid removing abort listener too early ([85aabaa](https://github.com/GRID-is/api-sdk-ts/commit/85aabaaf5ee94b2f0475651c04a78a105d854ea8))
+* **docs/contributing:** correct pnpm link command ([d1a0543](https://github.com/GRID-is/api-sdk-ts/commit/d1a054363d2a9515f40a6346c804f60a2f21985d))
+* **internal:** skip tests that depend on mock server ([edb06bc](https://github.com/GRID-is/api-sdk-ts/commit/edb06bcad3c5a4a5b72afa05947fa42f8eb2b640))
+
+
+### Chores
+
+* **ci:** upgrade `actions/github-script` ([6b1118b](https://github.com/GRID-is/api-sdk-ts/commit/6b1118b6c13bcfce03c1fc6e94c10ac6bf7de61c))
+* **client:** do not parse responses with empty content-length ([468f36a](https://github.com/GRID-is/api-sdk-ts/commit/468f36ad9e4ea4ad82ee5f01d4242213e5b73148))
+* **client:** restructure abort controller binding ([6ec57ff](https://github.com/GRID-is/api-sdk-ts/commit/6ec57ff6a5356df317f3d1416d0e5b2399e56d29))
+* **internal/client:** fix form-urlencoded requests ([fae488f](https://github.com/GRID-is/api-sdk-ts/commit/fae488f0b1e332a71e41155a4a5c05489cbf881f))
+* **internal:** avoid type checking errors with ts-reset ([25002d6](https://github.com/GRID-is/api-sdk-ts/commit/25002d6a003ba24b945814af4a16edabe650e9f7))
+* **internal:** fix pagination internals not accepting option promises ([5676b81](https://github.com/GRID-is/api-sdk-ts/commit/5676b81ef4736e55e6e50fc30761eb732876701d))
+* **internal:** remove mock server code ([8dd5a3d](https://github.com/GRID-is/api-sdk-ts/commit/8dd5a3dff4dabb79a9f33641943322f5caddbe62))
+* **internal:** update `actions/checkout` version ([1cf7c38](https://github.com/GRID-is/api-sdk-ts/commit/1cf7c38f4ab22e331e9c2e3bd6d1c5f7512e5264))
+* **internal:** upgrade babel, qs, js-yaml ([0089abf](https://github.com/GRID-is/api-sdk-ts/commit/0089abf96ea8c063c216b008ef3edf8533d93351))
+* update mock server docs ([90e8c2d](https://github.com/GRID-is/api-sdk-ts/commit/90e8c2d7d7e17423dea9a97f0cb9e1fb1f262e87))
+
 ## 1.5.3 (2026-01-07)
 
 Full Changelog: [v1.5.2...v1.5.3](https://github.com/GRID-is/api-sdk-ts/compare/v1.5.2...v1.5.3)
