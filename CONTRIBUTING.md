@@ -60,7 +60,7 @@ $ yarn link @grid-is/api
 # With pnpm
 $ pnpm link --global
 $ cd ../my-package
-$ pnpm link -—global @grid-is/api
+$ pnpm link --global @grid-is/api
 ```
 
 ## Running tests
