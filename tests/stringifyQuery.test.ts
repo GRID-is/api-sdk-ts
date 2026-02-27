@@ -1,8 +1,6 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { Grid } from '@grid-is/api';
-
-const { stringifyQuery } = Grid.prototype as any;
+import { stringifyQuery } from '@grid-is/api/internal/utils/query';
 
 describe(stringifyQuery, () => {
   for (const [input, expected] of [
@@ -15,7 +13,7 @@ describe(stringifyQuery, () => {
         'e=f',
       )}=${encodeURIComponent('g&h')}`,
     ],
-  ]) {
+  ] as const) {
     it(`${JSON.stringify(input)} -> ${expected}`, () => {
       expect(stringifyQuery(input)).toEqual(expected);
     });
