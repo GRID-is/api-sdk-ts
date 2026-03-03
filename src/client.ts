@@ -766,7 +766,13 @@ export class Grid {
 
   static toFile = Uploads.toFile;
 
+  /**
+   * Interact with workbooks and their data
+   */
   workbooks: API.Workbooks = new API.Workbooks(this);
+  /**
+   * Interact with workbooks and their data
+   */
   beta: API.Beta = new API.Beta(this);
 }
 

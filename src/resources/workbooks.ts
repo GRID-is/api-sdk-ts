@@ -9,6 +9,9 @@ import { RequestOptions } from '../internal/request-options';
 import { multipartFormRequestOptions } from '../internal/uploads';
 import { path } from '../internal/utils/path';
 
+/**
+ * Interact with workbooks and their data
+ */
 export class Workbooks extends APIResource {
   /**
    * List the workbooks linked to an account.
