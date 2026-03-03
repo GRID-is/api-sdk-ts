@@ -5,6 +5,9 @@ import { APIPromise } from '../core/api-promise';
 import { RequestOptions } from '../internal/request-options';
 import { path } from '../internal/utils/path';
 
+/**
+ * Interact with workbooks and their data
+ */
 export class Beta extends APIResource {
   /**
    * Retrieve labels automatically detected for cells and ranges in the workbook.
