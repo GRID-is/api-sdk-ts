@@ -83,7 +83,7 @@ export class Workbooks extends APIResource {
    * @example
    * ```ts
    * const response = await client.workbooks.query('id', {
-   *   read: ['A1', 'Sheet2!B3', '=SUM(A1:A4)'],
+   *   read: ['A1:A4'],
    * });
    * ```
    */

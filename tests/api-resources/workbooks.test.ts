@@ -55,7 +55,7 @@ describe('resource workbooks', () => {
 
   // Mock server tests are disabled
   test.skip('query: only required params', async () => {
-    const responsePromise = client.workbooks.query('id', { read: ['A1', 'Sheet2!B3', '=SUM(A1:A4)'] });
+    const responsePromise = client.workbooks.query('id', { read: ['A1:A4'] });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -68,7 +68,7 @@ describe('resource workbooks', () => {
   // Mock server tests are disabled
   test.skip('query: required and optional params', async () => {
     const response = await client.workbooks.query('id', {
-      read: ['A1', 'Sheet2!B3', '=SUM(A1:A4)'],
+      read: ['A1:A4'],
       apply: [{ target: 'A2', value: 1234 }],
       goalSeek: {
         controlCell: 'Sheet1!A1:B2',
