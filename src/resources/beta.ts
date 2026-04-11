@@ -11,6 +11,11 @@ import { path } from '../internal/utils/path';
 export class Beta extends APIResource {
   /**
    * Retrieve labels automatically detected for cells and ranges in the workbook.
+   *
+   * @example
+   * ```ts
+   * const response = await client.beta.getWorkbookLabels('id');
+   * ```
    */
   getWorkbookLabels(id: string, options?: RequestOptions): APIPromise<BetaGetWorkbookLabelsResponse> {
     return this._client.get(path`/v1/workbooks/${id}/labels`, options);
@@ -18,6 +23,13 @@ export class Beta extends APIResource {
 
   /**
    * Retrieve labels automatically detected for cells and ranges in the workbook.
+   *
+   * @example
+   * ```ts
+   * const response = await client.beta.getWorkbookParameters(
+   *   'id',
+   * );
+   * ```
    */
   getWorkbookParameters(id: string, options?: RequestOptions): APIPromise<BetaGetWorkbookParametersResponse> {
     return this._client.get(path`/v1/workbooks/${id}/parameters`, options);
@@ -25,6 +37,13 @@ export class Beta extends APIResource {
 
   /**
    * Search data labels across all spreadsheets uploaded to an account
+   *
+   * @example
+   * ```ts
+   * const response = await client.beta.searchLabels({
+   *   query: 'profit',
+   * });
+   * ```
    */
   searchLabels(body: BetaSearchLabelsParams, options?: RequestOptions): APIPromise<BetaSearchLabelsResponse> {
     return this._client.post('/v1/workbooks/search/labels', { body, ...options });

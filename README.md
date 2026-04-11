@@ -26,9 +26,7 @@ const client = new Grid({
   apiKey: process.env['GRID_API_TOKEN'], // This is the default and can be omitted
 });
 
-const response = await client.workbooks.query('YOUR_WORKBOOK_ID', {
-  read: ['A1', 'Sheet2!B3', '=SUM(A1:A4)'],
-});
+const response = await client.workbooks.query('YOUR_WORKBOOK_ID', { read: ['A1:A4'] });
 
 console.log(response.read);
 ```
@@ -45,7 +43,7 @@ const client = new Grid({
   apiKey: process.env['GRID_API_TOKEN'], // This is the default and can be omitted
 });
 
-const params: Grid.WorkbookQueryParams = { read: ['A1', 'Sheet2!B3', '=SUM(A1:A4)'] };
+const params: Grid.WorkbookQueryParams = { read: ['A1:A4'] };
 const response: Grid.WorkbookQueryResponse = await client.workbooks.query(
   'YOUR_WORKBOOK_ID',
   params,
@@ -92,7 +90,7 @@ a subclass of `APIError` will be thrown:
 <!-- prettier-ignore -->
 ```ts
 const response = await client.workbooks
-  .query('YOUR_WORKBOOK_ID', { read: ['A1', 'Sheet2!B3', '=SUM(A1:A4)'] })
+  .query('YOUR_WORKBOOK_ID', { read: ['A1:A4'] })
   .catch(async (err) => {
     if (err instanceof Grid.APIError) {
       console.log(err.status); // 400
@@ -133,7 +131,7 @@ const client = new Grid({
 });
 
 // Or, configure per-request:
-await client.workbooks.query('YOUR_WORKBOOK_ID', { read: ['A1', 'Sheet2!B3', '=SUM(A1:A4)'] }, {
+await client.workbooks.query('YOUR_WORKBOOK_ID', { read: ['A1:A4'] }, {
   maxRetries: 5,
 });
 ```
@@ -150,7 +148,7 @@ const client = new Grid({
 });
 
 // Override per-request:
-await client.workbooks.query('YOUR_WORKBOOK_ID', { read: ['A1', 'Sheet2!B3', '=SUM(A1:A4)'] }, {
+await client.workbooks.query('YOUR_WORKBOOK_ID', { read: ['A1:A4'] }, {
   timeout: 5 * 1000,
 });
 ```
@@ -203,7 +201,7 @@ const client = new Grid();
 
 const response = await client.workbooks.query(
   'YOUR_WORKBOOK_ID',
-  { read: ['A1', 'Sheet2!B3', '=SUM(A1:A4)'] },
+  { read: ['A1:A4'] },
   { headers: { 'X-Client-Name': 'My-Custom-Value' } },
 );
 ```
@@ -222,14 +220,12 @@ Unlike `.asResponse()` this method consumes the body, returning once it is parse
 ```ts
 const client = new Grid();
 
-const response = await client.workbooks
-  .query('YOUR_WORKBOOK_ID', { read: ['A1', 'Sheet2!B3', '=SUM(A1:A4)'] })
-  .asResponse();
+const response = await client.workbooks.query('YOUR_WORKBOOK_ID', { read: ['A1:A4'] }).asResponse();
 console.log(response.headers.get('X-My-Header'));
 console.log(response.statusText); // access the underlying Response object
 
 const { data: response, response: raw } = await client.workbooks
-  .query('YOUR_WORKBOOK_ID', { read: ['A1', 'Sheet2!B3', '=SUM(A1:A4)'] })
+  .query('YOUR_WORKBOOK_ID', { read: ['A1:A4'] })
   .withResponse();
 console.log(raw.headers.get('X-My-Header'));
 console.log(response.read);
