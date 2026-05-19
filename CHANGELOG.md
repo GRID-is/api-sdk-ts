@@ -1,5 +1,45 @@
 # Changelog
 
+## 1.6.0 (2026-05-19)
+
+Full Changelog: [v1.5.4...v1.6.0](https://github.com/GRID-is/api-sdk-ts/compare/v1.5.4...v1.6.0)
+
+### Features
+
+* support setting headers via env ([f13bb8b](https://github.com/GRID-is/api-sdk-ts/commit/f13bb8babbe12f265957417330b8d6470f951c97))
+
+
+### Bug Fixes
+
+* **client:** preserve URL params already embedded in path ([f774112](https://github.com/GRID-is/api-sdk-ts/commit/f774112e955928024384688ffc43ab24af317517))
+* **typescript:** upgrade tsc-multi so that it works with Node 26 ([3e25121](https://github.com/GRID-is/api-sdk-ts/commit/3e25121795b9140caad406a36b2e925ba55ed5e1))
+
+
+### Chores
+
+* **ci:** skip lint on metadata-only changes ([85f6a50](https://github.com/GRID-is/api-sdk-ts/commit/85f6a50e55e9ea0e50ef6b10c796eec4b638861a))
+* **ci:** skip uploading artifacts on stainless-internal branches ([ccfeebb](https://github.com/GRID-is/api-sdk-ts/commit/ccfeebb085a7c9ca5a0d24ba5ee175700981d653))
+* **format:** run eslint and prettier separately ([b38d95e](https://github.com/GRID-is/api-sdk-ts/commit/b38d95e03840b8204978ea8f29e94e0bf7a0ba12))
+* **internal:** codegen related update ([f17ba61](https://github.com/GRID-is/api-sdk-ts/commit/f17ba61fa0eecce6a8d675b45a1d02e9e0b26a01))
+* **internal:** codegen related update ([de5d2e8](https://github.com/GRID-is/api-sdk-ts/commit/de5d2e8f039630d1b172b1a84c53d7bcaa0b8e4b))
+* **internal:** codegen related update ([cdb0d9f](https://github.com/GRID-is/api-sdk-ts/commit/cdb0d9fe5e112d35bb393fd1253e5140efa79242))
+* **internal:** codegen related update ([cf1e298](https://github.com/GRID-is/api-sdk-ts/commit/cf1e2984941f530ac0f3250b1e11fef64c828037))
+* **internal:** codegen related update ([862a3cc](https://github.com/GRID-is/api-sdk-ts/commit/862a3cc96242474206647d4bca2181001b1bbd72))
+* **internal:** codegen related update ([a81a9a6](https://github.com/GRID-is/api-sdk-ts/commit/a81a9a6fdc993c81346b7743b19fbaed6680ae4d))
+* **internal:** more robust bootstrap script ([759b9c9](https://github.com/GRID-is/api-sdk-ts/commit/759b9c90714c74d804172951063d337cc6f1020b))
+* **internal:** move stringifyQuery implementation to internal function ([8808754](https://github.com/GRID-is/api-sdk-ts/commit/8808754e3e69ac2da2ce730c67b125f8dd15982b))
+* **internal:** tweak CI branches ([2a0aacc](https://github.com/GRID-is/api-sdk-ts/commit/2a0aacc8f4687f478091f5df519bea008cc6e75b))
+* **internal:** update dependencies to address dependabot vulnerabilities ([32288f2](https://github.com/GRID-is/api-sdk-ts/commit/32288f2f780637c8c26af93b43ab41886645db14))
+* **internal:** update gitignore ([13c70b2](https://github.com/GRID-is/api-sdk-ts/commit/13c70b26a33b80c5ae74b105c2d8385c83cafae5))
+* redact api-key headers in debug logs ([4132245](https://github.com/GRID-is/api-sdk-ts/commit/4132245a59f7c43c19845dd25df7ce0f738e6850))
+* **tests:** remove redundant File import ([f5d68bb](https://github.com/GRID-is/api-sdk-ts/commit/f5d68bb6438bdbb002fd85d7ee949d43cbccca0d))
+* update placeholder string ([399fbc7](https://github.com/GRID-is/api-sdk-ts/commit/399fbc71da55d63d6790d41951d4913e4d9ab803))
+
+
+### Documentation
+
+* update examples ([963bd9d](https://github.com/GRID-is/api-sdk-ts/commit/963bd9dd114f47f8525638ea9492cad77916be3c))
+
 ## 1.5.4 (2026-02-24)
 
 Full Changelog: [v1.5.3...v1.5.4](https://github.com/GRID-is/api-sdk-ts/compare/v1.5.3...v1.5.4)
