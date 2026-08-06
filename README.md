@@ -2,6 +2,10 @@
 
 [![NPM version](<https://img.shields.io/npm/v/@grid-is/api.svg?label=npm%20(stable)>)](https://npmjs.org/package/@grid-is/api) ![npm bundle size](https://img.shields.io/bundlephobia/minzip/@grid-is/api)
 
+**Note:** this project has been superseded by our [agent tools](https://grid.is/agent-tools) and our [packages for working with spreadsheets locally](https://grid.is/editor).
+
+---
+
 This library provides convenient access to the GRID REST API from server-side TypeScript or JavaScript.
 
 The REST API documentation can be found on [sdk.grid.is](https://sdk.grid.is/). The full API of this library can be found in [api.md](api.md). Your spreadsheets dashboard can be found at [app.grid.is](https://app.grid.is/).
