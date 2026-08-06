@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.6.1 (2026-08-06)
+
+* Mark package as deprecated
+
 ## 1.6.0 (2026-05-19)
 
 Full Changelog: [v1.5.4...v1.6.0](https://github.com/GRID-is/api-sdk-ts/compare/v1.5.4...v1.6.0)
